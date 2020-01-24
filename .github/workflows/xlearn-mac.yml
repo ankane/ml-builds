@@ -1,8 +1,8 @@
-name: xLearn Linux
+name: xLearn Mac
 on:
   push:
     paths:
-    - .github/workflows/xlearn-linux.yml
+    - .github/workflows/xlearn-mac.yml
 
 jobs:
   build:
@@ -14,11 +14,11 @@ jobs:
           cd xlearn
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_MACOSX_RPATH=TRUE
           make -j4
           cd ..
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: libxlearn_api.so
-          path: xlearn/build/lib/libxlearn_api.so
+          name: libxlearn_api.dylib
+          path: xlearn/build/lib/libxlearn_api.dylib
