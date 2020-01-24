@@ -1,7 +1,8 @@
 name: XGBoost Linux
-push:
-  paths:
-  - .github/workflows/xgboost-linux.yml
+on:
+  push:
+    paths:
+    - .github/workflows/xgboost-linux.yml
 
 jobs:
   build:

@@ -1,7 +1,8 @@
 name: XGBoost Windows
-push:
-  paths:
-  - .github/workflows/xgboost-windows.yml
+on:
+  push:
+    paths:
+    - .github/workflows/xgboost-windows.yml
 
 jobs:
   build:
