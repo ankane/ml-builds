@@ -13,7 +13,7 @@ jobs:
           cd xlearn
           mkdir build
           cd build -G "Visual Studio 16 Win64" ../
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
+          \"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat\" x64
           MSBuild xLearn.sln /p:Configuration=Release
       - uses: actions/upload-artifact@v1
         with:
