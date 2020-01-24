@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake
+          brew install cmake libomp
           git clone --recursive --branch v1.8.4 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
