@@ -1,5 +1,7 @@
 name: XGBoost Mac
-on: [push]
+push:
+  paths:
+  - .github/workflows/xgboost-mac.yml
 
 jobs:
   build:

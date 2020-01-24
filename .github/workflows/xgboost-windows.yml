@@ -1,23 +1,20 @@
-name: XGBoost Linux
+name: XGBoost Windows
 push:
   paths:
-  - .github/workflows/xgboost-linux.yml
+  - .github/workflows/xgboost-windows.yml
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - run: |
-          sudo apt install cmake
           git clone --recursive --branch v0.90 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
           cmake ..
           make -j4
-          cd ..
-          du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: libxgboost.so
-          path: xgboost/lib/libxgboost.so
+          name: xgboost.dll
+          path: xgboost/lib/xgboost.dll
