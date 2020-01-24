@@ -1,0 +1,23 @@
+name: NGT Windows
+on:
+  push:
+    paths:
+    - .github/workflows/ngt-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v1.8.4 https://github.com/yahoojapan/NGT
+          cd NGT
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: ngt.dll
+          path: NGT/build/lib/NGT/ngt.dll.1.8.4
