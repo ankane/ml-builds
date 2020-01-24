@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          sudo apt install cmake
+          brew install cmake
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
           mkdir build
