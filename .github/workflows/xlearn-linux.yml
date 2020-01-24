@@ -1,0 +1,24 @@
+name: xLearn Linux
+on:
+  push:
+    paths:
+    - .github/workflows/xlearn-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt install cmake
+          git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
+          cd xlearn
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libxlearn_api.so
+          path: xlearn/lib/libxlearn_api.so
