@@ -1,0 +1,21 @@
+name: XGBoost Mac
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          brew install cmake
+          git clone --recursive https://github.com/dmlc/xgboost
+          cd xgboost
+          mkdir build
+          cd build
+          cmake .. -DUSE_OPENMP=0
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libxgboost.dylib
+          path: lib/libxgboost.dylib

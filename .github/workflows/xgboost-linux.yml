@@ -1,4 +1,4 @@
-name: XGBoost
+name: XGBoost Linux
 on: [push]
 
 jobs:
@@ -13,4 +13,9 @@ jobs:
           cd build
           cmake ..
           make -j4
+          cd ..
           du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libxgboost.so
+          path: lib/libxgboost.so
