@@ -21,4 +21,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.so
-          path: NGT/lib/libngt.so
+          path: NGT/build/lib/NGT/libngt.so.1.8.4
