@@ -1,0 +1,24 @@
+name: Vowpal Wabbit Linux
+on:
+  push:
+    paths:
+    - .github/workflows/vowpalwabbit-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt install libboost-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev libboost-math-dev libboost-test-dev zlib1g-dev cmake g++
+          git clone --recursive --branch 8.8.0 https://github.com/VowpalWabbit/vowpal_wabbit.git
+          cd NGT
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libvw_c_wrapper.so
+          path: lib/libvw_c_wrapper.so
