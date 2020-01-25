@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          sudo apt install cmake
+          sudo apt install cmake libeigen3-dev
           git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON
           make -j4
           cd ..
           du -ah .
