@@ -11,11 +11,8 @@ jobs:
       - run: |
           git clone --recursive --branch v0.90 https://github.com/dmlc/xgboost
           cd xgboost
-          mkdir build
-          cd build
-          cmake .. -G "Visual Studio 16" -A Win64
-          ls
-          MSBuild XGBoost.sln
+          cp make/mingw64.mk config.mk
+          make -j4
       - uses: actions/upload-artifact@v1
         with:
           name: xgboost.dll
