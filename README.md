@@ -4,4 +4,4 @@ Library | Linux | Mac | Windows
 --- | --- | --- | ---
 XGBoost | ✓ | ✓ | ✓
 xLearn | ✓ | ✓ | ✓
-NGT | ✓ | |
+NGT | ✓ | ✓ |
