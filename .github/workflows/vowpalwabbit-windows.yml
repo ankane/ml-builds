@@ -1,0 +1,19 @@
+name: Vowpal Wabbit Windows
+on:
+  push:
+    paths:
+    - .github/workflows/vowpalwabbit-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-2016
+    steps:
+      - run: |
+          git clone --recursive --branch 8.8.0 https://github.com/VowpalWabbit/vowpal_wabbit.git
+          cd vowpal_wabbit
+          "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" vw.sln /p:Configuration=Release /p:Platform="x64"
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: vw_c_wrapper.dll
+          path: vowpal_wabbit/build/vowpalwabbit/vw_c_wrapper.dll
