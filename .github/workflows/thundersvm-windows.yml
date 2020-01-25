@@ -1,0 +1,19 @@
+name: ThunderSVM Windows
+on:
+  push:
+    paths:
+    - .github/workflows/thundersvm-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-2016
+    steps:
+      - run: |
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
+          cd thundersvm
+          cmake .. -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -G "Visual Studio 15 Win64"
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: thundersvm.dll
+          path: thundersvm/build/lib/thundersvm.dll
