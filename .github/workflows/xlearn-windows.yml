@@ -13,9 +13,7 @@ jobs:
           cd xlearn
           mkdir build
           cd build
-          cmake -G "Visual Studio 16" -A Win64 ../
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          MSBuild xLearn.sln /p:Configuration=Release
+          cmake -G "Visual Studio 16 2019" -A Win64 ../
       - uses: actions/upload-artifact@v1
         with:
           name: libxlearn_api.dll
