@@ -9,8 +9,10 @@ jobs:
     runs-on: windows-2016
     steps:
       - run: |
-          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
+          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
+          mkdir build
+          cd build
           cmake .. -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE -DBUILD_SHARED_LIBS=TRUE -G "Visual Studio 15 Win64"
         shell: cmd
       - uses: actions/upload-artifact@v1
