@@ -1,0 +1,24 @@
+name: ThunderSVM Mac
+on:
+  push:
+    paths:
+    - .github/workflows/thundersvm-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          brew install cmake
+          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
+          cd thundersvm
+          mkdir build
+          cd build
+          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libthundersvm.dylib
+          path: thundersvm/build/lib/libthundersvm.dylib
