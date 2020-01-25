@@ -9,6 +9,7 @@ jobs:
     runs-on: windows-2016
     steps:
       - run: |
+          echo on
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
           mkdir build
@@ -16,6 +17,7 @@ jobs:
           cmake -G "Visual Studio 15 Win64" ../
           set MSBUILD="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
           %MSBUILD% xLearn.sln /p:Configuration=Release
+        shell: cmd
       - uses: actions/upload-artifact@v1
         with:
           name: libxlearn_api.dll
