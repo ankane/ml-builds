@@ -10,8 +10,9 @@ jobs:
     steps:
       - run: |
           git clone --recursive --branch 8.8.0 https://github.com/VowpalWabbit/vowpal_wabbit.git
-          cd vowpal_wabbit
-          "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" /p:Configuration=Release /p:Platform="x64" vowpalwabbit/vw.sln
+          cd vowpal_wabbit/vowpalwabbit
+          nuget restore
+          "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" /p:Configuration=Release /p:Platform="x64" vw.sln
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
