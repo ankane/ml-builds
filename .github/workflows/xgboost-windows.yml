@@ -13,8 +13,9 @@ jobs:
           cd xgboost
           mkdir build
           cd build
-          cmake ..
-          make -j4
+          cmake .. -G "Visual Studio 16" -A Win64
+          ls
+          MSBuild XGBoost.sln
       - uses: actions/upload-artifact@v1
         with:
           name: xgboost.dll
