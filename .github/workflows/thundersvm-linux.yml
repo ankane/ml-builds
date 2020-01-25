@@ -1,0 +1,24 @@
+name: ThunderSVM Linux
+on:
+  push:
+    paths:
+    - .github/workflows/thundersvm-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt install cmake
+          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
+          cd thundersvm
+          mkdir build
+          cd build
+          cmake ..
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libthundersvm.so
+          path: thundersvm/build/lib/libthundersvm.so
