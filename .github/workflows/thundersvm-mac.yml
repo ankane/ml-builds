@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
           mkdir build
           cd build
