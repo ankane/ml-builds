@@ -9,12 +9,12 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake libomp
+          brew install cmake
           git clone --recursive --branch v1.8.4 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
-          cmake .. -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp/lib/libomp.dylib
+          cmake .. -DNGT_OPENMP_DISABLE=ON
           make -j4
           cd ..
           du -ah .
