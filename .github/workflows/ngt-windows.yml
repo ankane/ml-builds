@@ -15,8 +15,7 @@ jobs:
           cd build
           cmake ..
           make -j4
-          cd ..
-          du -ah .
+        shell: cmd
       - uses: actions/upload-artifact@v1
         with:
           name: ngt.dll

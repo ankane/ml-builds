@@ -13,6 +13,7 @@ jobs:
           cd xgboost
           cp make/mingw64.mk config.mk
           make -j4
+        shell: cmd
       - uses: actions/upload-artifact@v1
         with:
           name: xgboost.dll

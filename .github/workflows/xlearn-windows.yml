@@ -9,7 +9,6 @@ jobs:
     runs-on: windows-2016
     steps:
       - run: |
-          echo on
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
           mkdir build
@@ -20,4 +19,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: xlearn_api.dll
-          path: xlearn/build/lib/xlearn_api.dll
+          path: xlearn\build\test\c_api\Release\xlearn_api.dll
