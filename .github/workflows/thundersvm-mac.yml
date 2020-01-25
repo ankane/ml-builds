@@ -9,12 +9,12 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake
+          brew install cmake libomp
           git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
           mkdir build
           cd build
-          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON
+          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp/lib/libomp.dylib
           make -j4
           cd ..
           du -ah .
