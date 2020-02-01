@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2016
     steps:
       - run: |
-          git clone --recursive --branch v0.90 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.0.0rc1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
