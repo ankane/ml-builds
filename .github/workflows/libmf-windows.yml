@@ -1,0 +1,20 @@
+name: LIBMF Windows
+on:
+  push:
+    paths:
+    - .github/workflows/libmf-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive https://github.com/cjlin1/libmf.git
+          cd libmf
+          make -f Makefile.win all
+          make -f Makefile.win lib
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mf.dll
+          path: libmf/mf.dll

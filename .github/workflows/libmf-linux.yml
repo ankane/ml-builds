@@ -1,0 +1,20 @@
+name: LIBMF Linux
+on:
+  push:
+    paths:
+    - .github/workflows/libmf-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git clone --recursive https://github.com/cjlin1/libmf.git
+          cd libmf
+          make all
+          make lib
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libmf.so
+          path: libmf/libmf.so.2
