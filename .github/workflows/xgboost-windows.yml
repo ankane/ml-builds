@@ -6,15 +6,15 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2016
+    runs-on: windows-latest
     steps:
       - run: |
           git clone --recursive --branch v1.0.0rc1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake -G "Visual Studio 15 Win64" ../
-          "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" xgboost.sln /p:Configuration=Release
+          cmake -G "Visual Studio 16" -A Win64 ../
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\16.0\Bin\MSBuild.exe" xgboost.sln /p:Configuration=Release
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
