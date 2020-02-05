@@ -6,15 +6,15 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2016
+    runs-on: windows-latest
     steps:
       - run: |
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
           mkdir build
           cd build
-          cmake -G "Visual Studio 15 Win64" ../
-          "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" xLearn.sln /p:Configuration=Release
+          cmake .. -G "Visual Studio 16 2019" -A x64
+          cmake --build . --config Release
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
