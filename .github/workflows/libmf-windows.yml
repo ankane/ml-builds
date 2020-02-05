@@ -13,9 +13,8 @@ jobs:
           cd libmf
           call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake /E /F Makefile.win all
-          nmake /E /F Makefile.win lib
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
           name: mf.dll
-          path: libmf/mf.dll
+          path: libmf/windows/mf.dll
