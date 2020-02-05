@@ -7,7 +7,7 @@ Library | Linux | Mac | Windows | Assets
 XGBoost | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-0.90)
 Vowpal Wabbit | | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/vowpalwabbit-8.8.0)
 xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4)
-NGT | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.8.4)
+NGT | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.8.4)
 ThunderSVM | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4)
 LightGBM | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/LightGBM/releases) :tada:
 ONNX Runtime | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/onnxruntime/releases) :tada:
