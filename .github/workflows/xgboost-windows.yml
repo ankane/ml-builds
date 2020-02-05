@@ -14,7 +14,7 @@ jobs:
           mkdir build
           cd build
           cmake -G "Visual Studio 16" -A Win64 ../
-          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\16.0\Bin\MSBuild.exe" xgboost.sln /p:Configuration=Release
+          cmake --build . --config Release
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
