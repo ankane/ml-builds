@@ -6,13 +6,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2016
     steps:
       - run: |
           git clone --recursive https://github.com/cjlin1/libmf.git
           cd libmf
-          make -f Makefile.win all
-          make -f Makefile.win lib
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+          nmake /E /F Makefile.win all
+          nmake /E /F Makefile.win lib
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
