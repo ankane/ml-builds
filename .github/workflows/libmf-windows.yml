@@ -11,7 +11,7 @@ jobs:
       - run: |
           git clone --recursive https://github.com/cjlin1/libmf.git
           cd libmf
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake /E /F Makefile.win all
           nmake /E /F Makefile.win lib
         shell: cmd
