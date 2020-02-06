@@ -14,7 +14,7 @@ jobs:
           mkdir build
           cd build
           cmake .. -G "Visual Studio 16 2019" -A x64
-          cmake --build . --config Release
+           "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\16.0\Bin\MSBuild.exe" ngt.sln /p:Configuration=Release
           ls
           ls lib
           ls lib/NGT
