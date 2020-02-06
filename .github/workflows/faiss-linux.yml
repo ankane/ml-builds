@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          sudo apt install libblas-dev
+          sudo apt install libblas-dev liblapack-dev
           git clone --recursive --branch v1.6.1 https://github.com/facebookresearch/faiss.git
           cd faiss
           ./configure --without-cuda
