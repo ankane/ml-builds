@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           sudo apt install cmake
-          git clone --recursive --branch v1.8.4 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.9.0 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
@@ -21,4 +21,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.so
-          path: NGT/build/lib/NGT/libngt.so.1.8.4
+          path: NGT/build/lib/NGT/libngt.so.1.9.0
