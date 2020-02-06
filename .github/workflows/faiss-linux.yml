@@ -1,0 +1,20 @@
+name: Faiss Linux
+on:
+  push:
+    paths:
+    - .github/workflows/faiss-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v1.6.1 https://github.com/facebookresearch/faiss.git
+          cd faiss
+          ./configure --without-cuda
+          make
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libfaiss.so
+          path: faiss/libfaiss.so
