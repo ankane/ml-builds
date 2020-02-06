@@ -14,8 +14,15 @@ jobs:
           cd faiss
           ./configure --without-cuda ac_cv_prog_cxx_openmp="-Xpreprocessor -fopenmp" LIBS=-lomp
           make
+          cd c_api
+          make
+          cd ..
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
           name: libfaiss.dylib
           path: faiss/libfaiss.dylib
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libfaiss_c.dylib
+          path: faiss/c_api/libfaiss_c.dylib
