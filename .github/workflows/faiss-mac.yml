@@ -1,0 +1,21 @@
+name: Faiss Mac
+on:
+  push:
+    paths:
+    - .github/workflows/faiss-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          brew install libomp
+          git clone --recursive --branch v1.6.1 https://github.com/facebookresearch/faiss.git
+          cd faiss
+          ./configure --without-cuda ac_cv_prog_cxx_openmp="-Xpreprocessor -fopenmp" LIBS=-lomp
+          make
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libfaiss.dylib
+          path: faiss/libfaiss.dylib
