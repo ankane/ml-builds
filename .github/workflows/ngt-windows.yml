@@ -15,6 +15,9 @@ jobs:
           cd build
           cmake .. -G "Visual Studio 16 2019" -A x64
           cmake --build . --config Release
+          ls
+          ls lib
+          ls lib/NGT
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
