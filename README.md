@@ -14,3 +14,5 @@ ThunderSVM | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releas
 Vowpal Wabbit | | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/vowpalwabbit-8.8.0) |
 XGBoost | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-0.90) |
 xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) |
+
+View the [build scripts](.github/workflows)
