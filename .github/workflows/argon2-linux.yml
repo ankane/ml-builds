@@ -1,0 +1,19 @@
+name: Argon2 Linux
+on:
+  push:
+    paths:
+    - .github/workflows/argon2-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
+          cd phc-winner-argon2
+          make
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libargon2.so
+          path: phc-winner-argon2/libargon2.so.1

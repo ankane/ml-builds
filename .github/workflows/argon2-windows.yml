@@ -1,0 +1,19 @@
+name: Argon2 Windows
+on:
+  push:
+    paths:
+    - .github/workflows/argon2-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
+          cd phc-winner-argon2
+          "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe" Argon2.sln /p:Configuration=Release /p:WindowsTargetPlatformVersion=10
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: argon2.dll
+          path: phc-winner-argon2/vs2015/build/Argon2OptDll.dll
