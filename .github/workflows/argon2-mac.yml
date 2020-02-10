@@ -11,7 +11,7 @@ jobs:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
-          make
+          make OPTTARGET=nehalem
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
