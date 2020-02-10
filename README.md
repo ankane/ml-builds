@@ -16,3 +16,8 @@ XGBoost | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/
 xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) |
 
 View the [build scripts](.github/workflows)
+
+For compatibility, built with:
+
+- `-march=x86-64` on Linux (when possible)
+- `-march=nehalem` on Mac (same as Homebrew)
