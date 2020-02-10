@@ -12,9 +12,10 @@ jobs:
           brew install cmake
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
+          sed -i '' 's/-march=native/-march=nehalem/g' CMakeLists.txt
           mkdir build
           cd build
-          cmake .. -DCMAKE_MACOSX_RPATH=TRUE
+          cmake .. -DCMAKE_MACOSX_RPATH=TRUE -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .

@@ -12,9 +12,10 @@ jobs:
           brew install cmake libomp
           git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
+          sed -i '' 's/-march=native/-march=nehalem/g' CMakeLists.txt
           mkdir build
           cd build
-          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp/lib/libomp.dylib
+          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .

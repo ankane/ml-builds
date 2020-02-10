@@ -14,7 +14,7 @@ jobs:
           cd xgboost
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
