@@ -5,7 +5,7 @@ Pre-built shared libraries for machine learning
 Library | Linux | Mac | Windows | Assets | Official
 --- | --- | --- | --- | --- | ---
 Faiss | ✓ | ✓ | n/a | todo |
-LIBMF | ✓ | | | todo |
+LIBMF | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-201) |
 LightGBM | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/LightGBM/releases) | ✓
 NGT | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.8.4) |
 ONNX Runtime | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/onnxruntime/releases) | ✓
