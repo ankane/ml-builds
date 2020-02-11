@@ -1,21 +1,21 @@
-name: LIBMF Linux
+name: LIBMF Mac
 on:
   push:
     paths:
-    - .github/workflows/libmf-linux.yml
+    - .github/workflows/libmf-mac.yml
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - run: |
           git clone --recursive https://github.com/cjlin1/libmf.git
           cd libmf
           sed -i 's/-march=native/-march=nehalem/g' Makefile
-          make all
-          make lib
+          make -e all DFLAG="" OMPFLAG=""
+          make -e lib
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
           name: libmf.so
-          path: libmf/libmf.so.2
+          path: libmf/libmf.2.dylib
