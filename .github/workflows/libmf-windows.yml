@@ -6,13 +6,13 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2016
+    runs-on: windows-latest
     steps:
       - run: |
           git clone --recursive https://github.com/cjlin1/libmf.git
           cd libmf
           sed -i -e 's/ \/D "USEOMP" \/openmp//g' Makefile.win
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake /E /F Makefile.win all
         shell: cmd
       - uses: actions/upload-artifact@v1
