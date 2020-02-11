@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          git clone --recursive https://github.com/cjlin1/libmf.git
+          git clone --recursive --branch mac https://github.com/ankane/libmf-1.git
           cd libmf
           sed -i '' 's/-march=native/-march=nehalem/g' Makefile
           make -e all DFLAG="" OMPFLAG=""
