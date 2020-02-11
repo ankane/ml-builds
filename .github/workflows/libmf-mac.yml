@@ -17,5 +17,5 @@ jobs:
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: libmf.so
+          name: libmf.dylib
           path: libmf/libmf.2.dylib
