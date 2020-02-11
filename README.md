@@ -11,7 +11,7 @@ NGT | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/
 ONNX Runtime | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/onnxruntime/releases) | ✓
 OSQP | ✓ | ✓ | ✓ | [View](https://bintray.com/bstellato/generic/OSQP#files) | ✓
 ThunderSVM | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) |
-Vowpal Wabbit | | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/vowpalwabbit-8.8.0) |
+Vowpal Wabbit | | | | todo |
 XGBoost | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-0.90) |
 xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) |
 
