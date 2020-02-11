@@ -12,8 +12,7 @@ jobs:
           git clone --recursive --branch mac https://github.com/ankane/libmf-1.git libmf
           cd libmf
           sed -i '' 's/-march=native/-march=nehalem/g' Makefile
-          make -e all DFLAG="" OMPFLAG=""
-          make -e lib
+          make all lib DFLAG="" OMPFLAG=""
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
