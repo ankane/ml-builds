@@ -11,7 +11,7 @@ jobs:
       - run: |
           git clone --recursive https://github.com/cjlin1/libmf.git
           cd libmf
-          sed -i 's/-march=native/-march=nehalem/g' Makefile
+          sed -i '' 's/-march=native/-march=nehalem/g' Makefile
           make -e all DFLAG="" OMPFLAG=""
           make -e lib
           du -ah .
