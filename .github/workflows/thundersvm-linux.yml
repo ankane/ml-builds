@@ -10,12 +10,11 @@ jobs:
     steps:
       - run: |
           sudo apt install cmake
-          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
-          sed -i 's/-march=native/-march=x86-64/g' CMakeLists.txt
           mkdir build
           cd build
-          cmake .. -DUSE_CUDA=OFF -DUSE_EIGEN=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=x86-64 -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
