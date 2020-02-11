@@ -1,0 +1,24 @@
+name: Multicore t-SNE Linux
+on:
+  push:
+    paths:
+    - .github/workflows/multicore-tsne-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sudo apt install cmake
+          git clone --recursive --branch master https://github.com/DmitryUlyanov/Multicore-TSNE.git
+          cd Multicore-TSNE/multicore_tsne
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libtsne_multicore.so
+          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.so

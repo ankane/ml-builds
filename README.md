@@ -7,6 +7,7 @@ Library | Linux | Mac | Windows | Assets | Official | Notes
 Faiss | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | |
 LIBMF | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-201) | | master branch, OpenMP disabled
 LightGBM | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/LightGBM/releases) | ✓ |
+Multicore t-SNE | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | |
 NGT | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.8.4) | |
 ONNX Runtime | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/onnxruntime/releases) | ✓ |
 OSQP | ✓ | ✓ | ✓ | [View](https://bintray.com/bstellato/generic/OSQP#files) | ✓ |
