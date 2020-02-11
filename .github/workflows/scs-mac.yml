@@ -1,0 +1,23 @@
+name: SCS Mac
+on:
+  push:
+    paths:
+    - .github/workflows/scs-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v2.0.2 https://github.com/cvxgrp/scs.git
+          cd scs
+          make
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libscsindir.dylib
+          path: scs/out/libscsindir.dylib
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libscsdir.dylib
+          path: scs/out/libscsdir.dylib
