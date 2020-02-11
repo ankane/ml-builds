@@ -17,6 +17,8 @@ xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/t
 
 View the [build scripts](.github/workflows)
 
+## Details
+
 For portability, shared libraries are built with:
 
 - `-march=x86-64` on Linux (when possible)
