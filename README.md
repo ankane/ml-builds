@@ -24,6 +24,6 @@ View the [build scripts](.github/workflows)
 For portability:
 
 - Linux libraries are built with older `glibc` (todo: build with much older) and `-march=x86-64` (when possible)
-- Mac libraires are built with `-march=nehalem` (same as Homebrew)
+- Mac libraries are built with `-march=nehalem` (same as Homebrew)
 
 [Reference](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
