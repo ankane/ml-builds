@@ -9,12 +9,12 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake
-          git clone --recursive --branch v0.90 https://github.com/dmlc/xgboost
+          brew install cmake libomp
+          git clone --recursive --branch v1.0.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DUSE_OPENMP=0 -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .

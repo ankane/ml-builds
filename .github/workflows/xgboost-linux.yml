@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           sudo apt install cmake
-          git clone --recursive --branch v0.90 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.0.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
