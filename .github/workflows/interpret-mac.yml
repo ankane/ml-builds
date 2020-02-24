@@ -1,0 +1,19 @@
+name: Interpret Mac
+on:
+  push:
+    paths:
+    - .github/workflows/interpret-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v0.1.20 https://github.com/interpretml/interpret.git
+          cd interpret
+          sh build.sh
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: lib_ebmcore.dylib
+          path: interpret/staging/lib_ebmcore_mac_x64.dylib
