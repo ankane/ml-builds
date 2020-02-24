@@ -1,0 +1,23 @@
+name: BlingFire Linux
+on:
+  push:
+    paths:
+    - .github/workflows/blingfire-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          git clone --recursive --branch master https://github.com/microsoft/BlingFire.git
+          cd BlingFire
+          mkdir build
+          cd build
+          cmake ..
+          make
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libblingfiretokdll.so
+          path: BlingFire/build/libblingfiretokdll.so

@@ -1,0 +1,23 @@
+name: BlingFire Mac
+on:
+  push:
+    paths:
+    - .github/workflows/blingfire-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          git clone --recursive --branch mac https://github.com/ankane/BlingFire.git
+          cd BlingFire
+          mkdir build
+          cd build
+          cmake ..
+          make
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libblingfiretokdll.dylib
+          path: BlingFire/build/libblingfiretokdll.dylib
