@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          git clone --recursive --branch mac https://github.com/ankane/BlingFire.git
+          git clone --recursive --branch master https://github.com/microsoft/BlingFire.git
           cd BlingFire
           mkdir build
           cd build
