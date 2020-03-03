@@ -14,11 +14,11 @@ jobs:
           cd vowpal_wabbit
           mkdir build
           cd build
-          cmake .. -DBUILD_TESTS=OFF
+          cmake .. -DBUILD_TESTS=OFF -DSTATIC_LINK_VW=ON
           make -j4
           cd ..
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: libvw_c_wrapper.so
-          path: vowpal_wabbit/build/vowpalwabbit/libvw_c_wrapper.so
+          name: libvw_c_wrapper.a
+          path: vowpal_wabbit/build/vowpalwabbit/libvw_c_wrapper.a
