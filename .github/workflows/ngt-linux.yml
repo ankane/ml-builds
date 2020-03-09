@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           sudo apt install cmake
-          git clone --recursive --branch v1.9.1 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch openmp_clang https://github.com/ankane/NGT-1
           cd NGT
           mkdir build
           cd build
