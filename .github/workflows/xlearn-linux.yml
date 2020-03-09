@@ -12,7 +12,7 @@ jobs:
           sudo apt install cmake
           git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
           cd xlearn
-          sed -i 's/-march=native/-march=nehalem/g' CMakeLists.txt
+          sed -i 's/-march=native/-march=x86-64/g' CMakeLists.txt
           sed -i 's/get_log_file(hyper_param_.log_file)/hyper_param_.log_file/g' src/solver/solver.cc
           mkdir build
           cd build
