@@ -13,4 +13,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.dylib
-          path: /usr/local/Cellar/ngt/1.8.4/lib/libngt.1.9.1.dylib
+          path: /usr/local/Cellar/ngt/1.9.1/lib/libngt.1.9.1.dylib
