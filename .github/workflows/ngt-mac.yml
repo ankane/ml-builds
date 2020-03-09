@@ -9,8 +9,16 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install ngt -s
+          brew install cmake
+          git clone --recursive --branch v1.9.1 https://github.com/yahoojapan/NGT
+          cd NGT
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_OPENMP_DISABLE=ON
+          make -j4
+          cd ..
+          du -ah .
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.dylib
-          path: /usr/local/Cellar/ngt/1.9.1/lib/libngt.1.9.1.dylib
+          path: NGT/build/lib/NGT/libngt.1.9.1.dylib
