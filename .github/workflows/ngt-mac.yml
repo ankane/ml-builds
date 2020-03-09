@@ -12,7 +12,6 @@ jobs:
           brew install cmake libomp
           git clone --recursive --branch openmp_clang https://github.com/ankane/NGT-1
           cd NGT
-          sed -i '' 's/target_link_libraries(ngt gomp)/target_link_libraries(ngt)/g' lib/NGT/CMakeLists.txt
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_OPENMP_DISABLE=ON
