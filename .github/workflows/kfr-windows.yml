@@ -1,0 +1,22 @@
+name: KFR Windows
+on:
+  push:
+    paths:
+    - .github/workflows/kfr-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch 4.1.0 https://github.com/kfrlib/kfr.git
+          cd kfr
+          mkdir build
+          cd build
+          cmake .. -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake --build . --config Release
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: kfr_capi.dll
+          path: krf/build/lib/kfr_capi.dll
