@@ -13,7 +13,7 @@ jobs:
           cd kfr
           mkdir build
           cd build
-          cmake .. -DCPU_ARCH=x86-64 -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake .. -DCPU_ARCH=x86-64 -DCMAKE_CXX_COMPILER=clang++ -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make
           cd ..
           du -ah .
