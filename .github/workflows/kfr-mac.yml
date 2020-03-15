@@ -1,0 +1,24 @@
+name: KFR Mac
+on:
+  push:
+    paths:
+    - .github/workflows/kfr-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          brew install cmake
+          git clone --recursive --branch 4.1.0 https://github.com/kfrlib/kfr.git
+          cd kfr
+          mkdir build
+          cd build
+          cmake .. -DCPU_ARCH=nehalem -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libkfr_capi.dylib
+          path: krf/build/lib/libkfr_capi.dylib
