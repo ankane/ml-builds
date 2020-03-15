@@ -14,7 +14,7 @@ jobs:
           cd kfr
           mkdir build
           cd build
-          cmake .. -DCPU_ARCH=nehalem -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake .. -DCPU_ARCH=sse -DENABLE_CAPI_BUILD=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
