@@ -20,4 +20,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libkfr_capi.so
-          path: krf/build/lib/libkfr_capi.so
+          path: krf/build/capi/libkfr_capi.so

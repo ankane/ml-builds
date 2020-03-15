@@ -19,4 +19,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: kfr_capi.dll
-          path: krf/build/lib/kfr_capi.dll
+          path: krf/build/capi/kfr_capi.dll

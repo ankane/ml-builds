@@ -21,4 +21,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libkfr_capi.dylib
-          path: krf/build/lib/libkfr_capi.dylib
+          path: krf/build/capi/libkfr_capi.dylib
