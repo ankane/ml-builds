@@ -10,12 +10,12 @@ jobs:
     steps:
       - run: |
           brew install cmake
-          git clone --recursive --branch v1.9.1 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.10.0 https://github.com/yahoojapan/NGT
           cd NGT
           sed -i '' 's/target_link_libraries(ngt gomp)/target_link_libraries(ngt)/g' lib/NGT/CMakeLists.txt
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_OPENMP_DISABLE=ON
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
           make -j4
           cd ..
           du -ah .
