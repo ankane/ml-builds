@@ -1,0 +1,23 @@
+name: SCS Windows
+on:
+  push:
+    paths:
+    - .github/workflows/scs-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v2.0.2 https://github.com/cvxgrp/scs.git
+          cd scs
+          make
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: scsindir.dll
+          path: scs/out/scsindir.dll
+      - uses: actions/upload-artifact@v1
+        with:
+          name: scsdir.dll
+          path: scs/out/scsdir.dll
