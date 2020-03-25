@@ -22,4 +22,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.dylib
-          path: NGT/build/lib/NGT/libngt.1.9.1.dylib
+          path: NGT/build/lib/NGT/libngt.1.10.0.dylib
