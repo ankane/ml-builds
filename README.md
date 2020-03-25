@@ -15,7 +15,6 @@ ONNX Runtime | ✓ | ✓ | ✓ | [View](https://github.com/microsoft/onnxruntime
 OSQP | ✓ | ✓ | ✓ | [View](https://bintray.com/bstellato/generic/OSQP#files) | ✓ |
 SCS | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | |
 ThunderSVM | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | |
-Vowpal Wabbit | | | | todo | | Boost dependency
 XGBoost | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-0.90) | | OpenMP disabled (Windows)
 xLearn | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | |
 
