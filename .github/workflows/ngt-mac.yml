@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake
+          brew install cmake libomp
           git clone --recursive --branch v1.10.0 https://github.com/yahoojapan/NGT
           cd NGT
           sed -i '' 's/target_link_libraries(ngt gomp)/target_link_libraries(ngt)/g' lib/NGT/CMakeLists.txt
