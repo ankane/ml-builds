@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive https://github.com/cjlin1/libmf.git
+          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
           cd libmf
           sed -i -e 's/ \/D "USEOMP" \/openmp//g' Makefile.win
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"

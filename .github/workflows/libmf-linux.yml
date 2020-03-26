@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - run: |
-          git clone --recursive https://github.com/cjlin1/libmf.git
+          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
           cd libmf
           sed -i 's/-march=native/-march=x86-64/g' Makefile
           make all lib DFLAG="" OMPFLAG=""
