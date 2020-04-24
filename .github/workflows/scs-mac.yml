@@ -13,6 +13,8 @@ jobs:
           cd scs
           make
           du -ah .
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
         with:
           name: libscsindir.dylib
