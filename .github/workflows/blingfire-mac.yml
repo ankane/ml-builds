@@ -13,6 +13,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
+          brew install cmake
           git clone --recursive --branch master https://github.com/microsoft/BlingFire.git
           cd BlingFire
           mkdir build
