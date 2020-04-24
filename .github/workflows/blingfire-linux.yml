@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - run: |
+          sudo apt install cmake
           git clone --recursive --branch master https://github.com/microsoft/BlingFire.git
           cd BlingFire
           mkdir build
