@@ -6,7 +6,7 @@ Library | Linux | Mac | Windows | Assets | Notes
 --- | --- | --- | --- | --- | ---
 BlingFire | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-master) |
 Faiss | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) |
-Interpret | ✓ | ✓ | ✓ | todo | |
+Interpret | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-master) | |
 LIBMF | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master) | Fork, OpenMP disabled
 Multicore t-SNE | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) |
 NGT | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.10.0) |
