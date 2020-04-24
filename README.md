@@ -22,6 +22,7 @@ Some projects include shared libraries as part of their releases:
 - [LightGBM](https://github.com/microsoft/LightGBM/releases)
 - [LibTorch](https://pytorch.org/)
 - [ONNX Runtime](https://github.com/microsoft/onnxruntime/releases)
+- [OR-Tools](https://developers.google.com/optimization/install/cpp)
 - [OSQP](https://bintray.com/bstellato/generic/OSQP#files)
 
 ## Details
