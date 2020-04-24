@@ -1,8 +1,12 @@
 name: XGBoost Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xgboost-mac.yml
+      - .github/workflows/xgboost-mac.yml
 
 jobs:
   build:

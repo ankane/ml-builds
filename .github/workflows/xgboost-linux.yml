@@ -1,8 +1,12 @@
 name: XGBoost Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xgboost-linux.yml
+      - .github/workflows/xgboost-linux.yml
 
 jobs:
   build:

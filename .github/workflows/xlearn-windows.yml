@@ -1,8 +1,12 @@
 name: xLearn Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xlearn-windows.yml
+      - .github/workflows/xlearn-windows.yml
 
 jobs:
   build:

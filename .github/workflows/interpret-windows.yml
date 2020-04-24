@@ -1,8 +1,12 @@
 name: Interpret Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/interpret-windows.yml
+      - .github/workflows/interpret-windows.yml
 
 jobs:
   build:

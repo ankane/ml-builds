@@ -1,8 +1,12 @@
 name: NGT Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/ngt-linux.yml
+      - .github/workflows/ngt-linux.yml
 
 jobs:
   build:

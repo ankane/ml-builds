@@ -1,8 +1,12 @@
 name: BlingFire Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/blingfire-windows.yml
+      - .github/workflows/blingfire-windows.yml
 
 jobs:
   build:

@@ -1,8 +1,12 @@
 name: ThunderSVM Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/thundersvm-linux.yml
+      - .github/workflows/thundersvm-linux.yml
 
 jobs:
   build:

@@ -1,8 +1,12 @@
 name: Argon2 Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/argon2-linux.yml
+      - .github/workflows/argon2-linux.yml
 
 jobs:
   build:

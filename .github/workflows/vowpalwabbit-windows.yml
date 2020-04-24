@@ -1,8 +1,12 @@
 name: Vowpal Wabbit Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/vowpalwabbit-windows.yml
+      - .github/workflows/vowpalwabbit-windows.yml
 
 jobs:
   build:

@@ -1,8 +1,12 @@
 name: BlingFire Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/blingfire-mac.yml
+      - .github/workflows/blingfire-mac.yml
 
 jobs:
   build:

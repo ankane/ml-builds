@@ -1,8 +1,12 @@
 name: ThunderSVM Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/thundersvm-mac.yml
+      - .github/workflows/thundersvm-mac.yml
 
 jobs:
   build:

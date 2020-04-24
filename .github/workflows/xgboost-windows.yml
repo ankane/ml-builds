@@ -1,8 +1,12 @@
 name: XGBoost Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xgboost-windows.yml
+      - .github/workflows/xgboost-windows.yml
 
 jobs:
   build:

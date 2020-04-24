@@ -1,8 +1,12 @@
 name: Multicore t-SNE Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/multicore-tsne-windows.yml
+      - .github/workflows/multicore-tsne-windows.yml
 
 jobs:
   build:

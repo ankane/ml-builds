@@ -1,8 +1,12 @@
 name: Interpret Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/interpret-mac.yml
+      - .github/workflows/interpret-mac.yml
 
 jobs:
   build:

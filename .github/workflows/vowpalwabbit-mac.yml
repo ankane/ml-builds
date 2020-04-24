@@ -1,8 +1,12 @@
 name: Vowpal Wabbit Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/vowpalwabbit-mac.yml
+      - .github/workflows/vowpalwabbit-mac.yml
 
 jobs:
   build:

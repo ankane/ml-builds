@@ -1,8 +1,12 @@
 name: LIBMF Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/libmf-windows.yml
+      - .github/workflows/libmf-windows.yml
 
 jobs:
   build:

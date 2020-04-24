@@ -1,8 +1,12 @@
 name: Argon2 Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/argon2-windows.yml
+      - .github/workflows/argon2-windows.yml
 
 jobs:
   build:

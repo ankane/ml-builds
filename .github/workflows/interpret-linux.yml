@@ -1,8 +1,12 @@
 name: Interpret Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/interpret-linux.yml
+      - .github/workflows/interpret-linux.yml
 
 jobs:
   build:

@@ -1,8 +1,12 @@
 name: BlingFire Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/blingfire-linux.yml
+      - .github/workflows/blingfire-linux.yml
 
 jobs:
   build:

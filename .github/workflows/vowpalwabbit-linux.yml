@@ -1,8 +1,12 @@
 name: Vowpal Wabbit Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/vowpalwabbit-linux.yml
+      - .github/workflows/vowpalwabbit-linux.yml
 
 jobs:
   build:

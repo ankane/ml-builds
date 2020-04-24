@@ -1,8 +1,12 @@
 name: SCS Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/scs-mac.yml
+      - .github/workflows/scs-mac.yml
 
 jobs:
   build:

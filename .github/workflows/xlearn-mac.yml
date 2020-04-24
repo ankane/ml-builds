@@ -1,8 +1,12 @@
 name: xLearn Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xlearn-mac.yml
+      - .github/workflows/xlearn-mac.yml
 
 jobs:
   build:

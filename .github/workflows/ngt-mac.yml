@@ -1,8 +1,12 @@
 name: NGT Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/ngt-mac.yml
+      - .github/workflows/ngt-mac.yml
 
 jobs:
   build:

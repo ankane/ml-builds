@@ -1,8 +1,12 @@
 name: Multicore t-SNE Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/multicore-tsne-linux.yml
+      - .github/workflows/multicore-tsne-linux.yml
 
 jobs:
   build:

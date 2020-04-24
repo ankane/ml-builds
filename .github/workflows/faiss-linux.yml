@@ -1,8 +1,12 @@
 name: Faiss Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/faiss-linux.yml
+      - .github/workflows/faiss-linux.yml
 
 jobs:
   build:

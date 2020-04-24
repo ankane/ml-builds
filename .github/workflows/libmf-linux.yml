@@ -1,8 +1,12 @@
 name: LIBMF Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/libmf-linux.yml
+      - .github/workflows/libmf-linux.yml
 
 jobs:
   build:

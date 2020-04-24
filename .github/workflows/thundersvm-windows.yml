@@ -1,8 +1,12 @@
 name: ThunderSVM Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/thundersvm-windows.yml
+      - .github/workflows/thundersvm-windows.yml
 
 jobs:
   build:

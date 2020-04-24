@@ -1,8 +1,12 @@
 name: SCS Windows
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/scs-windows.yml
+      - .github/workflows/scs-windows.yml
 
 jobs:
   build:

@@ -1,8 +1,12 @@
 name: Multicore t-SNE Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/multicore-tsne-mac.yml
+      - .github/workflows/multicore-tsne-mac.yml
 
 jobs:
   build:

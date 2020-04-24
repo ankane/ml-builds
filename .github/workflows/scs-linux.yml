@@ -1,8 +1,12 @@
 name: SCS Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/scs-linux.yml
+      - .github/workflows/scs-linux.yml
 
 jobs:
   build:

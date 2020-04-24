@@ -1,8 +1,12 @@
 name: Argon2 Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/argon2-mac.yml
+      - .github/workflows/argon2-mac.yml
 
 jobs:
   build:

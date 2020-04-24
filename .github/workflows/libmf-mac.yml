@@ -1,8 +1,12 @@
 name: LIBMF Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/libmf-mac.yml
+      - .github/workflows/libmf-mac.yml
 
 jobs:
   build:

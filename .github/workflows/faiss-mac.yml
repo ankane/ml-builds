@@ -1,8 +1,12 @@
 name: Faiss Mac
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/faiss-mac.yml
+      - .github/workflows/faiss-mac.yml
 
 jobs:
   build:

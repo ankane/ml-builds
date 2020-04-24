@@ -1,8 +1,12 @@
 name: xLearn Linux
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
     paths:
-    - .github/workflows/xlearn-linux.yml
+      - .github/workflows/xlearn-linux.yml
 
 jobs:
   build:
