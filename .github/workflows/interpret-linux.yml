@@ -19,5 +19,5 @@ jobs:
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: lib_ebmcore.so
+          name: lib_ebm_native_linux_x64.so
           path: interpret/staging/lib_ebm_native_linux_x64.so

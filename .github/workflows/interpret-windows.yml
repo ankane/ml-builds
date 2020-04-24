@@ -20,5 +20,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
-          name: lib_ebmcore.dll
+          name: lib_ebm_native_win_x64.dll
           path: interpret/staging/lib_ebm_native_win_x64.dll
