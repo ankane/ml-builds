@@ -22,4 +22,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: lib_ebmcore.dylib
-          path: interpret/staging/lib_ebmcore_mac_x64.dylib
+          path: interpret/staging/lib_ebm_native_mac_x64.dylib
