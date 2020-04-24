@@ -33,3 +33,8 @@ For portability:
 - Mac libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
 
 [Reference](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
+
+Other notes:
+
+- Windows libraries are built with `-A x64`
+- Mac libraries that use OpenMP require `brew install libomp`
