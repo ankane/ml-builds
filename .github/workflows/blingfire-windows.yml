@@ -15,6 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch master https://github.com/microsoft/BlingFire.git
           cd BlingFire
+          git checkout 3c355f5584b836d23e2b373b255948039ecbdb18
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
