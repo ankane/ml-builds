@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v1.10.0 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.11.5 https://github.com/yahoojapan/NGT
           cd NGT
           sed -i '' 's/target_link_libraries(ngt gomp)/target_link_libraries(ngt)/g' lib/NGT/CMakeLists.txt
           mkdir build
@@ -28,4 +28,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libngt.dylib
-          path: NGT/build/lib/NGT/libngt.1.10.0.dylib
+          path: NGT/build/lib/NGT/libngt.1.11.5.dylib
