@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           sudo apt install libboost-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev libboost-math-dev libboost-test-dev zlib1g-dev cmake g++
-          git clone --recursive --branch 8.8.0 https://github.com/VowpalWabbit/vowpal_wabbit.git
+          git clone --recursive --branch 8.8.1 https://github.com/VowpalWabbit/vowpal_wabbit.git
           cd vowpal_wabbit
           mkdir build
           cd build
