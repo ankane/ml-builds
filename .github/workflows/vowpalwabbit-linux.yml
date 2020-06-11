@@ -18,7 +18,7 @@ jobs:
           cd vowpal_wabbit
           mkdir build
           cd build
-          cmake .. -DBUILD_TESTS=OFF
+          cmake .. -DBUILD_TESTS=OFF -DSTATIC_LINK_VW=ON
           make -j4
           cd ..
           du -ah .
