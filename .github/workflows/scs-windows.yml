@@ -15,7 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch v2.0.2 https://github.com/cvxgrp/scs.git
           cd scs
-          make LAPACK=0
+          make USE_LAPACK=0
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
