@@ -19,9 +19,9 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
-          name: scsindir.dll
-          path: scs/out/scsindir.dll
+          name: libscsindir.dll
+          path: scs/out/libscsindir.dll
       - uses: actions/upload-artifact@v1
         with:
-          name: scsdir.dll
-          path: scs/out/scsdir.dll
+          name: libscsdir.dll
+          path: scs/out/libscsdir.dll
