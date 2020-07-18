@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --branch v1.4.0 https://github.com/microsoft/onnxruntime.git
+          git clone --recursive --branch v1.4.0 https://github.com/microsoft/onnxruntime.git
           cd onnxruntime
           mkdir build
           cd build
