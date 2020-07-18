@@ -1,0 +1,27 @@
+name: ONNX Runtime Windows
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/onnxruntime-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --branch v1.4.0 https://github.com/microsoft/onnxruntime.git
+          cd onnxruntime
+          mkdir build
+          cd build
+          cmake ../cmake -G "Visual Studio 16 2019" -A x64 -Donnxruntime_BUILD_SHARED_LIB=ON
+          cmake --build . --config Release
+          dir /s
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: onnxruntime.dll
+          path: onnxruntime\build\lib\onnxruntime.dll
