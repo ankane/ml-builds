@@ -13,8 +13,8 @@ jobs:
     runs-on: macOS-latest
     steps:
       - run: |
-          brew install cmake
-          git clone --recursive --branch master https://github.com/DmitryUlyanov/Multicore-TSNE.git
+          brew install cmake libomp
+          git clone --recursive --branch master https://github.com/ankane/Multicore-TSNE.git
           cd Multicore-TSNE/multicore_tsne
           mkdir build
           cd build
