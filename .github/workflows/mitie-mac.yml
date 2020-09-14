@@ -27,4 +27,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libmitie.dylib
-          path: MITIE/libmitie/build/libmitie.dylib
+          path: MITIE/mitielib/build/libmitie.dylib
