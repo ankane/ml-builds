@@ -25,4 +25,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: libmitie.so
-          path: MITIE/libmitie/libmitie.so
+          path: MITIE/libmitie/build/libmitie.so
