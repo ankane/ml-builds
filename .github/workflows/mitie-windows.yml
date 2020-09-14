@@ -23,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: mitie.dll
-          path: MITIE/libmitie/mitie.dll
+          path: MITIE/mitielib/build/Release/mitie.dll
