@@ -8,6 +8,7 @@ Library | Linux | Mac | Windows | Assets | License | Notes
 [Faiss](https://github.com/facebookresearch/faiss) | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT |
 [Interpret](https://github.com/interpretml/interpret) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.0) | MIT |
 [LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master) | BSD-3-Clause | Fork, OpenMP disabled
+[MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause | Fork with OpenMP for Mac
 [NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.11.5) | Apache-2.0 |
 [SCS](https://github.com/cvxgrp/scs) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT | No blas/lapack on Windows
