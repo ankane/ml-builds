@@ -23,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: lib_lightgbm.dll
-          path: LightGBM/Release/lib_lightgbm.dll
+          path: LightGBM/lib_lightgbm.dll
