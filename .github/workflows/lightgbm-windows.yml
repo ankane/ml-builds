@@ -1,0 +1,26 @@
+name: LightGBM Windows
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/lightgbm-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch v3.1.0 https://github.com/microsoft/LightGBM
+          cd LightGBM
+          mkdir build
+          cd build
+          cmake .. -A x64
+          cmake --build . --target ALL_BUILD --config Release
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: lightgbm.dll
+          path: LightGBM/Release/lightgbm.dll
