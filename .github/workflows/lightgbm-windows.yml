@@ -22,5 +22,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
-          name: lightgbm.dll
-          path: LightGBM/Release/lightgbm.dll
+          name: lib_lightgbm.dll
+          path: LightGBM/Release/lib_lightgbm.dll
