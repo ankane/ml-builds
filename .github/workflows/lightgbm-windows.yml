@@ -17,8 +17,8 @@ jobs:
           cd LightGBM
           mkdir build
           cd build
-          cmake .. -A x64
-          cmake --build . --target ALL_BUILD --config Release
+          cmake -G "MinGW Makefiles" ..
+          mingw32-make.exe -j4
         shell: cmd
       - uses: actions/upload-artifact@v1
         with:
