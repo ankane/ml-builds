@@ -13,6 +13,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
+          curl -Ls -o OpenBLAS.zip https://github.com/xianyi/OpenBLAS/releases/download/v0.3.12/OpenBLAS-0.3.12-x64.zip
+          unzip OpenBLAS.zip
+          ls
+      - run: |
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout d9e69573d22ab496e34cd7846082b40554dc7b4b
