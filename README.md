@@ -5,6 +5,7 @@ Pre-built shared libraries for machine learning
 Library | Linux | Mac | Windows | Assets | License | Notes
 --- | --- | --- | --- | --- | --- | ---
 [Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT |
+[cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.3.3) | MIT |
 [Faiss](https://github.com/facebookresearch/faiss) | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT |
 [Interpret](https://github.com/interpretml/interpret) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.0) | MIT |
 [LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master) | BSD-3-Clause | Fork, OpenMP disabled

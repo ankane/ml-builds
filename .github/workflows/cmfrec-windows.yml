@@ -1,0 +1,27 @@
+name: cmfrec Windows
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/cmfrec-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
+          cd cmfrec
+          git checkout d9e69573d22ab496e34cd7846082b40554dc7b4b
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --config Release
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: cmfrec.dll
+          path: cmfrec/build/Release/cmfrec.dll

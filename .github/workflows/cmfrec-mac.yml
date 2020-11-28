@@ -1,0 +1,31 @@
+name: cmfrec Mac
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/cmfrec-mac.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          brew install cmake
+          git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
+          cd cmfrec
+          git checkout d9e69573d22ab496e34cd7846082b40554dc7b4b
+          mkdir build
+          cd build
+          cmake ..
+          make
+          cd ..
+          du -ah .
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libcmfrec.dylib
+          path: cmfrec/build/libcmfrec.dylib

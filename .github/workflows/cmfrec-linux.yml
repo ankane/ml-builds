@@ -1,0 +1,29 @@
+name: cmfrec Linux
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/cmfrec-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install cmake
+          git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
+          cd cmfrec
+          git checkout d9e69573d22ab496e34cd7846082b40554dc7b4b
+          mkdir build
+          cd build
+          cmake ..
+          make
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libcmfrec.so
+          path: cmfrec/build/libcmfrec.so
