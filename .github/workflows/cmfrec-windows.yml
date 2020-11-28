@@ -13,8 +13,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
+          cd /tmp
           curl -Ls -o OpenBLAS.zip https://github.com/xianyi/OpenBLAS/releases/download/v0.3.12/OpenBLAS-0.3.12-x64.zip
-          unzip OpenBLAS.zip
+          unzip -q OpenBLAS.zip
           ls
       - run: |
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
@@ -22,7 +23,7 @@ jobs:
           git checkout d9e69573d22ab496e34cd7846082b40554dc7b4b
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DBLAS_DIR=/tmp
           cmake --build . --config Release
         shell: cmd
       - uses: actions/upload-artifact@v1
