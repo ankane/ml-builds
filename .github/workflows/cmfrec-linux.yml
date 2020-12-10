@@ -16,7 +16,7 @@ jobs:
           sudo apt install cmake
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
-          git checkout 860d957cade85f8fc7dca7a2d9513a3129352374
+          git checkout 439782c23765b97879c6b05bbdba329996c3ceb6
           mkdir build
           cd build
           cmake ..
