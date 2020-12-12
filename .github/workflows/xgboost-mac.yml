@@ -23,7 +23,7 @@ jobs:
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64" -DOpenMP_C_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_C_LIB_NAMES='omp' -DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_CXX_LIB_NAMES='omp' -DOpenMP_omp_LIBRARY=/tmp/libomp/11.0.0/lib/libomp.dylib"
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64" -DOpenMP_C_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_C_LIB_NAMES='omp' -DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_CXX_LIB_NAMES='omp' -DOpenMP_omp_LIBRARY=/tmp/libomp/11.0.0/lib/libomp.dylib
           make -j4
           cd ..
           du -ah .
