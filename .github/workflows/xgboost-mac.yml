@@ -13,12 +13,17 @@ jobs:
     runs-on: macos-11.0
     steps:
       - run: |
-          brew install cmake libomp
+          cd /tmp
+          wget https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.0.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp-11.0.0.big_sur.bottle.tar.gz
+          find .
+      - run: |
+          brew install cmake
           git clone --recursive --branch v1.3.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DUSE_OPENMP=OFF
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64" -DOpenMP_C_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_C_LIB_NAMES='omp' -DOpenMP_CXX_FLAGS='-Xpreprocessor -fopenmp -I/tmp/libomp/11.0.0/include' -DOpenMP_CXX_LIB_NAMES='omp' -DOpenMP_omp_LIBRARY=/tmp/libomp/11.0.0/lib/libomp.dylib"
           make -j4
           cd ..
           du -ah .
