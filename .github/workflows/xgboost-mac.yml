@@ -14,8 +14,8 @@ jobs:
     steps:
       - run: |
           cd /tmp
-          wget https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.0.arm64_big_sur.bottle.tar.gz
-          tar xzf libomp-11.0.0.big_sur.bottle.tar.gz
+          wget -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.0.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp.tar.gz
           find .
       - run: |
           brew install cmake
