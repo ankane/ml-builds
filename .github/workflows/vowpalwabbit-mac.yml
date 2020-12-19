@@ -18,7 +18,7 @@ jobs:
           cd vowpal_wabbit
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
           make -j4
           cd ..
           du -ah .

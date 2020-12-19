@@ -18,7 +18,7 @@ jobs:
           cd thundersvm
           mkdir build
           cd build
-          cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=nehalem -DCMAKE_VERBOSE_MAKEFILE=ON
+          cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=nehalem -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
           make -j4
           cd ..
           du -ah .

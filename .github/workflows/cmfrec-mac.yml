@@ -19,7 +19,7 @@ jobs:
           git checkout 439782c23765b97879c6b05bbdba329996c3ceb6
           mkdir build
           cd build
-          cmake ..
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64"
           make
           cd ..
           du -ah .
