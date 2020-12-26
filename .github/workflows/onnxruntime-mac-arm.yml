@@ -1,0 +1,28 @@
+name: ONNX Runtime Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/onnxruntime-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch v1.6.0 https://github.com/microsoft/onnxruntime.git
+          cd onnxruntime
+          mkdir build
+          cd build
+          cmake ../cmake -DCMAKE_BUILD_TYPE=Release -Donnxruntime_BUILD_SHARED_LIB=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          make
+          du -ah ..
+          file libonnxruntime.dylib
+        shell: cmd
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libonnxruntime.dylib
+          path: onnxruntime/build/libonnxruntime.dylib
