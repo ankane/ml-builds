@@ -15,7 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
-          make OPTTARGET=armv8.6-a CFLAGS="-arch arm64"
+          make OPTTARGET=armv8.6-a CFLAGS="-target arm64-apple-macos11"
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
