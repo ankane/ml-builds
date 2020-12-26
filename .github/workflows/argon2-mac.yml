@@ -37,3 +37,11 @@ jobs:
         with:
           name: libargon2.dylib
           path: phc-winner-argon2/libargon2.1.dylib
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libargon2.x86_64.dylib
+          path: phc-winner-argon2/x86_64/libargon2.1.dylib
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libargon2.arm64.dylib
+          path: phc-winner-argon2/arm64/libargon2.1.dylib
