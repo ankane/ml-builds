@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macOS-11.0
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
