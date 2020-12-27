@@ -21,7 +21,6 @@ jobs:
           make
           du -ah ..
           file libonnxruntime.dylib
-        shell: cmd
       - uses: actions/upload-artifact@v1
         with:
           name: libonnxruntime.dylib
