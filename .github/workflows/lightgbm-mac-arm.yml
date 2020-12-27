@@ -31,8 +31,8 @@ jobs:
           mv ../lib_lightgbm.dylib .
           cd ..
 
-          lipo -create -output /tmp/lib_lightgbm.dylib build_x86_64/lib_lightgbm.dylib build_arm64/lib_lightgbm.dylib
-          file /tmp/lib_lightgbm.dylib
+          lipo -create -output lib_lightgbm.dylib build_x86_64/lib_lightgbm.dylib build_arm64/lib_lightgbm.dylib
+          file lib_lightgbm.dylib
 
           du -ah .
         env:
@@ -40,4 +40,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: lib_lightgbm.dylib
-          path: /tmp/lib_lightgbm.dylib
+          path: lib_lightgbm.dylib
