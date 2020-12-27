@@ -13,17 +13,31 @@ jobs:
     runs-on: macos-11.0
     steps:
       - run: |
+          brew install cmake libomp
           git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
           cd LightGBM
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+
+          mkdir build_x86_64
+          cd build_x86_64
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
+          mv ../lib_lightgbm.dylib .
           cd ..
+
+          mkdir build_arm64
+          cd build_arm64
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+          make -j4
+          mv ../lib_lightgbm.dylib .
+          cd ..
+
+          lipo -create -output /tmp/lib_lightgbm.dylib build_x86_64/lib_lightgbm.dylib build_arm64/lib_lightgbm.dylib
+          file /tmp/lib_lightgbm.dylib
+
           du -ah .
         env:
-          MACOSX_DEPLOYMENT_TARGET: 11.0
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
         with:
           name: lib_lightgbm.dylib
-          path: LightGBM/lib/lib_lightgbm.dylib
+          path: /tmp/lib_lightgbm.dylib
