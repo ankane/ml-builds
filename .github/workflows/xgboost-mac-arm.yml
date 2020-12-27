@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-11.0
     steps:
       - run: |
           git clone --recursive --branch v1.3.1 https://github.com/dmlc/xgboost
@@ -22,7 +22,7 @@ jobs:
           cd ..
           du -ah .
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
+          MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v1
         with:
           name: libxgboost.dylib
