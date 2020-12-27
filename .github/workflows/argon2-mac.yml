@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-11.0
+    runs-on: macos-latest
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
@@ -30,7 +30,7 @@ jobs:
 
           du -ah .
         env:
-          MACOSX_DEPLOYMENT_TARGET: 11.0
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
         with:
           name: libargon2.dylib
