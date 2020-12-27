@@ -1,0 +1,30 @@
+name: BlingFire Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/blingfire-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          brew install cmake
+          git clone --recursive --branch v0.1.3 https://github.com/microsoft/BlingFire.git
+          cd BlingFire
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_OSX_ARCHITECTURES=arm64
+          make
+          cd ..
+          du -ah .
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libblingfiretokdll.dylib
+          path: BlingFire/build/libblingfiretokdll.dylib
