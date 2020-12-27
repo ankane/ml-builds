@@ -33,8 +33,6 @@ jobs:
 
           lipo -create -output lib_lightgbm.dylib build_x86_64/lib_lightgbm.dylib build_arm64/lib_lightgbm.dylib
           file lib_lightgbm.dylib
-
-          du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
