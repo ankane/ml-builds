@@ -11,30 +11,43 @@ on:
 jobs:
   build:
     runs-on: macos-11.0
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.13
     steps:
-      - run: |
-          brew install cmake libomp
-          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
+      - name: Install OpenMP x86-64
+        run: brew install libomp
+      - name: Install OpenMP arm64
+        run: |
+          sudo mkdir -p /opt/homebrew
+          cd /tmp
+          wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.0.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp.tar.gz
+          sudo cp -r libomp/11.0.0/include /opt/homebrew
+          sudo cp -r libomp/11.0.0/lib /opt/homebrew
+          find /opt/homebrew
+      - name: Clone LightGBM
+        run: git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
+      - name: Build LightGBM x86-64
+        run: |
           cd LightGBM
-
           mkdir build_x86_64
           cd build_x86_64
           cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           mv ../lib_lightgbm.dylib .
-          cd ..
-
+      - name: Build LightGBM arm64
+        run: |
+          cd LightGBM
           mkdir build_arm64
           cd build_arm64
-          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/lib/libomp.dylib
           make -j4
           mv ../lib_lightgbm.dylib .
-          cd ..
-
+      - name: Build LightGBM universal
+        run: |
+          cd LightGBM
           lipo -create -output lib_lightgbm.dylib build_x86_64/lib_lightgbm.dylib build_arm64/lib_lightgbm.dylib
           file lib_lightgbm.dylib
-        env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
         with:
           name: lib_lightgbm.dylib
