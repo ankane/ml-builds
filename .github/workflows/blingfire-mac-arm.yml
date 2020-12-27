@@ -18,7 +18,7 @@ jobs:
           cd BlingFire
           mkdir build
           cd build
-          cmake .. -DCMAKE_OSX_ARCHITECTURES=arm64
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
           make
           cd ..
           du -ah .
