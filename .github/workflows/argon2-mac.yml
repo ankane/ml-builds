@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-11.0
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
@@ -35,11 +35,3 @@ jobs:
         with:
           name: libargon2.dylib
           path: /tmp/libargon2.dylib
-      - uses: actions/upload-artifact@v1
-        with:
-          name: libargon2.x86_64.dylib
-          path: /tmp/libargon2.x86_64.dylib
-      - uses: actions/upload-artifact@v1
-        with:
-          name: libargon2.arm64.dylib
-          path: /tmp/libargon2.arm64.dylib
