@@ -40,4 +40,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: lib_lightgbm.dylib
-          path: lib_lightgbm.dylib
+          path: LightGBM/lib_lightgbm.dylib
