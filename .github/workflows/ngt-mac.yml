@@ -10,13 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - run: |
-          brew install cmake libomp
-          git clone --recursive --branch v1.11.5 https://github.com/yahoojapan/NGT
+          brew install libomp
+          git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
           cd NGT
-          sed -i '' 's/target_link_libraries(ngt gomp)/target_link_libraries(ngt)/g' lib/NGT/CMakeLists.txt
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
@@ -25,7 +24,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libngt.dylib
-          path: NGT/build/lib/NGT/libngt.1.11.5.dylib
+          path: NGT/build/lib/NGT/libngt.1.12.2.dylib
