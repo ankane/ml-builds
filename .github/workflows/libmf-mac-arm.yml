@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-11.0
     steps:
       - run: |
           git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
