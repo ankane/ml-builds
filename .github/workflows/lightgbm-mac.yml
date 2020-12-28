@@ -50,7 +50,7 @@ jobs:
           cd LightGBM
           mkdir build
           cd build
-          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/lib/libomp.dylib
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_PREFIX_PATH=/opt/homebrew
           make -j4
       - uses: actions/upload-artifact@v2
         with:
