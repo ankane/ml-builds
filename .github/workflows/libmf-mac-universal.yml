@@ -1,0 +1,38 @@
+name: LIBMF Mac Universal
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/libmf-mac-universal.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          cd libmf
+
+          sed -i '' 's/-march=native/-march=nehalem/g' Makefile
+          make all lib DFLAG="" OMPFLAG=""
+          mv libmf.2.dylib /tmp/libmf.x86_64.dylib
+
+          make clean
+          git checkout .
+
+          sed -i '' 's/-march=native/-march=armv8-a/g' Makefile
+          make all lib DFLAG="" OMPFLAG="" CXX="g++ -target arm64-apple-macos11"
+          mv libmf.2.dylib /tmp/libmf.arm64.dylib
+
+          lipo -create -output /tmp/libmf.dylib /tmp/libmf.x86_64.dylib /tmp/libmf.arm64.dylib
+          lipo -archs /tmp/libmf.dylib
+          file /tmp/libmf.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libmf.dylib
+          path: /tmp/libmf.dylib
