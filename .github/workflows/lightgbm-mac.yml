@@ -42,7 +42,7 @@ jobs:
           cd LightGBM
           mkdir build
           cd build
-          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_PREFIX_PATH=/opt/homebrew
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_SYSTEM_PREFIX_PATH=/opt/homebrew
           make -j4
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
