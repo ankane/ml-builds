@@ -15,7 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
           cd libmf
-          sed -i '' 's/-march=native/-march=armv8-a/g' Makefile
+          sed -i '' 's/-march=native/-target arm64-apple-macos11 -march=armv8-a/g' Makefile
           make all lib DFLAG="" OMPFLAG=""
           file libmf.2.dylib
         env:
