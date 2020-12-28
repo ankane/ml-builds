@@ -37,7 +37,7 @@ jobs:
           sudo cp -r libomp/11.0.0/include /opt/homebrew
           sudo cp -r libomp/11.0.0/lib /opt/homebrew
           find /opt/homebrew
-
+      - run: |
           git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
