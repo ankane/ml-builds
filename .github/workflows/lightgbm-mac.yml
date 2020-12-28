@@ -11,31 +11,25 @@ on:
 jobs:
   x86_64:
     runs-on: macos-latest
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 10.13
     steps:
-      - name: Install OpenMP
-        run: brew install libomp
-      - name: Checkout LightGBM
-        run: git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
-      - name: Build LightGBM
-        run: |
+      - run: |
+          brew install libomp
+          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
           cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v2
         with:
           name: lib_lightgbm.x86_64.dylib
           path: LightGBM/lib_lightgbm.dylib
   arm64:
     runs-on: macos-11.0
-    env:
-      MACOSX_DEPLOYMENT_TARGET: 10.13
     steps:
-      - name: Install OpenMP
-        run: |
+      - run: |
           sudo mkdir -p /opt/homebrew
           cd /tmp
           wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.0.arm64_big_sur.bottle.tar.gz
@@ -43,15 +37,15 @@ jobs:
           sudo cp -r libomp/11.0.0/include /opt/homebrew
           sudo cp -r libomp/11.0.0/lib /opt/homebrew
           find /opt/homebrew
-      - name: Checkout LightGBM
-        run: git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
-      - name: Build LightGBM
-        run: |
+
+          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
           cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_PREFIX_PATH=/opt/homebrew
           make -j4
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v2
         with:
           name: lib_lightgbm.arm64.dylib
@@ -63,12 +57,14 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: lib_lightgbm.x86_64.dylib
+          path: lib_lightgbm.x86_64.dylib
       - uses: actions/download-artifact@v2
         with:
           name: lib_lightgbm.arm64.dylib
+          path: lib_lightgbm.arm64.dylib
       - run: |
           find .
-          lipo -create -output lib_lightgbm.dylib ml-builds/lib_lightgbm.x86_64.dylib ml-builds/lib_lightgbm.arm64.dylib
+          lipo -create -output lib_lightgbm.dylib lib_lightgbm.x86_64.dylib lib_lightgbm.arm64.dylib
           file lib_lightgbm.dylib
       - uses: actions/upload-artifact@v2
         with:
