@@ -10,7 +10,7 @@ on:
 
 jobs:
   x86_64:
-    runs-on: macos-11.0
+    runs-on: macos-latest
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.13
     steps:
@@ -21,8 +21,8 @@ jobs:
       - name: Build LightGBM
         run: |
           cd LightGBM
-          mkdir build_x86_64
-          cd build_x86_64
+          mkdir build
+          cd build
           cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
       - uses: actions/upload-artifact@v2
@@ -48,8 +48,8 @@ jobs:
       - name: Build LightGBM
         run: |
           cd LightGBM
-          mkdir build_arm64
-          cd build_arm64
+          mkdir build
+          cd build
           cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/lib/libomp.dylib
           make -j4
       - uses: actions/upload-artifact@v2
@@ -58,7 +58,7 @@ jobs:
           path: LightGBM/lib_lightgbm.dylib
   universal:
     needs: [x86_64, arm64]
-    runs-on: macos-11.0
+    runs-on: macos-latest
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -67,7 +67,8 @@ jobs:
         with:
           name: lib_lightgbm.arm64.dylib
       - run: |
-          lipo -create -output lib_lightgbm.dylib lib_lightgbm.x86_64.dylib lib_lightgbm.arm64.dylib
+          find .
+          lipo -create -output lib_lightgbm.dylib ml-builds/lib_lightgbm.x86_64.dylib ml-builds/lib_lightgbm.arm64.dylib
           file lib_lightgbm.dylib
       - uses: actions/upload-artifact@v2
         with:
