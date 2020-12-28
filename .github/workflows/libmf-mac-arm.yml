@@ -1,0 +1,26 @@
+name: LIBMF Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/libmf-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+      - run: |
+          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          cd libmf
+          sed -i '' 's/-march=native/-march=armv8-a/g' Makefile
+          make all lib DFLAG="" OMPFLAG=""
+          file libmf.2.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libmf.dylib
+          path: libmf/libmf.2.dylib
