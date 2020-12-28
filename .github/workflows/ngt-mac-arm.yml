@@ -1,0 +1,31 @@
+name: NGT Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/ngt-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          brew install cmake libomp
+          git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
+          cd NGT
+          sed -i '' 's/OpenMP::OpenMP_CXX//g' lib/NGT/CMakeLists.txt
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DNGT_OPENMP_DISABLED=ON
+          make -j4
+          cd ..
+          du -ah .
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libngt.dylib
+          path: NGT/build/lib/NGT/libngt.1.12.2.dylib
