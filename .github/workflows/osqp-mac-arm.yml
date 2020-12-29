@@ -1,0 +1,28 @@
+name: OSQP Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/osqp-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch v0.6.0 https://github.com/oxfordcontrol/osqp.git
+          cd osqp
+          mkdir build
+          cd build
+          cmake .. -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          make -j4
+          file out/libosqp.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v2
+        with:
+          name: libosqp.dylib
+          path: NGT/build/lib/out/libosqp.dylib
