@@ -32,7 +32,8 @@ Some projects include shared libraries as part of their releases:
 For portability:
 
 - Linux libraries are built with `-march=x86-64` (when possible) and older `glibc` (todo: build with much older)
-- Mac libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
+- Mac x86-64 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
+- Mac arm64 libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
 
 [Reference](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
 
