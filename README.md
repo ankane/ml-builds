@@ -42,7 +42,10 @@ For portability:
 - Mac x86 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
 - Mac ARM libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
 
-[Reference](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
+References:
+
+- [x86](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
+- [ARM](https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html)
 
 Other notes:
 
