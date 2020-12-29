@@ -2,22 +2,27 @@
 
 Pre-built shared libraries for machine learning
 
-Supports Linux, Mac (both x86-64 and arm64), and Windows
-
-Library | Linux | Mac | Windows | Assets | License | Notes
+Library | Linux | Mac x86-64 | Mac arm64 | Windows | Assets | License
 --- | --- | --- | --- | --- | --- | ---
-[Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT |
-[cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT |
-[Faiss](https://github.com/facebookresearch/faiss) | ✓ | x86-64 | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT |
-[Interpret](https://github.com/interpretml/interpret) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.0) | MIT |
-[LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master) | BSD-3-Clause | Fork, no OpenMP
-[MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
-[Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | x86-64 | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause | Fork with OpenMP for Mac x86-64
-[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.12.2) | Apache-2.0 |
-[SCS](https://github.com/cvxgrp/scs) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT | No blas/lapack on Windows
-[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | x86-64 | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0 |
-[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.3.0) | Apache-2.0 | No OpenMP on Windows
-[xLearn](https://github.com/aksnzhy/xlearn) | ✓ | x86-64 | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0 |
+[Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
+[cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
+[Faiss](https://github.com/facebookresearch/faiss) | ✓ | ✓ | | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT
+[Interpret](https://github.com/interpretml/interpret) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.0) | MIT
+[LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master) | BSD-3-Clause
+[MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
+[Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
+[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.12.2) | Apache-2.0
+[SCS](https://github.com/cvxgrp/scs) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
+[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
+[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.3.0) | Apache-2.0
+[xLearn](https://github.com/aksnzhy/xlearn) | ✓ | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
+
+Notes
+
+- LIBMF: Fork, no OpenMP
+- Multicore t-SNE: Fork with OpenMP for Mac x86-64
+- SCS: No blas/lapack on Windows
+- XGBoost: No OpenMP on Windows
 
 View the [build scripts](.github/workflows)
 
