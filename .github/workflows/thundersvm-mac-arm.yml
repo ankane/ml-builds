@@ -1,0 +1,29 @@
+name: ThunderSVM Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/thundersvm-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: false # requires OpenMP
+      - run: |
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
+          cd thundersvm
+          mkdir build
+          cd build
+          cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=armv8-a -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          make -j4
+          file lib/libthundersvm.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v2
+        with:
+          name: libthundersvm.dylib
+          path: thundersvm/build/lib/libthundersvm.dylib
