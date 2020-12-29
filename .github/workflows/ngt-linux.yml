@@ -18,7 +18,7 @@ jobs:
           cd NGT
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_OPENMP_DISABLED=ON
           make -j4
           cd ..
           du -ah .
