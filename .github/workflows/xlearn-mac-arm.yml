@@ -1,0 +1,29 @@
+name: xLearn Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/xlearn-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --branch v0.4.4 https://github.com/aksnzhy/xlearn.git
+          cd xlearn
+          sed -i '' 's/-march=native/-march=armv8-a/g' CMakeLists.txt
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_MACOSX_RPATH=TRUE -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          make -j4
+          file lib/libxlearn_api.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v2
+        with:
+          name: libxlearn_api.dylib
+          path: xlearn/build/lib/libxlearn_api.dylib
