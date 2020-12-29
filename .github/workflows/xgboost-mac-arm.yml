@@ -1,0 +1,28 @@
+name: XGBoost Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/xgboost-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch v1.3.1 https://github.com/dmlc/xgboost
+          cd xgboost
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+          make -j4
+          file ../lib/libxgboost.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libxgboost.dylib
+          path: xgboost/lib/libxgboost.dylib
