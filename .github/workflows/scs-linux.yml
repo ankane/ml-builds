@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           sudo apt install libblas-dev liblapack-dev
-          git clone --recursive --branch v2.0.2 https://github.com/cvxgrp/scs.git
+          git clone --recursive --branch v2.1.2 https://github.com/cvxgrp/scs.git
           cd scs
           make
           du -ah .

@@ -1,4 +1,4 @@
-name: SCS Mac
+name: SCS Mac ARM
 on:
   push:
     branches:
@@ -6,19 +6,20 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/scs-mac.yml
+      - .github/workflows/scs-mac-arm.yml
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-11.0
     steps:
       - run: |
           git clone --recursive --branch v2.1.2 https://github.com/cvxgrp/scs.git
           cd scs
-          make
-          du -ah .
+          make CC="gcc -target arm64-apple-macos11"
+          file out/libscsindir.dylib
+          file out/libscsdir.dylib
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
+          MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
         with:
           name: libscsindir.dylib
