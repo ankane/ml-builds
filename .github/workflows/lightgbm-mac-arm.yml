@@ -1,0 +1,28 @@
+name: LightGBM Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/lightgbm-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
+          cd LightGBM
+          mkdir build
+          cd build
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+          make -j4
+          file lib_lightgbm.dylib
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lib_lightgbm.dylib
+          path: LightGBM/lib_lightgbm.dylib
