@@ -13,15 +13,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive --branch v2.0.2 https://github.com/cvxgrp/scs.git
+          git clone --recursive --branch v2.1.2 https://github.com/cvxgrp/scs.git
           cd scs
           make USE_LAPACK=0
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libscsindir.dll
           path: scs/out/libscsindir.dll
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libscsdir.dll
           path: scs/out/libscsdir.dll
