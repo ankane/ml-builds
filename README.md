@@ -34,6 +34,10 @@ Some projects include shared libraries as part of their releases:
 - [OR-Tools](https://developers.google.com/optimization/install/cpp)
 - [OSQP](https://bintray.com/bstellato/generic/OSQP#files)
 
+Library | Mac ARM | Assets | License
+--- | --- | --- | ---
+[OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.0) | Apache-2.0
+
 ## Details
 
 For portability:
