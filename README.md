@@ -2,7 +2,7 @@
 
 Pre-built shared libraries for machine learning
 
-Library | Linux | Mac x86-64 | Mac arm64 | Windows | Assets | License
+Library | Linux | Mac x86 | Mac ARM | Windows | Assets | License
 --- | --- | --- | --- | --- | --- | ---
 [Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
 [cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
@@ -20,7 +20,7 @@ Library | Linux | Mac x86-64 | Mac arm64 | Windows | Assets | License
 Notes
 
 - LIBMF: Fork, no OpenMP
-- Multicore t-SNE: Fork with OpenMP for Mac x86-64
+- Multicore t-SNE: Fork with OpenMP for Mac x86
 - SCS: No blas/lapack on Windows
 - XGBoost: No OpenMP on Windows
 
@@ -39,12 +39,12 @@ Some projects include shared libraries as part of their releases:
 For portability:
 
 - Linux libraries are built with `-march=x86-64` (when possible) and older `glibc` (todo: build with much older)
-- Mac x86-64 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
-- Mac arm64 libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
+- Mac x86 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
+- Mac ARM libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
 
 [Reference](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html)
 
 Other notes:
 
 - Windows libraries are built with `-A x64`
-- Mac x86-64 libraries that use OpenMP require `brew install libomp` (Faiss, Multicore t-SNE, NGT, ThunderSVM, XGBoost)
+- Mac x86 libraries that use OpenMP require `brew install libomp` (Faiss, Multicore t-SNE, NGT, ThunderSVM, XGBoost)
