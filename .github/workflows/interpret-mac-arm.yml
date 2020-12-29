@@ -1,4 +1,4 @@
-name: Interpret Mac
+name: Interpret Mac ARM
 on:
   push:
     branches:
@@ -6,19 +6,21 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/interpret-mac.yml
+      - .github/workflows/interpret-mac-arm.yml
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-11.0
     steps:
       - run: |
           git clone --recursive --branch v0.2.2 https://github.com/interpretml/interpret.git
           cd interpret
+          sed -i '' 's/clang_pp_bin=clang++/clang_pp_bin="clang++ -target arm64-apple-macos11"/g' build.sh
+          sed -i '' 's/-march=core2/-march=armv8-a/g' build.sh
           sh build.sh
-          du -ah .
+          file staging/lib_ebm_native_mac_x64.dylib
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
+          MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
         with:
           name: lib_ebm_native_mac_x64.dylib

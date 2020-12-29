@@ -13,12 +13,12 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive --branch v0.2.0 https://github.com/interpretml/interpret.git
+          git clone --recursive --branch v0.2.2 https://github.com/interpretml/interpret.git
           cd interpret
           set PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\
           .\build.bat
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: lib_ebm_native_win_x64.dll
           path: interpret/staging/lib_ebm_native_win_x64.dll
