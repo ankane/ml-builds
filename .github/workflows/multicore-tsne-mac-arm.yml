@@ -1,0 +1,28 @@
+name: Multicore t-SNE Mac ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/multicore-tsne-mac-arm.yml
+
+jobs:
+  build:
+    runs-on: macos-11.0
+    steps:
+      - run: |
+          git clone --recursive --branch master https://github.com/ankane/Multicore-TSNE.git
+          cd Multicore-TSNE/multicore_tsne
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64
+          make -j4
+          file libtsne_multicore.so
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v2
+        with:
+          name: libtsne_multicore.dylib
+          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.so
