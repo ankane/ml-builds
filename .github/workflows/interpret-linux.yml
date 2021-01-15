@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - run: |
-          git clone --recursive --branch v0.2.2 https://github.com/interpretml/interpret.git
+          git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
           cd interpret
           sh build.sh
           du -ah .

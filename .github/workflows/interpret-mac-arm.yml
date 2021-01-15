@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-11.0
     steps:
       - run: |
-          git clone --recursive --branch v0.2.2 https://github.com/interpretml/interpret.git
+          git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
           cd interpret
           sed -i '' 's/clang_pp_bin=clang++/clang_pp_bin="clang++ -target arm64-apple-macos11"/g' build.sh
           sed -i '' 's/-march=core2/-march=armv8-a/g' build.sh
