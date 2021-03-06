@@ -13,11 +13,19 @@ jobs:
     runs-on: macos-11.0
     steps:
       - run: |
+          sudo mkdir -p /opt/homebrew
+          cd /tmp
+          wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-11.0.1.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp.tar.gz
+          sudo cp -r libomp/11.0.1/include /opt/homebrew
+          sudo cp -r libomp/11.0.1/lib /opt/homebrew
+          find /opt/homebrew
+      - run: |
           git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
-          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DUSE_OPENMP=OFF
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/lib/libomp.dylib
           make -j4
           file ../lib_lightgbm.dylib
         env:
