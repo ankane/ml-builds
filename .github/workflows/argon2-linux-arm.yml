@@ -16,7 +16,7 @@ jobs:
           sudo apt-get install gcc-aarch64-linux-gnu
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
-          make CC=aarch64-linux-gnu-gcc OPTTARGET=""
+          make CC=aarch64-linux-gnu-gcc OPTTARGET=armv8-a
           du -ah .
           file libargon2.so.1
       - uses: actions/upload-artifact@v1
