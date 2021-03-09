@@ -13,14 +13,26 @@ jobs:
     runs-on: macos-11.0
     steps:
       - run: |
+          cd /tmp
+          wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-$LIBOMP_VERSION.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp.tar.gz
+          sudo mkdir -p /opt/homebrew/opt
+          sudo chown $USER /opt/homebrew/opt
+          cp -r libomp/$LIBOMP_VERSION /opt/homebrew/opt/libomp
+          find /opt/homebrew
+        env:
+          LIBOMP_VERSION: 11.1.0
+      - run: |
           git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
           cd NGT
           sed -i '' 's/OpenMP::OpenMP_CXX//g' lib/NGT/CMakeLists.txt
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DNGT_OPENMP_DISABLED=ON
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4 || true
           file lib/NGT/libngt.1.12.2.dylib
+          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib lib/NGT/libngt.1.12.2.dylib
+          otool -L lib/NGT/libngt.1.12.2.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
