@@ -13,7 +13,7 @@ Library | Linux | Mac x86 | Mac ARM | Windows | Assets | License
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
 [NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.12.2) | Apache-2.0
 [SCS](https://github.com/cvxgrp/scs) | ✓ | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
-[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
+[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
 [XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.3.0) | Apache-2.0
 [xLearn](https://github.com/aksnzhy/xlearn) | ✓ | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
 
