@@ -1,0 +1,29 @@
+name: LightGBM Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/lightgbm-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
+          cd LightGBM
+          mkdir build
+          cd build
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make -j4
+          cd ..
+          du -ah .
+          file lib_lightgbm.dylib
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lib_lightgbm.dylib
+          path: LightGBM/lib_lightgbm.dylib
