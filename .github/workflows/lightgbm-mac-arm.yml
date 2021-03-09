@@ -17,7 +17,9 @@ jobs:
           wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-$LIBOMP_VERSION.arm64_big_sur.bottle.tar.gz
           tar xzf libomp.tar.gz
           sudo mkdir -p /opt/homebrew/opt
-          sudo cp -r libomp/$LIBOMP_VERSION /opt/homebrew/opt/libomp
+          echo $USER
+          sudo chown $USER /opt/homebrew/opt
+          cp -r libomp/$LIBOMP_VERSION /opt/homebrew/opt/libomp
           install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib
           otool -L /opt/homebrew/opt/libomp/lib/libomp.dylib
           find /opt/homebrew
