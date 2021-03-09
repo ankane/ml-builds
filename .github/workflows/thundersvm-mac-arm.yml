@@ -12,7 +12,16 @@ jobs:
   build:
     runs-on: macos-11.0
     steps:
-      - run: false # requires OpenMP
+      - run: |
+          cd /tmp
+          wget -q -O libomp.tar.gz https://bintray.com/homebrew/bottles/download_file?file_path=libomp-$LIBOMP_VERSION.arm64_big_sur.bottle.tar.gz
+          tar xzf libomp.tar.gz
+          sudo mkdir -p /opt/homebrew/opt
+          sudo chown $USER /opt/homebrew/opt
+          cp -r libomp/$LIBOMP_VERSION /opt/homebrew/opt/libomp
+          find /opt/homebrew
+        env:
+          LIBOMP_VERSION: 11.1.0
       - run: |
           git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
@@ -21,6 +30,8 @@ jobs:
           cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=armv8-a -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
           make -j4
           file lib/libthundersvm.dylib
+          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib lib/libthundersvm.dylib
+          otool -L lib/libthundersvm.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
