@@ -55,4 +55,4 @@ References:
 Other notes:
 
 - Windows libraries are built with `-A x64`
-- Mac x86 libraries that use OpenMP require `brew install libomp` (Faiss, Multicore t-SNE, NGT, ThunderSVM, XGBoost)
+- Mac libraries that use OpenMP require `brew install libomp` (Faiss, Multicore t-SNE, NGT, ThunderSVM, XGBoost)
