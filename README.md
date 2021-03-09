@@ -2,20 +2,20 @@
 
 Pre-built shared libraries for machine learning
 
-Library | Linux | Mac x86 | Mac ARM | Windows | Assets | License
---- | --- | --- | --- | --- | --- | ---
-[Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
-[cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
-[Faiss](https://github.com/facebookresearch/faiss) | ✓ | ✓ | | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT
-[Interpret](https://github.com/interpretml/interpret) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.2) | MIT
-[LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master-2) | BSD-3-Clause
-[MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
-[Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
-[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.12.2) | Apache-2.0
-[SCS](https://github.com/cvxgrp/scs) | ✓ | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
-[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
-[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.3.0) | Apache-2.0
-[xLearn](https://github.com/aksnzhy/xlearn) | ✓ | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
+Library | Linux x86 | Linux ARM | Mac x86 | Mac ARM | Windows x86 | Assets | License
+--- | --- | --- | --- | --- | --- | --- | ---
+[Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
+[cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
+[Faiss](https://github.com/facebookresearch/faiss) | ✓ | | ✓ | | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/faiss-1.6.1) | MIT
+[Interpret](https://github.com/interpretml/interpret) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/interpret-0.2.2) | MIT
+[LIBMF](https://github.com/cjlin1/libmf) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master-2) | BSD-3-Clause
+[MITIE](https://github.com/mit-nlp/MITIE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
+[Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
+[NGT](https://github.com/yahoojapan/NGT) | ✓ | | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.12.2) | Apache-2.0
+[SCS](https://github.com/cvxgrp/scs) | ✓ | | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
+[ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
+[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.3.0) | Apache-2.0
+[xLearn](https://github.com/aksnzhy/xlearn) | ✓ | | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
 
 Notes
 
@@ -43,7 +43,8 @@ Library | Mac ARM | Assets | License
 
 For portability:
 
-- Linux libraries are built with `-march=x86-64` (when possible) and older `glibc` (todo: build with much older)
+- Linux x86 libraries are built with `-march=x86-64` (when possible) and older `glibc` (todo: build with much older)
+- Linux ARM libraries are built with `-march=armv8-a` (when possible) and older `glibc` (todo: build with much older)
 - Mac x86 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
 - Mac ARM libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
 
