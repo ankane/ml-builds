@@ -1,0 +1,29 @@
+name: XGBoost Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/xgboost-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          git clone --recursive --branch v1.3.0 https://github.com/dmlc/xgboost
+          cd xgboost
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make -j4
+          cd ..
+          du -ah .
+          file lib/libxgboost.so
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libxgboost.so
+          path: xgboost/lib/libxgboost.so
