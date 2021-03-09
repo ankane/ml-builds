@@ -2,7 +2,7 @@
 
 Pre-built shared libraries for machine learning
 
-Library | Linux x86 | Linux ARM | Mac x86 | Mac ARM | Windows | Assets | License
+Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Assets | License
 --- | --- | --- | --- | --- | --- | --- | ---
 [Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
 [cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
