@@ -2,7 +2,7 @@
 
 Pre-built shared libraries for machine learning
 
-Library | Linux x86 | Linux ARM | Mac x86 | Mac ARM | Windows x86 | Assets | License
+Library | Linux x86 | Linux ARM | Mac x86 | Mac ARM | Windows | Assets | License
 --- | --- | --- | --- | --- | --- | --- | ---
 [Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.3) | MIT
 [cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-2.4.1) | MIT
@@ -34,10 +34,10 @@ Some projects include shared libraries as part of their releases:
 - [OR-Tools](https://developers.google.com/optimization/install/cpp)
 - [OSQP](https://bintray.com/bstellato/generic/OSQP#files)
 
-Library | Mac ARM | Assets | License
---- | --- | --- | ---
-[LightGBM](https://github.com/Microsoft/LightGBM) | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.1.1) | MIT
-[OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2) | Apache-2.0
+Library | Linux ARM | Mac ARM | Assets | License
+--- | --- | --- | --- | ---
+[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.1.1) | MIT
+[OSQP](https://github.com/oxfordcontrol/osqp) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2) | Apache-2.0
 
 ## Details
 
