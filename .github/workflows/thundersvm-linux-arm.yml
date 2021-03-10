@@ -1,0 +1,28 @@
+name: ThunderSVM Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/thundersvm-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
+          cd thundersvm
+          mkdir build
+          cd build
+          cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=armv8-a -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make -j4
+          cd ..
+          file build/lib/libthundersvm.so
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libthundersvm.so
+          path: thundersvm/build/lib/libthundersvm.so
