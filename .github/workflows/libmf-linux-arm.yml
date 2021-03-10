@@ -1,0 +1,25 @@
+name: LIBMF Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/libmf-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          cd libmf
+          sed -i 's/-march=native/-march=armv8-a/g' Makefile
+          make all lib CXX=aarch64-linux-gnu-g++ DFLAG="" OMPFLAG=""
+          du -ah .
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libmf.so
+          path: libmf/libmf.so.2
