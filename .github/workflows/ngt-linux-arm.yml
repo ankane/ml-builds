@@ -1,0 +1,28 @@
+name: NGT Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/ngt-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+    steps:
+      - run: |
+          sudo apt install cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
+          cd NGT
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make -j4
+          cd ..
+          du -ah .
+      - uses: actions/upload-artifact@v2
+        with:
+          name: libngt.so
+          path: NGT/build/lib/NGT/libngt.so.1.12.2
