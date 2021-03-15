@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive --branch v0.1.3 https://github.com/microsoft/BlingFire.git
+          git clone --recursive --branch v0.1.5 https://github.com/microsoft/BlingFire.git
           cd BlingFire
           rm -r blingfiretools/any_test
           mkdir build
