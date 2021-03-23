@@ -23,7 +23,7 @@ jobs:
         env:
           LIBOMP_VERSION: 11.1.0
       - run: |
-          git clone --recursive --branch v3.1.1 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v3.2.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
