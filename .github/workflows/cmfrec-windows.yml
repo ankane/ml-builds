@@ -15,7 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
-          git checkout 439782c23765b97879c6b05bbdba329996c3ceb6
+          git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
