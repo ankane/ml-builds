@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install libblas-dev liblapack-dev
+          apt update
+          apt install -y build-essential git libblas-dev liblapack-dev make
           git clone --recursive --branch v2.1.2 https://github.com/cvxgrp/scs.git
           cd scs
           make
