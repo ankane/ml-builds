@@ -24,6 +24,7 @@ jobs:
           ./bootstrap
           make
           make install
+          cd ..
 
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
