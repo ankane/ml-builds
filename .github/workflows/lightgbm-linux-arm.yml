@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
           git clone --recursive --branch v3.2.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
