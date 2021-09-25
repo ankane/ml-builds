@@ -10,10 +10,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
+          apt update
+          apt install -y build-essential cmake git
+          git clone --recursive --branch v0.2.7 https://github.com/interpretml/interpret.git
           cd interpret
           sh build.sh
           du -ah .
