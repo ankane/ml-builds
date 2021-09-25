@@ -10,19 +10,20 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install cmake
+          apt update
+          apt install -y build-essential cmake git
           git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
           make -j4
-          cd ..
-          du -ah .
+          mv lib/NGT/libngt.so.1.12.2 lib/NGT/libngt.so
       - uses: actions/upload-artifact@v2
         with:
           name: libngt.so
-          path: NGT/build/lib/NGT/libngt.so.1.12.2
+          path: NGT/build/lib/NGT/libngt.so
