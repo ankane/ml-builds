@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
+          git clone --recursive --branch v0.2.7 https://github.com/interpretml/interpret.git
           cd interpret
           set PATH=%PATH%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\
           .\build.bat

@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
+          git clone --recursive --branch v0.2.7 https://github.com/interpretml/interpret.git
           cd interpret
           sh build.sh
           du -ah .
