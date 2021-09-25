@@ -26,5 +26,5 @@ jobs:
           du -ah .
       - uses: actions/upload-artifact@v1
         with:
-          name: libblingfiretokdll.so
+          name: libblingfiretokdll.arm64.so
           path: BlingFire/build/libblingfiretokdll.so
