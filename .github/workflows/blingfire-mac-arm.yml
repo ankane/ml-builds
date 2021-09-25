@@ -19,9 +19,10 @@ jobs:
           cd build
           cmake .. -DCMAKE_OSX_ARCHITECTURES=arm64
           make
+          mv libblingfiretokdll.dylib libblingfiretokdll.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
         with:
           name: libblingfiretokdll.arm64.dylib
-          path: BlingFire/build/libblingfiretokdll.dylib
+          path: BlingFire/build/libblingfiretokdll.arm64.dylib
