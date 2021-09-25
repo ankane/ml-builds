@@ -20,7 +20,7 @@ jobs:
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: tsne_multicore.dll
           path: Multicore-TSNE/multicore_tsne/build/Release/tsne_multicore.dll

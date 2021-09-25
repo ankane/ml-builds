@@ -22,7 +22,7 @@ jobs:
           make -j4
           cd ..
           du -ah .
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libmitie.so
           path: MITIE/mitielib/build/libmitie.so

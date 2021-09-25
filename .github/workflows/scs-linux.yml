@@ -18,11 +18,11 @@ jobs:
           cd scs
           make
           du -ah .
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libscsindir.so
           path: scs/out/libscsindir.so
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libscsdir.so
           path: scs/out/libscsdir.so

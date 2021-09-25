@@ -19,7 +19,7 @@ jobs:
           mv libargon2.1.dylib libargon2.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libargon2.arm64.dylib
           path: phc-winner-argon2/libargon2.arm64.dylib

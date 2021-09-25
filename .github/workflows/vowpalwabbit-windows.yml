@@ -18,7 +18,7 @@ jobs:
           nuget restore
           "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe" /p:Configuration=Release /p:Platform="x64" vw.sln
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: vw_c_wrapper.dll
           path: vowpal_wabbit/build/vowpalwabbit/vw_c_wrapper.dll

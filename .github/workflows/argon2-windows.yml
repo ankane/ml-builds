@@ -18,7 +18,7 @@ jobs:
           "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\MSBuild.exe" Argon2.sln /p:Configuration=Release /p:WindowsTargetPlatformVersion=10
           ls .
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: argon2.dll
           path: phc-winner-argon2/vs2015/build/Argon2OptDll.dll

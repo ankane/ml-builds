@@ -21,7 +21,7 @@ jobs:
           sed -i 's/-march=native/-march=armv8-a/g' Makefile
           make all lib CXX=aarch64-linux-gnu-g++ DFLAG="" OMPFLAG=""
           mv libmf.so.2 libmf.arm64.so
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libmf.arm64.so
           path: libmf/libmf.arm64.so

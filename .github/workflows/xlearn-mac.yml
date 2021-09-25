@@ -25,7 +25,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libxlearn_api.dylib
           path: xlearn/build/lib/libxlearn_api.dylib

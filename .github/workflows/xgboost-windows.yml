@@ -20,7 +20,7 @@ jobs:
           cmake .. -G "Visual Studio 16 2019" -A x64 -DUSE_OPENMP=OFF
           cmake --build . --config Release
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: xgboost.dll
           path: xgboost/lib/xgboost.dll

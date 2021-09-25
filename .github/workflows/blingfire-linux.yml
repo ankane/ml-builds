@@ -24,7 +24,7 @@ jobs:
           make
           cd ..
           du -ah .
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libblingfiretokdll.so
           path: BlingFire/build/libblingfiretokdll.so

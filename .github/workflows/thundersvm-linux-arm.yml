@@ -22,7 +22,7 @@ jobs:
           make -j4
           cd ..
           file build/lib/libthundersvm.so
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libthundersvm.so
           path: thundersvm/build/lib/libthundersvm.so

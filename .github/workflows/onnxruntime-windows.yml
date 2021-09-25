@@ -21,7 +21,7 @@ jobs:
           cmake --build . --config Release
           dir /s
         shell: cmd
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: onnxruntime.dll
           path: onnxruntime\build\Release\onnxruntime.dll

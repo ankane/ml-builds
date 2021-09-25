@@ -34,7 +34,7 @@ jobs:
           otool -L ../lib/libxgboost.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libxgboost.dylib
           path: xgboost/lib/libxgboost.dylib

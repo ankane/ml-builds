@@ -24,7 +24,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libmitie.dylib
           path: MITIE/mitielib/build/libmitie.dylib

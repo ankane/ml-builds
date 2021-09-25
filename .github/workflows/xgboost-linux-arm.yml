@@ -23,7 +23,7 @@ jobs:
           cd ..
           du -ah .
           file lib/libxgboost.so
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libxgboost.so
           path: xgboost/lib/libxgboost.so

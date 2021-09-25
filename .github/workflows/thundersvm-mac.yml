@@ -24,7 +24,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: libthundersvm.dylib
           path: thundersvm/build/lib/libthundersvm.dylib
