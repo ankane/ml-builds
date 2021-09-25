@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+          apt update
+          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
           git clone --recursive --branch v1.4.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
@@ -22,8 +24,8 @@ jobs:
           make -j4
           cd ..
           du -ah .
-          file lib/libxgboost.so
+          mv lib/libxgboost.so lib/libxgboost.arm64.so
       - uses: actions/upload-artifact@v2
         with:
-          name: libxgboost.so
-          path: xgboost/lib/libxgboost.so
+          name: libxgboost.arm64.so
+          path: xgboost/lib/libxgboost.arm64.so
