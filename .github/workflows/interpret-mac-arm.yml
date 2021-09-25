@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11.0
+    runs-on: macos-11
     steps:
       - run: |
           git clone --recursive --branch v0.2.3 https://github.com/interpretml/interpret.git
