@@ -15,7 +15,7 @@ jobs:
       - run: |
           git clone --recursive --branch v0.2.7 https://github.com/interpretml/interpret.git
           cd interpret
-          sed -i '' 's/clang_pp_bin=clang++/clang_pp_bin="clang++ -target arm64-apple-macos11"/g' build.sh
+          sed -i '' 's/cpp_compiler=clang++/cpp_compiler="clang++ -target arm64-apple-macos11"/g' build.sh
           sed -i '' 's/-march=core2/-march=armv8-a/g' build.sh
           sh build.sh
           file staging/lib_ebm_native_mac_x64.dylib
