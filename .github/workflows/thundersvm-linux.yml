@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install cmake
+          apt update
+          apt install -y build-essential cmake git
           git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
           mkdir build
