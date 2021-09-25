@@ -14,6 +14,7 @@ jobs:
     container: ubuntu:16.04
     steps:
       - run: |
+          apt update
           apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git make
           git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
           cd libmf
