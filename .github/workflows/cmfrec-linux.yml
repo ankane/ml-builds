@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install cmake
+          apt update
+          apt install -y build-essential cmake git
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
@@ -21,8 +23,6 @@ jobs:
           cd build
           cmake ..
           make
-          cd ..
-          du -ah .
       - uses: actions/upload-artifact@v1
         with:
           name: libcmfrec.so
