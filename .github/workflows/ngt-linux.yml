@@ -16,13 +16,13 @@ jobs:
       - run: |
           apt update
           apt install -y build-essential cmake git
-          git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.13.5 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
           make -j4
-          mv lib/NGT/libngt.so.1.12.2 lib/NGT/libngt.so
+          mv lib/NGT/libngt.so.1.13.5 lib/NGT/libngt.so
       - uses: actions/upload-artifact@v2
         with:
           name: libngt.so

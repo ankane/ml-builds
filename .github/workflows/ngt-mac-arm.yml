@@ -23,18 +23,19 @@ jobs:
         env:
           LIBOMP_VERSION: 11.1.0
       - run: |
-          git clone --recursive --branch v1.12.2 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.13.5 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4 || true
-          file lib/NGT/libngt.1.12.2.dylib
+          file lib/NGT/libngt.1.13.5.dylib
           install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib lib/NGT/libngt.1.12.2.dylib
-          otool -L lib/NGT/libngt.1.12.2.dylib
+          otool -L lib/NGT/libngt.1.13.5.dylib
+          mv lib/NGT/libngt.1.13.5.dylib lib/NGT/libngt.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
         with:
-          name: libngt.dylib
-          path: NGT/build/lib/NGT/libngt.1.12.2.dylib
+          name: libngt.arm64.dylib
+          path: NGT/build/lib/NGT/libngt.arm64.dylib
