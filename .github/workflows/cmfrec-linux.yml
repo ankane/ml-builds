@@ -12,12 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: ubuntu:16.04
+    timeout-minutes: 5
     steps:
       - run: |
           apt update
           apt install -y build-essential git wget
           wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.sh
-          sh cmake-3.21.3-linux-x86_64.sh
+          chmod +x cmake-3.21.3-linux-x86_64.sh
+          ./cmake-3.21.3-linux-x86_64.sh --skip-license
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
