@@ -16,11 +16,13 @@ jobs:
       - run: |
           apt update
           apt install -y build-essential cmake git
+          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
+          tar xzf cmake-3.21.3-linux-x86_64.tar.gz
           git clone --recursive --branch v1.4.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
