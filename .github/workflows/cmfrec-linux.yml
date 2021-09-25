@@ -24,7 +24,8 @@ jobs:
           git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
           mkdir build
           cd build
-          ../../cmake-3.21.3-linux-x86_64/cmake ..
+          du -ah ../..
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake ..
           make
       - uses: actions/upload-artifact@v1
         with:
