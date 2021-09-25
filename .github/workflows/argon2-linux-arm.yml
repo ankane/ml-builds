@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y gcc-aarch64-linux-gnu git
+          apt install -y gcc-aarch64-linux-gnu git make
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
           make CC=aarch64-linux-gnu-gcc OPTTARGET=armv8-a

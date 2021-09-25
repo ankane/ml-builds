@@ -10,10 +10,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt install libblas-dev liblapack-dev
+          apt update
+          apt install -y build-essential cmake git libblas-dev liblapack-dev
           git clone --recursive --branch v1.6.1 https://github.com/facebookresearch/faiss.git
           cd faiss
           ./configure --without-cuda
