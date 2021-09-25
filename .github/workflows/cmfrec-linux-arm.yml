@@ -1,0 +1,30 @@
+name: cmfrec Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/cmfrec-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
+    steps:
+      - run: |
+          apt update
+          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
+          git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
+          cd cmfrec
+          git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make
+          mv libcmfrec.so libcmfrec.arm64.so
+      - uses: actions/upload-artifact@v1
+        with:
+          name: libcmfrec.arm64.so
+          path: cmfrec/build/libcmfrec.arm64.so
