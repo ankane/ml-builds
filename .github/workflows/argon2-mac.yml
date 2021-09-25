@@ -10,16 +10,16 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
           make OPTTARGET=nehalem
-          du -ah .
+          mv libargon2.1.dylib libargon2.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v1
         with:
           name: libargon2.dylib
-          path: phc-winner-argon2/libargon2.1.dylib
+          path: phc-winner-argon2/libargon2.dylib

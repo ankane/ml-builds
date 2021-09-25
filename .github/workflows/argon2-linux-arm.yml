@@ -10,16 +10,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
-          sudo apt-get install gcc-aarch64-linux-gnu
+          apt update
+          apt install gcc-aarch64-linux-gnu git
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
           make CC=aarch64-linux-gnu-gcc OPTTARGET=armv8-a
-          du -ah .
-          file libargon2.so.1
+          mv libargon2.so.1 libargon2.arm64.so
       - uses: actions/upload-artifact@v1
         with:
-          name: libargon2.so
-          path: phc-winner-argon2/libargon2.so.1
+          name: libargon2.arm64.so
+          path: phc-winner-argon2/libargon2.arm64.so

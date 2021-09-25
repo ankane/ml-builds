@@ -10,14 +10,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
           make OPTTARGET=x86-64
-          du -ah .
+          mv libargon2.so.1 libargon2.so
       - uses: actions/upload-artifact@v1
         with:
           name: libargon2.so
-          path: phc-winner-argon2/libargon2.so.1
+          path: phc-winner-argon2/libargon2.so

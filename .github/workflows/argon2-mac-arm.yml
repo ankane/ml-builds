@@ -10,16 +10,16 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-11.0
+    runs-on: macos-11
     steps:
       - run: |
           git clone --recursive --branch 20190702 https://github.com/P-H-C/phc-winner-argon2.git
           cd phc-winner-argon2
           make OPTTEST=1 CFLAGS="-target arm64-apple-macos11 -march=armv8-a"
-          du -ah .
+          mv libargon2.1.dylib libargon2.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v1
         with:
-          name: libargon2.dylib
-          path: phc-winner-argon2/libargon2.1.dylib
+          name: libargon2.arm64.dylib
+          path: phc-winner-argon2/libargon2.arm64.dylib
