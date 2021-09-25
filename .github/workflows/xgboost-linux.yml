@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y build-essential cmake git
+          apt install -y build-essential cmake git wget
           wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
           tar xzf cmake-3.21.3-linux-x86_64.tar.gz
           git clone --recursive --branch v1.4.0 https://github.com/dmlc/xgboost
