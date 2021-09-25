@@ -17,21 +17,14 @@ jobs:
       - run: |
           apt update
           apt install -y build-essential git wget
-
-          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3.tar.gz
-          tar xzf cmake-3.21.3.tar.gz
-          cd cmake-3.21.3
-          ./bootstrap
-          make
-          make install
-          cd ..
-
+          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
+          tar xzf cmake-3.21.3-linux-x86_64
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
           mkdir build
           cd build
-          cmake ..
+          ../../cmake-3.21.3-linux-x86_64/cmake ..
           make
       - uses: actions/upload-artifact@v1
         with:
