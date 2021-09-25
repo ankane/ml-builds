@@ -37,7 +37,7 @@ Some projects include shared libraries as part of their releases:
 
 Library | Linux ARM | Mac ARM | Files | License
 --- | --- | --- | --- | ---
-[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.1.1) | MIT
+[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.2.0) | MIT
 [OSQP](https://github.com/oxfordcontrol/osqp) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2) | Apache-2.0
 
 ## Details
