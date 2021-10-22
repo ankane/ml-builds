@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v1.4.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.5.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build

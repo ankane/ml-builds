@@ -21,7 +21,7 @@ jobs:
           cp -r libomp/12.0.1 /opt/homebrew/opt/libomp
           find /opt/homebrew
       - run: |
-          git clone --recursive --branch v1.4.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.5.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
