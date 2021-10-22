@@ -27,12 +27,12 @@ jobs:
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4
-          file ../lib/libxgboost.dylib
-          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib ../lib/libxgboost.dylib
-          otool -L ../lib/libxgboost.dylib
+          mv ../lib/libxgboost.dylib ../lib/libxgboost.arm64.dylib
+          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib ../lib/libxgboost.arm64.dylib
+          otool -L ../lib/libxgboost.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v2
         with:
-          name: libxgboost.dylib
-          path: xgboost/lib/libxgboost.dylib
+          name: libxgboost.arm64.dylib
+          path: xgboost/lib/libxgboost.arm64.dylib
