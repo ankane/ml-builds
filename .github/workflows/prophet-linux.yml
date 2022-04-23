@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y chrpath wget
+          apt install -y build-essential wget chrpath
 
           wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2.tar.gz
           tar xzf cmdstan-2.29.2.tar.gz
