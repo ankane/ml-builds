@@ -15,9 +15,9 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu wget chrpath
+          apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu make wget chrpath
 
-          wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2.tar.gz
+          wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2-linux-arm64.tar.gz
           tar xzf cmdstan-2.29.2.tar.gz
           cd cmdstan-2.29.2
           make build PRECOMPILED_HEADERS=false CXX=aarch64-linux-gnu-g++
