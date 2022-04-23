@@ -49,6 +49,7 @@ jobs:
           cp stan/lib/stan_math/licenses/tbb-license.txt output/licenses
           cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.MPL2 output/licenses/eigen-mpl2-license.txt
           cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.BSD output/licenses/eigen-bsd-license.txt
+          cp oneTBB-2020.3/third-party-programs.txt output/licenses/tbb-third-party-programs.txt
 
           wget -q https://github.com/CLIUtils/CLI11/archive/refs/tags/v1.9.1.tar.gz
           tar xzf v1.9.1.tar.gz
