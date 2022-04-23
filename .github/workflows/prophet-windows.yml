@@ -1,0 +1,57 @@
+name: Prophet Windows
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/prophet-windows.yml
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2.tar.gz
+          tar xzf cmdstan-2.29.2.tar.gz
+          cd cmdstan-2.29.2
+          mingw32-make build PRECOMPILED_HEADERS=false
+
+          wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
+          tar xzf v1.0.tar.gz
+          cp prophet-1.0/python/stan/win/prophet.stan .
+          mingw32-make prophet PRECOMPILED_HEADERS=false
+
+          mkdir output
+
+          mkdir output/bin
+          cp prophet output/bin
+
+          mkdir output/lib
+          cp stan/lib/stan_math/lib/tbb/tbb.dll output/lib
+          cp stan/lib/stan_math/lib/tbb/tbbmalloc.dll output/lib
+          cp stan/lib/stan_math/lib/tbb/tbbmalloc_proxy.dll output/lib
+
+          mkdir output/licenses
+          cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
+          cp LICENSE output/licenses/cmdstan-license.txt
+          cp stan/LICENSE.md output/licenses/stan-license.txt
+          cp stan/lib/stan_math/LICENSE.md output/licenses/stan-math-license.txt
+          cp stan/lib/stan_math/licenses/boost-license.txt output/licenses
+          cp stan/lib/stan_math/licenses/eigen-license.txt output/licenses
+          cp stan/lib/stan_math/licenses/sundials-license.txt output/licenses
+          cp stan/lib/stan_math/licenses/tbb-license.txt output/licenses
+
+          wget -q https://github.com/CLIUtils/CLI11/archive/refs/tags/v1.9.1.tar.gz
+          tar xzf v1.9.1.tar.gz
+          cp CLI11-1.9.1/LICENSE output/licenses/cli11-license.txt
+
+          wget -q https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz
+          tar xzf v1.1.0.tar.gz
+          cp rapidjson-1.1.0/license.txt output/licenses/rapidjson-license.txt
+        shell: cmd
+      - uses: actions/upload-artifact@v3
+        with:
+          name: prophet-windows
+          path: cmdstan-2.29.2/output
