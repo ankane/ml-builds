@@ -16,24 +16,24 @@ jobs:
           wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2.tar.gz
           tar xzf cmdstan-2.29.2.tar.gz
           cd cmdstan-2.29.2
-          make build PRECOMPILED_HEADERS=false
+
+          wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
+          tar xzf v2020.3.tar.gz
+          cd oneTBB-2020.3
+          make extra_inc=big_iron.inc
+          mkdir lib
+          cp build/**/*.a lib
+          cd ..
 
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
-          make prophet PRECOMPILED_HEADERS=false
+          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib LDFLAGS_TBB="\$(TBB_LIB)/libtbb.a \$(TBB_LIB)/libtbbmalloc.a" PRECOMPILED_HEADERS=false
 
           mkdir output
 
           mkdir output/bin
           cp prophet output/bin
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@loader_path/../lib" output/bin/prophet
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@loader_path/../lib" output/bin/prophet
-
-          mkdir output/lib
-          cp stan/lib/stan_math/lib/tbb/libtbb.dylib output/lib
-          cp stan/lib/stan_math/lib/tbb/libtbbmalloc.dylib output/lib
-          cp stan/lib/stan_math/lib/tbb/libtbbmalloc_proxy.dylib output/lib
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
@@ -56,5 +56,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v3
         with:
-          name: prophet-mac
+          name: prophet-mac-static
           path: cmdstan-2.29.2/output
