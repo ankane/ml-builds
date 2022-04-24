@@ -45,7 +45,7 @@ jobs:
 
           mkdir output/lib
           cp oneTBB-2020.3/lib/*.so* output/lib
-          strip --strip-debug output/lib/*.so.2
+          aarch64-linux-gnu-strip --strip-debug output/lib/*.so.2
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
