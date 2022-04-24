@@ -20,7 +20,7 @@ jobs:
           wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
           tar xzf v2020.3.tar.gz
           cd oneTBB-2020.3
-          make extra_inc=big_iron.inc arch=arm CONLY="gcc -target arm64-apple-macos11" CPLUS="g++ -target arm64-apple-macos11"
+          make extra_inc=big_iron.inc arch=arm64 CONLY="gcc -target arm64-apple-macos11" CPLUS="g++ -target arm64-apple-macos11"
           mkdir lib
           cp build/**/*.a lib
           cd ..
