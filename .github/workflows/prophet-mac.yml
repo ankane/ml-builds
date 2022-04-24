@@ -26,8 +26,8 @@ jobs:
 
           mkdir output/bin
           cp prophet output/bin
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@loader_path/../lib" output/bin/prophet
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@loader_path/../lib" output/bin/prophet
+          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
+          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
 
           mkdir output/lib
           cp stan/lib/stan_math/lib/tbb/*.dylib output/lib

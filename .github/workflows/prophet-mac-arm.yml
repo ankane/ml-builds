@@ -20,9 +20,9 @@ jobs:
           wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
           tar xzf v2020.3.tar.gz
           cd oneTBB-2020.3
-          make extra_inc=big_iron.inc arch=arm64 CONLY="gcc -target arm64-apple-macos11" CPLUS="g++ -target arm64-apple-macos11"
+          make arch=arm64 CONLY="gcc -target arm64-apple-macos11" CPLUS="g++ -target arm64-apple-macos11"
           mkdir lib
-          cp build/**/*.a lib
+          cp build/**/*.dylib lib
           cd ..
 
           wget -q https://github.com/stan-dev/stanc3/releases/download/v2.29.2/mac-stanc
@@ -31,12 +31,17 @@ jobs:
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
-          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib LDFLAGS_TBB="\$(TBB_LIB)/libtbb.a \$(TBB_LIB)/libtbbmalloc.a" PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY" CC="gcc -target arm64-apple-macos11" CXX="g++ -target arm64-apple-macos11" OS=Darwin
+          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib LDFLAGS_TBB="-Wl,-L,\"\$(TBB_LIB)\" -Wl,-rpath,\"\$(TBB_LIB)\" -ltbb" PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY" CC="gcc -target arm64-apple-macos11" CXX="g++ -target arm64-apple-macos11" OS=Darwin
 
           mkdir output
 
           mkdir output/bin
           cp prophet output/bin
+          install_name_tool -rpath "oneTBB-2020.3/lib" "@executable_path/../lib" output/bin/prophet
+          install_name_tool -rpath "oneTBB-2020.3/lib" "@executable_path/../lib" output/bin/prophet
+
+          mkdir output/lib
+          cp oneTBB-2020.3/lib/*.dylib output/lib
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
