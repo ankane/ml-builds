@@ -24,7 +24,7 @@ jobs:
           wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
           tar xzf v2020.3.tar.gz
           cd oneTBB-2020.3
-          make arch=arm CONLY=aarch64-linux-gnu-gcc CPLUS=aarch64-linux-gnu-g++
+          make arch=aarch64 CONLY=aarch64-linux-gnu-gcc CPLUS=aarch64-linux-gnu-g++
           mkdir lib
           cp build/**/*.so* lib
           cd ..
