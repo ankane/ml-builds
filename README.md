@@ -12,6 +12,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [MITIE](https://github.com/mit-nlp/MITIE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
 [NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.13.5) | Apache-2.0
+[Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.0) | MIT
 [SCS](https://github.com/cvxgrp/scs) | ✓ | | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
 [XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.5.0) | Apache-2.0
