@@ -34,6 +34,7 @@ jobs:
 
           mkdir output/lib
           cp stan/lib/stan_math/lib/tbb/*.so* output/lib
+          strip --strip-debug output/lib/*.so.2
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
