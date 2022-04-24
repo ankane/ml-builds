@@ -24,9 +24,9 @@ jobs:
           wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
           tar xzf v2020.3.tar.gz
           cd oneTBB-2020.3
-          make extra_inc=big_iron.inc arch=arm CONLY=aarch64-linux-gnu-gcc CPLUS=aarch64-linux-gnu-g++
+          make arch=aarch64 CONLY=aarch64-linux-gnu-gcc CPLUS=aarch64-linux-gnu-g++
           mkdir lib
-          cp build/**/*.a lib
+          cp build/**/*.so* lib
           cd ..
 
           wget -q https://github.com/stan-dev/stanc3/releases/download/v2.29.2/linux-stanc
@@ -35,12 +35,17 @@ jobs:
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
-          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib LDFLAGS_TBB="\$(TBB_LIB)/libtbb.a \$(TBB_LIB)/libtbbmalloc.a" PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY" CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ OS=Linux
+          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY" CC=aarch64-linux-gnu-gcc CXX=aarch64-linux-gnu-g++ OS=Linux
 
           mkdir output
 
           mkdir output/bin
           cp prophet output/bin
+          chrpath -r '$ORIGIN/../lib' output/bin/prophet
+
+          mkdir output/lib
+          cp oneTBB-2020.3/lib/*.so* output/lib
+          aarch64-linux-gnu-strip --strip-debug output/lib/*.so.2
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt

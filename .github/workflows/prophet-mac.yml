@@ -17,23 +17,20 @@ jobs:
           tar xzf cmdstan-2.29.2.tar.gz
           cd cmdstan-2.29.2
 
-          wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
-          tar xzf v2020.3.tar.gz
-          cd oneTBB-2020.3
-          make extra_inc=big_iron.inc
-          mkdir lib
-          cp build/**/*.a lib
-          cd ..
-
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
-          make prophet TBB_INC=oneTBB-2020.3/include TBB_LIB=oneTBB-2020.3/lib LDFLAGS_TBB="\$(TBB_LIB)/libtbb.a \$(TBB_LIB)/libtbbmalloc.a" PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY"
+          make prophet PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY"
 
           mkdir output
 
           mkdir output/bin
           cp prophet output/bin
+          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
+          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
+
+          mkdir output/lib
+          cp stan/lib/stan_math/lib/tbb/*.dylib output/lib
 
           mkdir output/licenses
           cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
@@ -45,6 +42,9 @@ jobs:
           cp stan/lib/stan_math/licenses/tbb-license.txt output/licenses
           cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.MPL2 output/licenses/eigen-mpl2-license.txt
           cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.BSD output/licenses/eigen-bsd-license.txt
+
+          wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
+          tar xzf v2020.3.tar.gz
           cp oneTBB-2020.3/third-party-programs.txt output/licenses/tbb-third-party-programs.txt
 
           wget -q https://github.com/CLIUtils/CLI11/archive/refs/tags/v1.9.1.tar.gz
