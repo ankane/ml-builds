@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          pip install strata-cli
+          pip3 install strata-cli
 
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
