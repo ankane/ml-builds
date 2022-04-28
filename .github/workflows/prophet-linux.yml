@@ -15,8 +15,9 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y build-essential wget
-          pip install strata-cli
+          apt install -y build-essential python3-pip wget
+
+          pip3 install strata-cli
 
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
