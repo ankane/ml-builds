@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y build-essential python3-pip wget
+          apt install -y build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu python3-pip wget
 
           pip3 install strata-cli
 
