@@ -13,50 +13,24 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          wget -q https://github.com/stan-dev/cmdstan/releases/download/v2.29.2/cmdstan-2.29.2.tar.gz
-          tar xzf cmdstan-2.29.2.tar.gz
-          cd cmdstan-2.29.2
+          pip install strata-cli
 
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
-          make prophet PRECOMPILED_HEADERS=false CXXFLAGS_EIGEN="-DEIGEN_MPL2_ONLY"
 
-          mkdir output
+          strata prophet.stan -o x86_64-darwin
+          cp prophet-1.0/LICENSE x86_64-darwin/licenses/prophet-license.txt
 
-          mkdir output/bin
-          cp prophet output/bin
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
-          install_name_tool -rpath "$(pwd)/stan/lib/stan_math/lib/tbb" "@executable_path/../lib" output/bin/prophet
-
-          mkdir output/lib
-          cp stan/lib/stan_math/lib/tbb/*.dylib output/lib
-
-          mkdir output/licenses
-          cp prophet-1.0/LICENSE output/licenses/prophet-license.txt
-          cp LICENSE output/licenses/cmdstan-license.txt
-          cp stan/LICENSE.md output/licenses/stan-license.txt
-          cp stan/lib/stan_math/LICENSE.md output/licenses/stan-math-license.txt
-          cp stan/lib/stan_math/licenses/boost-license.txt output/licenses
-          cp stan/lib/stan_math/licenses/sundials-license.txt output/licenses
-          cp stan/lib/stan_math/licenses/tbb-license.txt output/licenses
-          cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.MPL2 output/licenses/eigen-mpl2-license.txt
-          cp stan/lib/stan_math/lib/eigen_3.3.9/COPYING.BSD output/licenses/eigen-bsd-license.txt
-
-          wget -q https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2020.3.tar.gz
-          tar xzf v2020.3.tar.gz
-          cp oneTBB-2020.3/third-party-programs.txt output/licenses/tbb-third-party-programs.txt
-
-          wget -q https://github.com/CLIUtils/CLI11/archive/refs/tags/v1.9.1.tar.gz
-          tar xzf v1.9.1.tar.gz
-          cp CLI11-1.9.1/LICENSE output/licenses/cli11-license.txt
-
-          wget -q https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz
-          tar xzf v1.1.0.tar.gz
-          cp rapidjson-1.1.0/license.txt output/licenses/rapidjson-license.txt
+          strata prophet.stan -o arm64-darwin --cross-compile
+          cp prophet-1.0/LICENSE arm64-darwin/licenses/prophet-license.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v3
         with:
-          name: prophet-mac
-          path: cmdstan-2.29.2/output
+          name: prophet-1.0-x86_64-darwin
+          path: x86_64-darwin
+      - uses: actions/upload-artifact@v3
+        with:
+          name: prophet-1.0-arm64-darwin
+          path: arm64-darwin
