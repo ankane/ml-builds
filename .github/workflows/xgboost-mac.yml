@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v1.5.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.6.1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -22,9 +22,15 @@ jobs:
           make -j4
           cd ..
           du -ah .
+
+          mkdir dist
+          cp lib/libxgboost.dylib dist
+          cp LICENSE dist/LICENSE-xgboost.txt
+          cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
+          cp rabit/LICENSE dist/LICENSE-rabit.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: libxgboost.dylib
-          path: xgboost/lib/libxgboost.dylib
+          name: xgboost-1.6.1-x86_64-darwin
+          path: xgboost/dist

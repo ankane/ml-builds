@@ -10,17 +10,24 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - run: |
-          git clone --recursive --branch v1.5.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.6.1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
           cmake .. -G "Visual Studio 16 2019" -A x64 -DUSE_OPENMP=OFF
           cmake --build . --config Release
+          cd ..
+
+          mkdir dist
+          cp lib/xgboost.dll dist
+          cp LICENSE dist/LICENSE-xgboost.txt
+          cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
+          cp rabit/LICENSE dist/LICENSE-rabit.txt
         shell: cmd
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: xgboost.dll
-          path: xgboost/lib/xgboost.dll
+          name: xgboost-1.6.1-x86_64-windows
+          path: xgboost/dist

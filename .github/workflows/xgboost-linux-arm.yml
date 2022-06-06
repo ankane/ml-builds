@@ -11,14 +11,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    container: ubuntu:18.04
     steps:
       - run: |
           apt update
           apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git wget
           wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
           tar xzf cmake-3.21.3-linux-x86_64.tar.gz
-          git clone --recursive --branch v1.5.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.6.1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -26,8 +26,13 @@ jobs:
           make -j4
           cd ..
           du -ah .
-          mv lib/libxgboost.so lib/libxgboost.arm64.so
-      - uses: actions/upload-artifact@v2
+
+          mkdir dist
+          cp lib/libxgboost.so dist
+          cp LICENSE dist/LICENSE-xgboost.txt
+          cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
+          cp rabit/LICENSE dist/LICENSE-rabit.txt
+      - uses: actions/upload-artifact@v3
         with:
-          name: libxgboost.arm64.so
-          path: xgboost/lib/libxgboost.arm64.so
+          name: xgboost-1.6.1-aarch64-linux
+          path: xgboost/dist
