@@ -1,4 +1,4 @@
-name: Prophet Linux
+name: Prophet Linux ARM
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/prophet-linux.yml
+      - .github/workflows/prophet-linux-arm.yml
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apt update
-          apt install -y build-essential python3-pip wget
+          apt install -y build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu python3-pip wget
 
           pip3 install strata-cli
 
@@ -23,9 +23,9 @@ jobs:
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
 
-          strata prophet.stan -o dist
+          strata prophet.stan -o dist --cross-compile
           cp prophet-1.0/LICENSE dist/licenses/prophet-license.txt
       - uses: actions/upload-artifact@v3
         with:
-          name: prophet-1.0-x86_64-linux
+          name: prophet-1.0-aarch64-linux
           path: dist

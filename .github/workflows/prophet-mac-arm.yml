@@ -1,4 +1,4 @@
-name: Prophet Linux
+name: Prophet Mac ARM
 on:
   push:
     branches:
@@ -6,26 +6,24 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/prophet-linux.yml
+      - .github/workflows/prophet-mac-arm.yml
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    runs-on: macos-latest
     steps:
       - run: |
-          apt update
-          apt install -y build-essential python3-pip wget
-
           pip3 install strata-cli
 
           wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
           tar xzf v1.0.tar.gz
           cp prophet-1.0/python/stan/unix/prophet.stan .
 
-          strata prophet.stan -o dist
+          strata prophet.stan -o dist --cross-compile
           cp prophet-1.0/LICENSE dist/licenses/prophet-license.txt
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v3
         with:
-          name: prophet-1.0-x86_64-linux
+          name: prophet-1.0-aarch64-darwin
           path: dist
