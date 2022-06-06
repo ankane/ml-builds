@@ -22,7 +22,7 @@ jobs:
           cd ..
 
           mkdir dist
-          cp build/out/osqp.dll dist
+          cp build/out/libosqp.dll dist
           cp LICENSE dist/LICENSE-osqp.txt
           cp NOTICE dist/NOTICE-osqp.txt
           cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
