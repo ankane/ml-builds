@@ -1,4 +1,4 @@
-name: OSQP Mac ARM
+name: OSQP Mac
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/osqp-mac-arm.yml
+      - .github/workflows/osqp-mac.yml
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
           cd osqp
           mkdir build
           cd build
-          cmake .. -DENABLE_MKL_PARDISO=OFF -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          cmake .. -DENABLE_MKL_PARDISO=OFF -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           file out/libosqp.dylib
           cd ..
@@ -29,8 +29,8 @@ jobs:
           cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
           cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
         env:
-          MACOSX_DEPLOYMENT_TARGET: 11.0
+          MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v3
         with:
-          name: osqp-0.6.2-aarch64-darwin
+          name: osqp-0.6.2-x86_64-darwin
           path: osqp/dist

@@ -1,4 +1,4 @@
-name: OSQP Mac ARM
+name: OSQP Linux
 on:
   push:
     branches:
@@ -6,31 +6,32 @@ on:
     tags-ignore:
       - "*"
     paths:
-      - .github/workflows/osqp-mac-arm.yml
+      - .github/workflows/osqp-linux.yml
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
     steps:
       - run: |
+          apt update
+          apt install -y cmake build-essential git
           git clone --recursive --branch v0.6.2 https://github.com/oxfordcontrol/osqp.git
           cd osqp
           mkdir build
           cd build
-          cmake .. -DENABLE_MKL_PARDISO=OFF -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          cmake .. -DENABLE_MKL_PARDISO=OFF -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
-          file out/libosqp.dylib
           cd ..
+          du -ah .
 
           mkdir dist
-          cp build/out/libosqp.dylib dist
+          cp build/out/libosqp.so dist
           cp LICENSE dist/LICENSE-osqp.txt
           cp NOTICE dist/NOTICE-osqp.txt
           cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
           cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
-        env:
-          MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v3
         with:
-          name: osqp-0.6.2-aarch64-darwin
+          name: osqp-0.6.2-x86_64-linux
           path: osqp/dist

@@ -1,0 +1,37 @@
+name: OSQP Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/osqp-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ubuntu:16.04
+    steps:
+      - run: |
+          apt update
+          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
+          git clone --recursive --branch v0.6.2 https://github.com/oxfordcontrol/osqp.git
+          cd osqp
+          mkdir build
+          cd build
+          cmake .. -DENABLE_MKL_PARDISO=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          make -j4
+          cd ..
+          du -ah .
+
+          mkdir dist
+          cp build/out/libosqp.so dist
+          cp LICENSE dist/LICENSE-osqp.txt
+          cp NOTICE dist/NOTICE-osqp.txt
+          cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
+          cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: osqp-0.6.2-aarch64-linux
+          path: osqp/dist

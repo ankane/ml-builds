@@ -12,6 +12,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [MITIE](https://github.com/mit-nlp/MITIE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
 [NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.13.5) | Apache-2.0
+[OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2-1) | Apache-2.0
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.0-1) | MIT
 [SCS](https://github.com/cvxgrp/scs) | ✓ | | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
@@ -34,12 +35,10 @@ Some projects include shared libraries as part of their releases:
 - [LightGBM](https://github.com/microsoft/LightGBM/releases)
 - [ONNX Runtime](https://github.com/microsoft/onnxruntime/releases)
 - [OR-Tools](https://developers.google.com/optimization/install/cpp)
-- [OSQP](https://bintray.com/bstellato/generic/OSQP#files)
 
 Library | Linux ARM | Mac ARM | Files | License
 --- | --- | --- | --- | ---
 [LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.2.0) | MIT
-[OSQP](https://github.com/oxfordcontrol/osqp) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2) | Apache-2.0
 
 ## Details
 
