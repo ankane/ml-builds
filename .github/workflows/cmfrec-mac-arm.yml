@@ -20,7 +20,7 @@ jobs:
           cmake --build build
 
           mkdir dist
-          cp build/libcmfrec.so dist
+          cp build/libcmfrec.dylib dist
           cp LICENSE dist/LICENSE
           cp inst/COPYRIGHTS dist/COPYRIGHTS
         env:
