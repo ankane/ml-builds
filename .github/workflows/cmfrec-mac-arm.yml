@@ -10,20 +10,22 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - run: |
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
-          git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
-          make
-          mv libcmfrec.dylib libcmfrec.arm64.dylib
+          git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
+          cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64
+          cmake --build build
+
+          mkdir dist
+          cp build/libcmfrec.so dist
+          cp LICENSE dist/LICENSE
+          cp inst/COPYRIGHTS dist/COPYRIGHTS
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: libcmfrec.arm64.dylib
-          path: cmfrec/build/libcmfrec.arm64.dylib
+          name: cmfrec-3.4.2-aarch64-darwin
+          path: cmfrec/dist
