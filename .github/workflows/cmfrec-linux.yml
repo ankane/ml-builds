@@ -22,8 +22,8 @@ jobs:
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
-          ../../cmake-3.21.3-linux-x86_64/bin/cmake -B build
-          ../../cmake-3.21.3-linux-x86_64/bin/cmake --build build
+          ../cmake-3.21.3-linux-x86_64/bin/cmake -B build
+          ../cmake-3.21.3-linux-x86_64/bin/cmake --build build
 
           mkdir dist
           cp build/libcmfrec.so dist
