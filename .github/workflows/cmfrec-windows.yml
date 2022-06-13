@@ -10,18 +10,21 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - run: |
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
-          git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
-          cmake --build . --config Release
+          git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
+          cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
+
+          mkdir dist
+          cp build/Release/cmfrec.dll dist
+          cp LICENSE dist/LICENSE
+          cp inst/COPYRIGHTS dist/COPYRIGHTS
         shell: cmd
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: cmfrec.dll
-          path: cmfrec/build/Release/cmfrec.dll
+          name: cmfrec-3.4.2-x86_64-windows
+          path: cmfrec/dist
