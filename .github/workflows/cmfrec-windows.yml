@@ -17,7 +17,7 @@ jobs:
           cd cmfrec
           git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
           cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
-          cmake --build . --config Release
+          cmake --build build --config Release
 
           mkdir dist
           cp build/Release/cmfrec.dll dist
