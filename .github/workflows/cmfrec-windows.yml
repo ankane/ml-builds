@@ -23,7 +23,6 @@ jobs:
           cp build/Release/cmfrec.dll dist
           cp LICENSE dist/LICENSE
           cp inst/COPYRIGHTS dist/COPYRIGHTS
-        shell: cmd
       - uses: actions/upload-artifact@v3
         with:
           name: cmfrec-3.4.2-x86_64-windows
