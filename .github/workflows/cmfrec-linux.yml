@@ -21,12 +21,15 @@ jobs:
           tar xzf cmake-3.21.3-linux-x86_64.tar.gz
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
-          git checkout 9affd9adc908f7751c02af9a4ed12ccffe5ec080
-          mkdir build
-          cd build
-          ../../cmake-3.21.3-linux-x86_64/bin/cmake ..
-          make
-      - uses: actions/upload-artifact@v2
+          git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake -B build
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake --build build
+
+          mkdir dist
+          cp build/libcmfrec.so dist
+          cp LICENSE dist/LICENSE
+          cp inst/COPYRIGHTS dist/COPYRIGHTS
+      - uses: actions/upload-artifact@v3
         with:
-          name: libcmfrec.so
-          path: cmfrec/build/libcmfrec.so
+          name: cmfrec-3.4.2-x86_64-linux
+          path: cmfrec/dist
