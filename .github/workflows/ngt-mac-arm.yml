@@ -12,27 +12,35 @@ jobs:
   build:
     runs-on: macos-11
     steps:
+      # half license from https://sourceforge.net/p/half/code/HEAD/tree/tags/release-2.2.0/LICENSE.txt
+      # grep checks source code version
+      - uses: actions/checkout@v3
+      # from bottle JSON API: https://formulae.brew.sh/api/bottle/libomp.json
       - run: |
           cd /tmp
-          wget -q -O libomp.tar.gz --header="Authorization: Bearer QQ==" https://ghcr.io/v2/homebrew/core/libomp/blobs/sha256:9b4d71ac4e8a8b8d04819b1bfd155bcb266a9fdf1405b24c9e3801858b08d8bf
+          wget -q -O libomp.tar.gz --header="Authorization: Bearer QQ==" https://ghcr.io/v2/homebrew/core/libomp/blobs/sha256:cf1058b26e1a778e523d51562c99b4145aea1b1cb89f1c60b3315677a86c7a08
           tar xzf libomp.tar.gz
           sudo mkdir -p /opt/homebrew/opt
           sudo chown $USER /opt/homebrew/opt
-          cp -r libomp/12.0.1 /opt/homebrew/opt/libomp
+          cp -r libomp/14.0.0 /opt/homebrew/opt/libomp
           find /opt/homebrew
       - run: |
-          git clone --recursive --branch v1.13.5 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v1.14.6 https://github.com/yahoojapan/NGT
           cd NGT
-          mkdir build
-          cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
-          make -j4 || true
-          mv lib/NGT/libngt.1.13.5.dylib lib/NGT/libngt.arm64.dylib
-          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib lib/NGT/libngt.arm64.dylib
-          otool -L lib/NGT/libngt.arm64.dylib
+          cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
+          cmake --build build
+          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib build/lib/NGT/libngt.dylib
+          otool -L build/lib/NGT/libngt.dylib
+
+          grep -F "Version 2.2.0" lib/NGT/half.hpp
+
+          mkdir dist
+          cp build/lib/NGT/libngt.dylib dist
+          cp LICENSE dist/LICENSE-ngt.txt
+          cp ../extra/NGT/LICENSE-half.txt dist
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: libngt.arm64.dylib
-          path: NGT/build/lib/NGT/libngt.arm64.dylib
+          name: ngt-1.14.6-aarch64-darwin
+          path: NGT/dist
