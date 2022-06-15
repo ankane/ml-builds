@@ -13,17 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     container: ubuntu:16.04
     steps:
+      # half license from https://sourceforge.net/p/half/code/HEAD/tree/tags/release-2.2.0/LICENSE.txt
+      # grep checks source code version
       - run: |
           apt update
-          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
-          git clone --recursive --branch v1.13.5 https://github.com/yahoojapan/NGT
+          apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu cmake git
+
+          git clone --recursive --branch v1.14.6 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
-          make -j4
-          mv lib/NGT/libngt.so.1.13.5 lib/NGT/libngt.arm64.so
-      - uses: actions/upload-artifact@v2
+          make
+          cd ..
+
+          grep -F "Version 2.2.0" lib/NGT/half.hpp
+
+          mkdir dist
+          cp build/lib/NGT/libngt.so dist
+          cp LICENSE dist/LICENSE-ngt.txt
+          cp ../extra/NGT/LICENSE-half.txt dist
+      - uses: actions/upload-artifact@v3
         with:
-          name: libngt.arm64.so
-          path: NGT/build/lib/NGT/libngt.arm64.so
+          name: ngt-1.14.6-aarch64-linux
+          path: NGT/dist
