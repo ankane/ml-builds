@@ -13,7 +13,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          brew uninstall --ignore-dependencies libomp
           git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
           cd cmfrec
           git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
