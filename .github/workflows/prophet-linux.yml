@@ -19,13 +19,13 @@ jobs:
 
           pip3 install strata-cli
 
-          wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.0.tar.gz
-          tar xzf v1.0.tar.gz
-          cp prophet-1.0/python/stan/unix/prophet.stan .
+          wget -q https://github.com/facebook/prophet/archive/refs/tags/v1.1.tar.gz
+          tar xzf v1.1.tar.gz
+          cp prophet-1.1/python/stan/prophet.stan .
 
           strata prophet.stan -o dist
-          cp prophet-1.0/LICENSE dist/licenses/prophet-license.txt
+          cp prophet-1.1/LICENSE dist/licenses/prophet-license.txt
       - uses: actions/upload-artifact@v3
         with:
-          name: prophet-1.0-x86_64-linux
+          name: prophet-1.1-x86_64-linux
           path: dist
