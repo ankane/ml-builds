@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-2019
     steps:
       - run: |
-          git clone --recursive --branch v1.6.1 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.7.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -29,5 +29,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-1.6.1-x86_64-windows
+          name: xgboost-1.7.0-x86_64-windows
           path: xgboost/dist
