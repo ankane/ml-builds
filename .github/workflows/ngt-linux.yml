@@ -18,13 +18,13 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           apt update
-          apt install -y build-essential cmake git libblas-dev liblapack-dev
+          apt install -y build-essential cmake git
 
           git clone --recursive --branch v2.0.6 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_QBG_DISABLED=ON
           make
           cd ..
 
