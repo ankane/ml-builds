@@ -36,5 +36,5 @@ jobs:
           cp ../extra/NGT/LICENSE-half.txt dist
       - uses: actions/upload-artifact@v3
         with:
-          name: ngt-2.0.6-aarch64-linux
+          name: ngt-2.0.7-aarch64-linux
           path: NGT/dist
