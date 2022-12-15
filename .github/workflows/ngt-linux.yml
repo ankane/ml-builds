@@ -20,7 +20,7 @@ jobs:
           apt update
           apt install -y build-essential cmake git
 
-          git clone --recursive --branch v2.0.6 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v2.0.7 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
