@@ -44,8 +44,8 @@ Library | Linux ARM | Mac ARM | Files | License
 
 For portability:
 
-- Linux x86 libraries are built with `-march=x86-64` (when possible) and older `glibc` (todo: build with much older)
-- Linux ARM libraries are built with `-march=armv8-a` (when possible) and older `glibc` (todo: build with much older)
+- Linux x86 libraries are built with `-march=x86-64` (when possible) and older `glibc`
+- Linux ARM libraries are built with `-march=armv8-a` (when possible) and older `glibc`
 - Mac x86 libraries are built with `-march=nehalem` (same as Homebrew) and `MACOSX_DEPLOYMENT_TARGET=10.13`
 - Mac ARM libraries are built with `-march=armv8-a` and `MACOSX_DEPLOYMENT_TARGET=11.0`
 
