@@ -20,11 +20,12 @@ jobs:
           cd build
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
           make -j4
+          mv libtsne_multicore.so libtsne_multicore.openmp.dylib
           cd ..
           du -ah .
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v2
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v3
         with:
-          name: libtsne_multicore.dylib
-          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.so
+          name: libtsne_multicore.openmp.dylib
+          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.openmp.dylib

@@ -10,19 +10,31 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
+      # from bottle JSON API: https://formulae.brew.sh/api/bottle/libomp.json
+      - run: |
+          cd /tmp
+          wget -q -O libomp.tar.gz --header="Authorization: Bearer QQ==" https://ghcr.io/v2/homebrew/core/libomp/blobs/sha256:cf1058b26e1a778e523d51562c99b4145aea1b1cb89f1c60b3315677a86c7a08
+          tar xzf libomp.tar.gz
+          sudo mkdir -p /opt/homebrew/opt
+          sudo chown $USER /opt/homebrew/opt
+          cp -r libomp/14.0.0 /opt/homebrew/opt/libomp
+          find /opt/homebrew
       - run: |
           git clone --recursive --branch master https://github.com/ankane/Multicore-TSNE.git
           cd Multicore-TSNE/multicore_tsne
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4
+          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib libtsne_multicore.so
+          otool -L libtsne_multicore.so
           file libtsne_multicore.so
+          mv libtsne_multicore.so libtsne_multicore.arm64.openmp.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: libtsne_multicore.dylib
-          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.so
+          path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.arm64.openmp.dylib
