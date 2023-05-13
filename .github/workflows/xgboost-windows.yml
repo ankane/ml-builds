@@ -29,5 +29,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-1.7.0-x86_64-windows
+          name: xgboost-1.7.5-x86_64-windows
           path: xgboost/dist
