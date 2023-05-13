@@ -1,0 +1,36 @@
+name: XGBoost Linux musl
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/xgboost-linux-musl.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: alpine:3.15
+    steps:
+      - run: |
+          apk update
+          apk add build-base cmake git wget
+          git clone --recursive --branch v1.7.0 https://github.com/dmlc/xgboost
+          cd xgboost
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
+          make -j4
+          cd ..
+          du -ah .
+
+          mkdir dist
+          cp lib/libxgboost.so dist
+          cp LICENSE dist/LICENSE-xgboost.txt
+          cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
+          cp rabit/LICENSE dist/LICENSE-rabit.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: xgboost-1.7.0-x86_64-linux-musl
+          path: xgboost/dist
