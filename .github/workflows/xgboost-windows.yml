@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-2019
     steps:
       - run: |
-          git clone --recursive --branch v1.7.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v1.7.5 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
