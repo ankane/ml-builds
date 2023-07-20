@@ -16,7 +16,7 @@ jobs:
       - run: |
           apt update
           apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
-          git clone --recursive --branch v3.3.5 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v4.0.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
@@ -24,7 +24,7 @@ jobs:
           make -j4
           cd ..
           mv lib_lightgbm.so lib_lightgbm.arm64.so
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: lib_lightgbm.arm64.so
           path: LightGBM/lib_lightgbm.arm64.so
