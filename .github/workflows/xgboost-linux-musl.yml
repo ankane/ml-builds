@@ -32,5 +32,5 @@ jobs:
           cp rabit/LICENSE dist/LICENSE-rabit.txt
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-1.7.5-x86_64-linux-musl
+          name: xgboost-2.0.0-x86_64-linux-musl
           path: xgboost/dist
