@@ -22,7 +22,7 @@ jobs:
           cp -r libomp/14.0.0 /opt/homebrew/opt/libomp
           find /opt/homebrew
       - run: |
-          git clone --recursive --branch v1.7.5 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v2.0.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
