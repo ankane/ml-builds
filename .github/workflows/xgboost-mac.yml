@@ -29,7 +29,7 @@ jobs:
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
           cp rabit/LICENSE dist/LICENSE-rabit.txt
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
+          MACOSX_DEPLOYMENT_TARGET: 10.15
       - uses: actions/upload-artifact@v3
         with:
           name: xgboost-1.7.5-x86_64-darwin
