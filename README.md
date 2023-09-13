@@ -16,7 +16,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.1) | MIT
 [SCS](https://github.com/cvxgrp/scs) | ✓ | | ✓ | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/scs-2.0.2) | MIT
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
-[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-1.7.5) | Apache-2.0
+[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-2.0.0) | Apache-2.0
 [xLearn](https://github.com/aksnzhy/xlearn) | ✓ | n/a | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
 [Argon2](https://github.com/P-H-C/phc-winner-argon2) (non-ML) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/argon2-20190702) | CC0-1.0
 
@@ -38,7 +38,7 @@ Some projects include shared libraries as part of their releases:
 
 Library | Linux ARM | Mac ARM | Files | License
 --- | --- | --- | --- | ---
-[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-3.3.5) | MIT
+[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-4.1.0) | MIT
 
 ## Details
 
