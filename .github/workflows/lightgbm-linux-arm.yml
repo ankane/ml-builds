@@ -16,7 +16,7 @@ jobs:
       - run: |
           apt update
           apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
-          git clone --recursive --branch v4.0.0 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v4.1.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
