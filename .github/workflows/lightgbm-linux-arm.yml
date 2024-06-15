@@ -18,7 +18,7 @@ jobs:
           apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git make wget
           wget -q https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-linux-x86_64.tar.gz
           tar xzf cmake-3.28.1-linux-x86_64.tar.gz
-          git clone --recursive --branch v4.3.0 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v4.4.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
