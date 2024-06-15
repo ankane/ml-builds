@@ -10,22 +10,14 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-14
     steps:
-      - run: |
-          cd /tmp
-          wget -q -O libomp.tar.gz --header="Authorization: Bearer QQ==" https://ghcr.io/v2/homebrew/core/libomp/blobs/sha256:9b4d71ac4e8a8b8d04819b1bfd155bcb266a9fdf1405b24c9e3801858b08d8bf
-          tar xzf libomp.tar.gz
-          sudo mkdir -p /opt/homebrew/opt
-          sudo chown $USER /opt/homebrew/opt
-          cp -r libomp/12.0.1 /opt/homebrew/opt/libomp
-          find /opt/homebrew
       - run: |
           git clone --recursive --branch v4.4.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
-          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
+          cmake .. -DAPPLE_OUTPUT_DYLIB=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4
           mv ../lib_lightgbm.dylib ../lib_lightgbm.arm64.dylib
           install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib ../lib_lightgbm.arm64.dylib
