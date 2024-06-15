@@ -24,7 +24,7 @@ jobs:
           otool -L ../lib_lightgbm.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: lib_lightgbm.arm64.dylib
           path: LightGBM/lib_lightgbm.arm64.dylib
