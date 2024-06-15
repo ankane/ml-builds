@@ -13,6 +13,7 @@ jobs:
     runs-on: macos-14
     steps:
       - run: |
+          brew install libomp
           git clone --recursive --branch v4.4.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
