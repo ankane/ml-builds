@@ -19,7 +19,7 @@ jobs:
           apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git wget
           wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
           tar xzf cmake-3.21.3-linux-x86_64.tar.gz
-          git clone --recursive --branch v2.0.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v2.1.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -35,5 +35,5 @@ jobs:
           cp rabit/LICENSE dist/LICENSE-rabit.txt
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-2.0.0-aarch64-linux
+          name: xgboost-2.1.0-aarch64-linux
           path: xgboost/dist

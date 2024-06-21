@@ -10,23 +10,15 @@ on:
 
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-14
     steps:
-      # from bottle JSON API: https://formulae.brew.sh/api/bottle/libomp.json
       - run: |
-          cd /tmp
-          wget -q -O libomp.tar.gz --header="Authorization: Bearer QQ==" https://ghcr.io/v2/homebrew/core/libomp/blobs/sha256:cf1058b26e1a778e523d51562c99b4145aea1b1cb89f1c60b3315677a86c7a08
-          tar xzf libomp.tar.gz
-          sudo mkdir -p /opt/homebrew/opt
-          sudo chown $USER /opt/homebrew/opt
-          cp -r libomp/14.0.0 /opt/homebrew/opt/libomp
-          find /opt/homebrew
-      - run: |
-          git clone --recursive --branch v2.0.0 https://github.com/dmlc/xgboost
+          brew install cmake libomp
+          git clone --recursive --branch v2.1.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_OSX_ARCHITECTURES=arm64 -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           make -j4
           install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib ../lib/libxgboost.dylib
           otool -L ../lib/libxgboost.dylib
@@ -41,5 +33,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-2.0.0-aarch64-darwin
+          name: xgboost-2.1.0-aarch64-darwin
           path: xgboost/dist
