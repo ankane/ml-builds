@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           brew install libomp
-          git clone --recursive --branch v4.4.0 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v4.5.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
