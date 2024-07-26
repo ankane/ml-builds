@@ -21,13 +21,11 @@ jobs:
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
-          du -ah .
 
           mkdir dist
           cp lib/libxgboost.dylib dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-          cp rabit/LICENSE dist/LICENSE-rabit.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.15
       - uses: actions/upload-artifact@v3

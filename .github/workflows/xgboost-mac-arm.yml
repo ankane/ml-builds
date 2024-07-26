@@ -28,7 +28,6 @@ jobs:
           cp lib/libxgboost.dylib dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-          cp rabit/LICENSE dist/LICENSE-rabit.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v3

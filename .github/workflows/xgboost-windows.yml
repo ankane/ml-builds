@@ -25,7 +25,6 @@ jobs:
           cp lib/xgboost.dll dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-          cp rabit/LICENSE dist/LICENSE-rabit.txt
         shell: cmd
       - uses: actions/upload-artifact@v3
         with:

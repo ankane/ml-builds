@@ -26,13 +26,11 @@ jobs:
           ../../cmake-3.21.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
           make -j4
           cd ..
-          du -ah .
 
           mkdir dist
           cp lib/libxgboost.so dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-          cp rabit/LICENSE dist/LICENSE-rabit.txt
       - uses: actions/upload-artifact@v3
         with:
           name: xgboost-2.1.0-aarch64-linux

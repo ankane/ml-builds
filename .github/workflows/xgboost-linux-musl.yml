@@ -23,13 +23,11 @@ jobs:
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
-          du -ah .
 
           mkdir dist
           cp lib/libxgboost.so dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-          cp rabit/LICENSE dist/LICENSE-rabit.txt
       - uses: actions/upload-artifact@v3
         with:
           name: xgboost-2.1.0-x86_64-linux-musl
