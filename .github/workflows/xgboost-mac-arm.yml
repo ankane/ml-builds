@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v2.1.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v2.1.1 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -32,5 +32,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v3
         with:
-          name: xgboost-2.1.0-aarch64-darwin
+          name: xgboost-2.1.1-aarch64-darwin
           path: xgboost/dist
