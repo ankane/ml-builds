@@ -1,0 +1,59 @@
+name: RDKit Linux
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/rdkit-linux.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ubuntu:22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          export DEBIAN_FRONTEND=noninteractive
+          apt update
+          apt install -y cmake build-essential git libboost-dev libboost-program-options-dev
+          git clone --recursive --branch Release_2024_03_5 https://github.com/rdkit/rdkit.git
+          cd rdkit
+          git apply ../extra/RDKit/inchi.patch
+          cmake -S . -B build \
+            -DRDK_BUILD_CFFI_LIB=ON \
+            -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
+            -DRDK_BUILD_CPP_TESTS=OFF \
+            -DRDK_BUILD_DESCRIPTORS3D=OFF \
+            -DRDK_BUILD_FREETYPE_SUPPORT=OFF \
+            -DRDK_BUILD_INCHI_SUPPORT=OFF \
+            -DRDK_BUILD_MAEPARSER_SUPPORT=OFF \
+            -DRDK_BUILD_PYTHON_WRAPPERS=OFF \
+            -DRDK_BUILD_QT_SUPPORT=OFF \
+            -DRDK_BUILD_SLN_SUPPORT=OFF \
+            -DRDK_OPTIMIZE_POPCNT=OFF \
+            -DRDK_TEST_MMFF_COMPLIANCE=OFF \
+            -DRDK_TEST_MULTITHREADED=OFF \
+            -DRDK_USE_BOOST_IOSTREAMS=OFF \
+            -DRDK_USE_BOOST_SERIALIZATION=OFF \
+            -DRDK_USE_BOOST_STACKTRACE=OFF \
+            -DRDK_USE_URF=OFF
+          cmake --build build --parallel 4
+
+          mkdir dist
+          ls -l build/lib
+          cp build/lib/librdkitcffi.so.1.2024.03.5 dist/librdkitcffi.so
+          cp license.txt dist/rdkit-license.txt
+          cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
+          cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
+          # Boost does not require license file for machine-executable object code
+          # Eigen not used if -DRDK_BUILD_DESCRIPTORS3D=OFF
+          # InChI not used if -DRDK_BUILD_INCHI_SUPPORT=OFF
+          # FreeType not used if -DRDK_BUILD_FREETYPE_SUPPORT=OFF
+          # CoordGen (coordgen and maeparser) not used if both -DRDK_BUILD_COORDGEN_SUPPORT=OFF and -DRDK_BUILD_MAEPARSER_SUPPORT=OFF
+          # RingDecomposerLib not used if -DRDK_USE_URF=OFF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rdkit-2024.03.5-x86_64-linux
+          path: rdkit/dist

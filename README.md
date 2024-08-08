@@ -19,6 +19,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-2.0.0) | Apache-2.0
 [xLearn](https://github.com/aksnzhy/xlearn) | ✓ | n/a | ✓ | n/a | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xlearn-0.4.4) | Apache-2.0
 [Argon2](https://github.com/P-H-C/phc-winner-argon2) (non-ML) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/argon2-20190702) | CC0-1.0
+[RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2024.03.5) | BSD-3-Clause
 
 Notes
 
