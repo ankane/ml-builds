@@ -18,9 +18,9 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y cmake build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git libboost-dev libboost-program-options-dev
-          git clone --recursive --branch Release_2024_03_5 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2024_03_6 https://github.com/rdkit/rdkit.git
           cd rdkit
-          git apply ../extra/RDKit/inchi.patch
+          git apply ../extra/RDKit/boost.patch
           cmake -S . -B build \
             -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY \
             -DRDK_BUILD_CFFI_LIB=ON \
@@ -44,7 +44,7 @@ jobs:
 
           mkdir dist
           ls -l build/lib
-          cp build/lib/librdkitcffi.so.1.2024.03.5 dist/librdkitcffi.so
+          cp build/lib/librdkitcffi.so.1.2024.03.6 dist/librdkitcffi.so
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
@@ -56,5 +56,5 @@ jobs:
           # RingDecomposerLib not used if -DRDK_USE_URF=OFF
       - uses: actions/upload-artifact@v4
         with:
-          name: rdkit-2024.03.5-aarch64-linux
+          name: rdkit-2024.03.6-aarch64-linux
           path: rdkit/dist
