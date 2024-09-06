@@ -12,10 +12,12 @@ jobs:
   build:
     runs-on: macos-13
     steps:
+      - uses: actions/checkout@v4
       - run: |
           brew install boost
-          git clone --recursive --branch Release_2024_03_6 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2024_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
+          git apply ../extra/RDKit/inchi.patch
           cmake -S . -B build \
             -DRDK_BUILD_CFFI_LIB=ON \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
@@ -37,7 +39,7 @@ jobs:
           cmake --build build --parallel 4
 
           mkdir dist
-          cp build/lib/librdkitcffi.2024.03.6.dylib dist/librdkitcffi.dylib
+          cp build/lib/librdkitcffi.2024.03.5.dylib dist/librdkitcffi.dylib
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
@@ -51,5 +53,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v4
         with:
-          name: rdkit-2024.03.6-x86_64-darwin
+          name: rdkit-2024.03.5-x86_64-darwin
           path: rdkit/dist

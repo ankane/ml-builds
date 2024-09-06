@@ -12,12 +12,14 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
+      - uses: actions/checkout@v4
       - run: |
           curl -L -o boost.7z https://github.com/boostorg/boost/releases/download/boost-1.85.0/boost-1.85.0-b2-nodocs.7z
           7z x boost.7z
 
-          git clone --recursive --branch Release_2024_03_6 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2024_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
+          git apply ../extra/RDKit/inchi.patch
           ls ../boost-1.85.0
           cmake -S . -B build -DBoost_ROOT=../boost-1.85.0 -DCMAKE_POLICY_DEFAULT_CMP0167=OLD -DCMAKE_BUILD_TYPE=Release -DRDK_BUILD_CFFI_LIB=ON -DRDK_BUILD_COORDGEN_SUPPORT=OFF -DRDK_BUILD_CPP_TESTS=OFF -DRDK_BUILD_DESCRIPTORS3D=OFF -DRDK_BUILD_FREETYPE_SUPPORT=OFF -DRDK_BUILD_INCHI_SUPPORT=OFF -DRDK_BUILD_MAEPARSER_SUPPORT=OFF -DRDK_BUILD_PYTHON_WRAPPERS=OFF -DRDK_BUILD_QT_SUPPORT=OFF -DRDK_BUILD_SLN_SUPPORT=OFF -DRDK_OPTIMIZE_POPCNT=OFF -DRDK_TEST_MMFF_COMPLIANCE=OFF -DRDK_TEST_MULTITHREADED=OFF -DRDK_USE_BOOST_IOSTREAMS=OFF -DRDK_USE_BOOST_SERIALIZATION=OFF -DRDK_USE_BOOST_STACKTRACE=OFF -DRDK_USE_URF=OFF
           cmake --build build --config Release --parallel 4
@@ -31,5 +33,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v4
         with:
-          name: rdkit-2024.03.6-x86_64-windows
+          name: rdkit-2024.03.5-x86_64-windows
           path: rdkit/dist
