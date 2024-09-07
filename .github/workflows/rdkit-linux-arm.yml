@@ -22,6 +22,7 @@ jobs:
           cd rdkit
           git apply ../extra/RDKit/boost.patch
           cmake -S . -B build \
+            -DBoost_DIR=/usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0 \
             -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY \
             -DRDK_BUILD_CFFI_LIB=ON \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
