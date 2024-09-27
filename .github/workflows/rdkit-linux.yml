@@ -18,9 +18,8 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y cmake build-essential git libboost-dev libboost-program-options-dev
-          git clone --recursive --branch Release_2024_03_6 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2024_09_1 https://github.com/rdkit/rdkit.git
           cd rdkit
-          git apply ../extra/RDKit/boost.patch
           cmake -S . -B build \
             -DRDK_BUILD_CFFI_LIB=ON \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
@@ -43,7 +42,7 @@ jobs:
 
           mkdir dist
           ls -l build/lib
-          cp build/lib/librdkitcffi.so.1.2024.03.6 dist/librdkitcffi.so
+          cp build/lib/librdkitcffi.so.1.2024.09.1 dist/librdkitcffi.so
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
@@ -55,5 +54,5 @@ jobs:
           # RingDecomposerLib not used if -DRDK_USE_URF=OFF
       - uses: actions/upload-artifact@v4
         with:
-          name: rdkit-2024.03.6-x86_64-linux
+          name: rdkit-2024.09.1-x86_64-linux
           path: rdkit/dist
