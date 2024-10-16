@@ -28,7 +28,7 @@ jobs:
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.15
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: xgboost-2.1.1-x86_64-darwin
           path: xgboost/dist
