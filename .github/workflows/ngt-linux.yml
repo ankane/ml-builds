@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    container: ubuntu:20.04
     steps:
       # half license from https://sourceforge.net/p/half/code/HEAD/tree/tags/release-2.2.0/LICENSE.txt
       # grep checks source code version
