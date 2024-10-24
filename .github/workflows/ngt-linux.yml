@@ -17,6 +17,7 @@ jobs:
       # grep checks source code version
       - uses: actions/checkout@v4
       - run: |
+          export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y build-essential cmake git
 
