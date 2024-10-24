@@ -14,10 +14,10 @@ jobs:
     steps:
       # half license from https://sourceforge.net/p/half/code/HEAD/tree/tags/release-2.2.0/LICENSE.txt
       # grep checks source code version
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: |
           brew list libomp
-          git clone --recursive --branch v2.0.12 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v2.2.4 https://github.com/yahoojapan/NGT
           cd NGT
           cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_QBG_DISABLED=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp/lib/libomp.dylib
           cmake --build build
@@ -30,7 +30,7 @@ jobs:
           cp ../extra/NGT/LICENSE-half.txt dist
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
-          name: ngt-2.0.12-x86_64-darwin
+          name: ngt-2.2.4-x86_64-darwin
           path: NGT/dist
