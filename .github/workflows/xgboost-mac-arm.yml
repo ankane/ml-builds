@@ -32,5 +32,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v4
         with:
-          name: xgboost-2.1.1-aarch64-darwin
+          name: xgboost-2.1.2-aarch64-darwin
           path: xgboost/dist

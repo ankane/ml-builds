@@ -33,5 +33,5 @@ jobs:
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: xgboost-2.1.1-aarch64-linux
+          name: xgboost-2.1.2-aarch64-linux
           path: xgboost/dist
