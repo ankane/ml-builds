@@ -11,16 +11,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    container: ubuntu:20.04
     steps:
       - run: |
+          export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install -y cmake build-essential git
-          git clone --recursive --branch v0.6.2 https://github.com/oxfordcontrol/osqp.git
+          apt install -y build-essential git wget
+          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
+          tar xzf cmake-3.21.3-linux-x86_64.tar.gz
+          git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
           cd osqp
           mkdir build
           cd build
-          cmake .. -DENABLE_MKL_PARDISO=OFF -DCMAKE_VERBOSE_MAKEFILE=ON
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
@@ -29,9 +32,9 @@ jobs:
           cp build/out/libosqp.so dist
           cp LICENSE dist/LICENSE-osqp.txt
           cp NOTICE dist/NOTICE-osqp.txt
-          cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
-          cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
-      - uses: actions/upload-artifact@v3
+          cp algebra/_common/lin_sys/qdldl/amd/LICENSE dist/LICENSE-amd.txt
+          cp build/_deps/qdldl-src/LICENSE dist/LICENSE-qdldl.txt
+      - uses: actions/upload-artifact@v4
         with:
-          name: osqp-0.6.2-x86_64-linux
+          name: osqp-1.0.0-x86_64-linux
           path: osqp/dist
