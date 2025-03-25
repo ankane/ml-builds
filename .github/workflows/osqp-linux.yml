@@ -16,12 +16,14 @@ jobs:
       - run: |
           export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install -y cmake build-essential git
+          apt install -y build-essential git
+          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
+          tar xzf cmake-3.21.3-linux-x86_64.tar.gz
           git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
           cd osqp
           mkdir build
           cd build
-          cmake .. -DENABLE_MKL_PARDISO=OFF -DCMAKE_VERBOSE_MAKEFILE=ON
+          ../../cmake-3.21.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
           du -ah .
@@ -30,7 +32,7 @@ jobs:
           cp build/out/libosqp.so dist
           cp LICENSE dist/LICENSE-osqp.txt
           cp NOTICE dist/NOTICE-osqp.txt
-          cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
+          cp algebra/_common/lin_sys/qdldl/amd/LICENSE dist/LICENSE-amd.txt
           cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
       - uses: actions/upload-artifact@v4
         with:
