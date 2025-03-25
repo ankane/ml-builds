@@ -20,7 +20,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libmf.dylib
           path: libmf/libmf.2.dylib

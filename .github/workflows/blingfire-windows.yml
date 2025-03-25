@@ -21,7 +21,7 @@ jobs:
           cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release
           cmake --build . --config Release
         shell: cmd
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: blingfiretokdll.dll
           path: BlingFire/build/Release/blingfiretokdll.dll

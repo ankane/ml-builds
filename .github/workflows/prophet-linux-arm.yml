@@ -25,7 +25,7 @@ jobs:
 
           strata prophet.stan -o dist --cross-compile
           cp prophet-1.1/LICENSE dist/licenses/prophet-license.txt
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: prophet-1.1-aarch64-linux
           path: dist

@@ -29,7 +29,7 @@ jobs:
           cp build/libcmfrec.so dist
           cp LICENSE dist/LICENSE
           cp inst/COPYRIGHTS dist/COPYRIGHTS
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: cmfrec-3.4.2-x86_64-linux
           path: cmfrec/dist

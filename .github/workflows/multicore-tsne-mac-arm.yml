@@ -34,7 +34,7 @@ jobs:
           mv libtsne_multicore.so libtsne_multicore.arm64.openmp.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: libtsne_multicore.arm64.openmp.dylib
           path: Multicore-TSNE/multicore_tsne/build/libtsne_multicore.arm64.openmp.dylib

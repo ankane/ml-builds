@@ -24,7 +24,7 @@ jobs:
           cp LICENSE dist/LICENSE
           cp inst/COPYRIGHTS dist/COPYRIGHTS
         shell: cmd
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: cmfrec-3.4.2-x86_64-windows
           path: cmfrec/dist

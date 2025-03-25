@@ -24,11 +24,11 @@ jobs:
           make
           cd ..
           du -ah .
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libfaiss.so
           path: faiss/libfaiss.so
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libfaiss_c.so
           path: faiss/c_api/libfaiss_c.so

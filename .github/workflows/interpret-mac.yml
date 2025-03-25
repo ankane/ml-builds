@@ -19,7 +19,7 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: lib_ebm_native_mac_x64.dylib
           path: interpret/staging/lib_ebm_native_mac_x64.dylib

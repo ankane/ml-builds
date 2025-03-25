@@ -20,7 +20,7 @@ jobs:
           cd phc-winner-argon2
           make CC=aarch64-linux-gnu-gcc OPTTARGET=armv8-a
           mv libargon2.so.1 libargon2.arm64.so
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libargon2.arm64.so
           path: phc-winner-argon2/libargon2.arm64.so

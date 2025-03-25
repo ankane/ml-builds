@@ -24,7 +24,7 @@ jobs:
           file lib/libxlearn_api.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libxlearn_api.dylib
           path: xlearn/build/lib/libxlearn_api.dylib

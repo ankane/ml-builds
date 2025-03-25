@@ -22,7 +22,7 @@ jobs:
           mv libblingfiretokdll.dylib libblingfiretokdll.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libblingfiretokdll.arm64.dylib
           path: BlingFire/build/libblingfiretokdll.arm64.dylib

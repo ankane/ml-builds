@@ -23,7 +23,7 @@ jobs:
           cp prophet-1.1/LICENSE dist/licenses/prophet-license.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: prophet-1.1-aarch64-darwin
           path: dist

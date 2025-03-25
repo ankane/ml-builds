@@ -20,7 +20,7 @@ jobs:
           cmake .. -G "Visual Studio 16 2019" -A x64
           cmake --build . --config Release
         shell: cmd
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: mitie.dll
           path: MITIE/mitielib/build/Release/mitie.dll

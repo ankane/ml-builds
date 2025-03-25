@@ -20,7 +20,7 @@ jobs:
           cd phc-winner-argon2
           make OPTTARGET=x86-64
           mv libargon2.so.1 libargon2.so
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libargon2.so
           path: phc-winner-argon2/libargon2.so

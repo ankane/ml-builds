@@ -26,11 +26,11 @@ jobs:
           du -ah .
         env:
           MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libfaiss.dylib
           path: faiss/libfaiss.dylib
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: libfaiss_c.dylib
           path: faiss/c_api/libfaiss_c.dylib
