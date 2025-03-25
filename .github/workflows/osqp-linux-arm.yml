@@ -31,7 +31,7 @@ jobs:
           cp NOTICE dist/NOTICE-osqp.txt
           cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
           cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: osqp-1.0.0-aarch64-linux
           path: osqp/dist
