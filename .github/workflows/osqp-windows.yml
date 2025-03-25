@@ -25,8 +25,8 @@ jobs:
           cp build/out/Release/osqp.dll dist
           cp LICENSE dist/LICENSE-osqp.txt
           cp NOTICE dist/NOTICE-osqp.txt
-          cp lin_sys/direct/qdldl/amd/LICENSE dist/LICENSE-amd.txt
-          cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
+          cp algebra/_common/lin_sys/qdldl/amd/LICENSE dist/LICENSE-amd.txt
+          cp build/_deps/qdldl-src/LICENSE dist/LICENSE-qdldl.txt
         shell: cmd
       - uses: actions/upload-artifact@v4
         with:
