@@ -14,6 +14,7 @@ jobs:
     container: ubuntu:20.04
     steps:
       - run: |
+          export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y cmake build-essential git
           git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
