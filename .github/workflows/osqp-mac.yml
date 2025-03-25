@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: |
-          git clone --recursive --branch v0.6.2 https://github.com/oxfordcontrol/osqp.git
+          git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
           cd osqp
           mkdir build
           cd build
@@ -32,5 +32,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 10.13
       - uses: actions/upload-artifact@v3
         with:
-          name: osqp-0.6.2-x86_64-darwin
+          name: osqp-1.0.0-x86_64-darwin
           path: osqp/dist

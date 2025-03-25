@@ -16,7 +16,7 @@ jobs:
       - run: |
           apt update
           apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
-          git clone --recursive --branch v0.6.2 https://github.com/oxfordcontrol/osqp.git
+          git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
           cd osqp
           mkdir build
           cd build
@@ -33,5 +33,5 @@ jobs:
           cp lin_sys/direct/qdldl/qdldl_sources/LICENSE dist/LICENSE-qdldl.txt
       - uses: actions/upload-artifact@v3
         with:
-          name: osqp-0.6.2-aarch64-linux
+          name: osqp-1.0.0-aarch64-linux
           path: osqp/dist
