@@ -39,7 +39,7 @@ Some projects include shared libraries as part of their releases:
 
 Library | Linux ARM | Mac ARM | Files | License
 --- | --- | --- | --- | ---
-[LightGBM](https://github.com/Microsoft/LightGBM) | | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-4.1.0) | MIT
+[LightGBM](https://github.com/Microsoft/LightGBM) | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/lightgbm-4.6.0) | MIT
 
 ## Details
 
