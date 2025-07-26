@@ -25,7 +25,7 @@ jobs:
           ./bootstrap.sh
       - run: |
           cd boost-1.88.0
-          b2 --with-headers --with-program_options
+          ./b2 --with-headers --with-program_options
       - run: |
           git clone --recursive --branch Release_2025_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
