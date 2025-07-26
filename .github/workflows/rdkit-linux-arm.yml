@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          export DEBIAN_FRONTEND=noninteractive
+          apt update
+          apt install -y cmake build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
+      - run: |
           curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-b2-nodocs.tar.gz
           tar xzf boost.tar.gz
           cd boost-1.88.0
@@ -23,9 +27,6 @@ jobs:
           cd boost-1.88.0
           b2 --with-headers --with-program_options
       - run: |
-          export DEBIAN_FRONTEND=noninteractive
-          apt update
-          apt install -y cmake build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git
           git clone --recursive --branch Release_2025_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
           cmake -S . -B build \
