@@ -10,14 +10,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     container: ubuntu:22.04
     steps:
       - uses: actions/checkout@v4
       - run: |
           export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install -y cmake curl build-essential gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git zlib1g-dev
+          apt install -y cmake curl build-essential git zlib1g-dev
       - run: |
           curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-b2-nodocs.tar.gz
           tar xzf boost.tar.gz
