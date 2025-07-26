@@ -15,13 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-b2-nodocs.tar.gz
+          tar xzf boost.tar.gz
+          cd boost-1.88.0
+          bootstrap
+      - run: |
+          cd boost-1.88.0
+          b2 --with-headers --with-program_options
+      - run: |
           export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install -y cmake build-essential git libboost-dev libboost-program-options-dev
+          apt install -y cmake build-essential git
           git clone --recursive --branch Release_2025_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
           cmake -S . -B build \
+            -DBoost_DIR=../boost-1.88.0/stage/lib/cmake/Boost-1.88.0 \
             -DRDK_BUILD_CFFI_LIB=ON \
+            -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
             -DRDK_BUILD_CPP_TESTS=OFF \
             -DRDK_BUILD_DESCRIPTORS3D=OFF \

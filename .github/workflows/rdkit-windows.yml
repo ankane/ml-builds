@@ -14,19 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          curl -L -o boost.7z https://github.com/boostorg/boost/releases/download/boost-1.85.0/boost-1.85.0-b2-nodocs.7z
+          curl -L -o boost.7z https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-b2-nodocs.7z
           7z x boost.7z
-          cd boost-1.85.0
+          cd boost-1.88.0
           bootstrap
         shell: cmd
       - run: |
-          cd boost-1.85.0
+          cd boost-1.88.0
           b2 --with-headers --with-program_options
         shell: cmd
       - run: |
           git clone --recursive --branch Release_2025_03_5 https://github.com/rdkit/rdkit.git
           cd rdkit
-          cmake -S . -B build -DBoost_DIR=../boost-1.85.0/stage/lib/cmake/Boost-1.85.0 -DCMAKE_BUILD_TYPE=Release -DRDK_BUILD_CFFI_LIB=ON -DRDK_BUILD_COORDGEN_SUPPORT=OFF -DRDK_BUILD_CPP_TESTS=OFF -DRDK_BUILD_DESCRIPTORS3D=OFF -DRDK_BUILD_FREETYPE_SUPPORT=OFF -DRDK_BUILD_INCHI_SUPPORT=OFF -DRDK_BUILD_MAEPARSER_SUPPORT=OFF -DRDK_BUILD_PYTHON_WRAPPERS=OFF -DRDK_BUILD_QT_SUPPORT=OFF -DRDK_BUILD_SLN_SUPPORT=OFF -DRDK_OPTIMIZE_POPCNT=OFF -DRDK_TEST_MMFF_COMPLIANCE=OFF -DRDK_TEST_MULTITHREADED=OFF -DRDK_USE_BOOST_IOSTREAMS=OFF -DRDK_USE_BOOST_SERIALIZATION=OFF -DRDK_USE_BOOST_STACKTRACE=OFF -DRDK_USE_URF=OFF
+          cmake -S . -B build -DBoost_DIR=../boost-1.88.0/stage/lib/cmake/Boost-1.88.0 -DCMAKE_BUILD_TYPE=Release -DRDK_BUILD_CFFI_LIB=ON -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF -DRDK_BUILD_COORDGEN_SUPPORT=OFF -DRDK_BUILD_CPP_TESTS=OFF -DRDK_BUILD_DESCRIPTORS3D=OFF -DRDK_BUILD_FREETYPE_SUPPORT=OFF -DRDK_BUILD_INCHI_SUPPORT=OFF -DRDK_BUILD_MAEPARSER_SUPPORT=OFF -DRDK_BUILD_PYTHON_WRAPPERS=OFF -DRDK_BUILD_QT_SUPPORT=OFF -DRDK_BUILD_SLN_SUPPORT=OFF -DRDK_OPTIMIZE_POPCNT=OFF -DRDK_TEST_MMFF_COMPLIANCE=OFF -DRDK_TEST_MULTITHREADED=OFF -DRDK_USE_BOOST_IOSTREAMS=OFF -DRDK_USE_BOOST_SERIALIZATION=OFF -DRDK_USE_BOOST_STACKTRACE=OFF -DRDK_USE_URF=OFF
           cmake --build build --config Release --parallel 4
 
           mkdir dist

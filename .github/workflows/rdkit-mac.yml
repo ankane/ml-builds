@@ -19,6 +19,7 @@ jobs:
           cd rdkit
           cmake -S . -B build \
             -DRDK_BUILD_CFFI_LIB=ON \
+            -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
             -DRDK_BUILD_CPP_TESTS=OFF \
             -DRDK_BUILD_DESCRIPTORS3D=OFF \
