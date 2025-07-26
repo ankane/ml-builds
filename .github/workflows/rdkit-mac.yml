@@ -49,6 +49,7 @@ jobs:
           # FreeType not used if -DRDK_BUILD_FREETYPE_SUPPORT=OFF
           # CoordGen (coordgen and maeparser) not used if both -DRDK_BUILD_COORDGEN_SUPPORT=OFF and -DRDK_BUILD_MAEPARSER_SUPPORT=OFF
           # RingDecomposerLib not used if -DRDK_USE_URF=OFF
+          # ChemDraw not used if -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v4
