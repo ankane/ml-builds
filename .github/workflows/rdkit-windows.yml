@@ -30,7 +30,7 @@ jobs:
           cmake --build build --config Release --parallel 4
 
           mkdir dist
-          ls build/lib/Release
+          ls -R build
           cp build/lib/Release/rdkitcffi.dll dist/rdkitcffi.dll
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
