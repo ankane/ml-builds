@@ -30,8 +30,8 @@ jobs:
           cmake --build build --config Release --parallel 4
 
           mkdir dist
-          ls build/bin/Release
-          cp build/bin/Release/rdkitcffi.dll dist/rdkitcffi.dll
+          ls build/lib/Release
+          cp build/lib/Release/rdkitcffi.dll dist/rdkitcffi.dll
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
