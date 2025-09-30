@@ -30,11 +30,12 @@ jobs:
           cmake --build build --config Release --parallel 4
 
           mkdir dist
+          ls -R build
           ls build/lib/Release
           cp build/lib/Release/rdkitcffi.dll dist/rdkitcffi.dll
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
-          cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
+          cp External/rapidjson/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
         shell: cmd
       - uses: actions/upload-artifact@v4
         with:

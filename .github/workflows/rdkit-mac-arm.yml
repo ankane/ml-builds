@@ -42,7 +42,7 @@ jobs:
           cp build/lib/librdkitcffi.2025.09.1.dylib dist/librdkitcffi.dylib
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
-          cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
+          cp External/rapidjson/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
           # Boost does not require license file for machine-executable object code
           # Eigen not used if -DRDK_BUILD_DESCRIPTORS3D=OFF
           # InChI not used if -DRDK_BUILD_INCHI_SUPPORT=OFF
