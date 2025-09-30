@@ -19,18 +19,18 @@ jobs:
           apt update
           apt install -y cmake curl build-essential git zlib1g-dev
       - run: |
-          curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.88.0/boost-1.88.0-b2-nodocs.tar.gz
+          curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.89.0/boost-1.89.0-b2-nodocs.tar.gz
           tar xzf boost.tar.gz
-          cd boost-1.88.0
+          cd boost-1.89.0
           ./bootstrap.sh
       - run: |
-          cd boost-1.88.0
+          cd boost-1.89.0
           ./b2 --with-headers --with-program_options
       - run: |
-          git clone --recursive --branch Release_2025_03_6 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2025_09_1 https://github.com/rdkit/rdkit.git
           cd rdkit
           cmake -S . -B build \
-            -DBoost_DIR=../boost-1.88.0/stage/lib/cmake/Boost-1.88.0 \
+            -DBoost_DIR=../boost-1.89.0/stage/lib/cmake/Boost-1.89.0 \
             -DRDK_BUILD_CFFI_LIB=ON \
             -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
@@ -53,7 +53,7 @@ jobs:
 
           mkdir dist
           ls -l build/lib
-          cp build/lib/librdkitcffi.so.1.2025.03.6 dist/librdkitcffi.so
+          cp build/lib/librdkitcffi.so.1.2025.09.1 dist/librdkitcffi.so
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
@@ -67,5 +67,5 @@ jobs:
           # ChemDraw not used if -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF
       - uses: actions/upload-artifact@v4
         with:
-          name: rdkit-2025.03.6-x86_64-linux
+          name: rdkit-2025.09.1-x86_64-linux
           path: rdkit/dist
