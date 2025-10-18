@@ -10,14 +10,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - run: |
-          git clone --recursive --branch v3.0.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v3.1.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -G "Visual Studio 16 2019" -A x64 -DUSE_OPENMP=OFF
+          cmake .. -G "Visual Studio 17 2022" -A x64 -DUSE_OPENMP=OFF
           cmake --build . --config Release
           cd ..
 
@@ -28,5 +28,5 @@ jobs:
         shell: cmd
       - uses: actions/upload-artifact@v4
         with:
-          name: xgboost-3.0.0-x86_64-windows
+          name: xgboost-3.1.0-x86_64-windows
           path: xgboost/dist
