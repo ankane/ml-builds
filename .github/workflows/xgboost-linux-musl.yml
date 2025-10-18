@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: |
           apk update
-          apk add build-base cmake git wget
+          apk add build-base cmake git linux-headers wget
           git clone --recursive --branch v3.1.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
