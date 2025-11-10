@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04-arm
-    container: ubuntu:18.04
+    container: ubuntu:20.04
     steps:
       - run: |
           apt update
@@ -25,7 +25,7 @@ jobs:
           mv libmitie.so libmitie.arm64.so
           cd ..
           du -ah .
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v4
         with:
           name: libmitie.arm64.so
           path: MITIE/mitielib/build/libmitie.arm64.so
