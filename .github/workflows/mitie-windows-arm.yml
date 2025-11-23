@@ -1,0 +1,27 @@
+name: MITIE Windows ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/mitie-windows-arm.yml
+
+jobs:
+  build:
+    runs-on: windows-11-arm
+    steps:
+      - run: |
+          git clone --recursive --branch v0.7 https://github.com/mit-nlp/MITIE.git
+          cd MITIE/mitielib
+          mkdir build
+          cd build
+          cmake .. -G "Visual Studio 17 2022" -A x64
+          cmake --build . --config Release
+          mv Release/mitie.dll Release/mitie.arm64.dll
+        shell: cmd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mitie.arm64.dll
+          path: MITIE/mitielib/build/Release/mitie.arm64.dll
