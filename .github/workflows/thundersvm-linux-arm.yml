@@ -17,8 +17,9 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y build-essential cmake git wget
-          git clone --recursive --branch v0.3.4 https://github.com/Xtra-Computing/thundersvm
+          git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
+          git checkout 943a0989dc2f17092fa294b1abf354575397949e
           mkdir build
           cd build
           cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=armv8-a -DCMAKE_VERBOSE_MAKEFILE=ON
