@@ -1,0 +1,34 @@
+name: cmfrec Linux ARM
+on:
+  push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "*"
+    paths:
+      - .github/workflows/cmfrec-linux-arm.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    container: ubuntu:20.04
+    timeout-minutes: 5
+    steps:
+      - run: |
+          export DEBIAN_FRONTEND=noninteractive
+          apt update
+          apt install -y build-essential cmake git libblas-dev liblapack-dev wget
+          git clone --recursive --branch master https://github.com/david-cortes/cmfrec.git
+          cd cmfrec
+          git checkout ccdd1d44c3a496c6b0e688a8f69dbf16011dd324
+          cmake -B build
+          cmake --build build
+
+          mkdir dist
+          cp build/libcmfrec.so dist
+          cp LICENSE dist/LICENSE
+          cp inst/COPYRIGHTS dist/COPYRIGHTS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cmfrec-3.4.2-aarch64-linux
+          path: cmfrec/dist
