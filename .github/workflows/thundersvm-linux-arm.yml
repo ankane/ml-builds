@@ -21,6 +21,7 @@ jobs:
           apt install -y build-essential cmake git wget
           git clone --recursive --branch master https://github.com/Xtra-Computing/thundersvm
           cd thundersvm
+          git checkout 019bdeac50105d159cfad3e8b1da4c062903ad64
           mkdir build
           cd build
           cmake .. -DUSE_CUDA=OFF -DCMAKE_CXX_FLAGS=-march=armv8-a -DCMAKE_VERBOSE_MAKEFILE=ON
