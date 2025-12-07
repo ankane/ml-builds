@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-15-intel
     steps:
       # half license from https://sourceforge.net/p/half/code/HEAD/tree/tags/release-2.2.0/LICENSE.txt
       # grep checks source code version

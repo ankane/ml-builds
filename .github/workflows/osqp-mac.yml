@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-15-intel
     steps:
       - run: |
           git clone --recursive --branch v1.0.0 https://github.com/oxfordcontrol/osqp.git
