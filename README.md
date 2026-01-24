@@ -21,7 +21,6 @@ Notes
 
 - LIBMF: Fork, no OpenMP
 - Multicore t-SNE: Fork with OpenMP for Mac x86
-- SCS: No blas/lapack on Windows
 - XGBoost: No OpenMP on Windows
 
 View the [build scripts](.github/workflows)
