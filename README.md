@@ -4,6 +4,7 @@ Pre-built shared libraries for machine learning
 
 Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 --- | --- | --- | --- | --- | --- | --- | ---
+[Argon2](https://github.com/P-H-C/phc-winner-argon2) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/argon2-20190702) | CC0-1.0
 [Bling Fire](https://github.com/Microsoft/BlingFire) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/blingfire-0.1.8) | MIT
 [cmfrec](https://github.com/david-cortes/cmfrec) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/cmfrec-3.4.2) | MIT
 [LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master-2) | BSD-3-Clause
@@ -12,10 +13,9 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.13.5) | Apache-2.0
 [OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2-1) | Apache-2.0
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.1) | MIT
+[RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2024.03.5) | BSD-3-Clause
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
 [XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-2.0.0) | Apache-2.0
-[Argon2](https://github.com/P-H-C/phc-winner-argon2) (non-ML) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/argon2-20190702) | CC0-1.0
-[RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2024.03.5) | BSD-3-Clause
 
 Notes
 
