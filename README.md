@@ -10,12 +10,12 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master-2) | BSD-3-Clause
 [MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
-[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-1.13.5) | Apache-2.0
-[OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-0.6.2-1) | Apache-2.0
+[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-2.2.4) | Apache-2.0
+[OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-1.0.0) | Apache-2.0
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.1) | MIT
-[RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2024.03.5) | BSD-3-Clause
+[RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2025.09.1) | BSD-3-Clause
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
-[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-2.0.0) | Apache-2.0
+[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-3.1.0) | Apache-2.0
 
 Notes
 
