@@ -10,7 +10,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [LIBMF](https://github.com/cjlin1/libmf) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/libmf-master-2) | BSD-3-Clause
 [MITIE](https://github.com/mit-nlp/MITIE) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/mitie-0.7) | BSL-1.0
 [Multicore t-SNE](https://github.com/DmitryUlyanov/Multicore-TSNE) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/multicore-tsne-master) | BSD-3-Clause
-[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-2.2.4) | Apache-2.0
+[NGT](https://github.com/yahoojapan/NGT) | ✓ | ✓ | ✓ | ✓ | n/a | [View](https://github.com/ankane/ml-builds/releases/tag/ngt-2.5.1) | Apache-2.0
 [OSQP](https://github.com/oxfordcontrol/osqp) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/osqp-1.0.0) | Apache-2.0
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.1) | MIT
 [RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2025.09.1) | BSD-3-Clause

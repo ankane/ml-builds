@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           brew install libomp
-          git clone --recursive --branch v2.2.4 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v2.5.1 https://github.com/yahoojapan/NGT
           cd NGT
           cmake -B build -DCMAKE_VERBOSE_MAKEFILE=ON -DNGT_MARCH_NATIVE_DISABLED=ON -DNGT_QBG_DISABLED=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
           cmake --build build
@@ -32,5 +32,5 @@ jobs:
           MACOSX_DEPLOYMENT_TARGET: 11.0
       - uses: actions/upload-artifact@v4
         with:
-          name: ngt-2.2.4-aarch64-darwin
+          name: ngt-2.5.1-aarch64-darwin
           path: NGT/dist

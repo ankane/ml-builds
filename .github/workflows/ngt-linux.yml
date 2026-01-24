@@ -21,7 +21,7 @@ jobs:
           apt update
           apt install -y build-essential cmake git
 
-          git clone --recursive --branch v2.2.4 https://github.com/yahoojapan/NGT
+          git clone --recursive --branch v2.5.1 https://github.com/yahoojapan/NGT
           cd NGT
           mkdir build
           cd build
@@ -37,5 +37,5 @@ jobs:
           cp ../extra/NGT/LICENSE-half.txt dist
       - uses: actions/upload-artifact@v4
         with:
-          name: ngt-2.2.4-x86_64-linux
+          name: ngt-2.5.1-x86_64-linux
           path: NGT/dist
