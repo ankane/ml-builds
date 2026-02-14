@@ -14,14 +14,12 @@ jobs:
     steps:
       - run: |
           brew install cmake libomp
-          git clone --recursive --branch v3.1.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v3.2.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_C_LIB_NAMES=omp -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES=omp -DOpenMP_omp_LIBRARY=/opt/homebrew/opt/libomp/lib/libomp.dylib
+          cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
-          install_name_tool -change @@HOMEBREW_PREFIX@@/opt/libomp/lib/libomp.dylib /opt/homebrew/opt/libomp/lib/libomp.dylib ../lib/libxgboost.dylib
-          otool -L ../lib/libxgboost.dylib
           cd ..
 
           mkdir dist
@@ -30,7 +28,7 @@ jobs:
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
-          name: xgboost-3.1.0-aarch64-darwin
+          name: xgboost-3.2.0-aarch64-darwin
           path: xgboost/dist

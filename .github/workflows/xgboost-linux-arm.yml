@@ -10,20 +10,20 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     container: ubuntu:20.04
     steps:
       - run: |
           export DEBIAN_FRONTEND=noninteractive
           apt update
-          apt install -y cmake gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git wget
-          wget -q https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-linux-x86_64.tar.gz
-          tar xzf cmake-3.21.3-linux-x86_64.tar.gz
-          git clone --recursive --branch v3.1.0 https://github.com/dmlc/xgboost
+          apt install -y build-essential git wget
+          wget -q https://github.com/Kitware/CMake/releases/download/v4.2.3/cmake-4.2.3-linux-x86_64.tar.gz
+          tar xzf cmake-4.2.3-linux-x86_64.tar.gz
+          git clone --recursive --branch v3.2.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          ../../cmake-3.21.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=arm -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+          ../../cmake-4.2.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
 
@@ -31,7 +31,7 @@ jobs:
           cp lib/libxgboost.so dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
-          name: xgboost-3.1.0-aarch64-linux
+          name: xgboost-3.2.0-aarch64-linux
           path: xgboost/dist

@@ -16,7 +16,7 @@ jobs:
       - run: |
           apk update
           apk add build-base cmake git linux-headers wget
-          git clone --recursive --branch v3.1.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v3.2.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -28,7 +28,7 @@ jobs:
           cp lib/libxgboost.so dist
           cp LICENSE dist/LICENSE-xgboost.txt
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
-          name: xgboost-3.1.0-x86_64-linux-musl
+          name: xgboost-3.2.0-x86_64-linux-musl
           path: xgboost/dist
