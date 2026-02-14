@@ -17,13 +17,13 @@ jobs:
           export DEBIAN_FRONTEND=noninteractive
           apt update
           apt install -y build-essential git wget
-          wget -q https://github.com/Kitware/CMake/releases/download/v4.2.3/cmake-4.2.3-linux-x86_64.tar.gz
-          tar xzf cmake-4.2.3-linux-x86_64.tar.gz
+          wget -q https://github.com/Kitware/CMake/releases/download/v4.2.3/cmake-4.2.3-linux-aarch64.tar.gz
+          tar xzf cmake-4.2.3-linux-aarch64.tar.gz
           git clone --recursive --branch v3.2.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
-          ../../cmake-4.2.3-linux-x86_64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
+          ../../cmake-4.2.3-linux-aarch64/bin/cmake .. -DCMAKE_VERBOSE_MAKEFILE=ON
           make -j4
           cd ..
 
