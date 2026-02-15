@@ -15,7 +15,7 @@ Library | Linux x86 | ARM | Mac x86 | ARM | Windows | Files | License
 [Prophet](https://github.com/facebook/prophet) | ✓ | ✓ | ✓ | ✓ | | [View](https://github.com/ankane/ml-builds/releases/tag/prophet-1.1) | MIT
 [RDKit](https://github.com/rdkit/rdkit) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/rdkit-2025.09.1) | BSD-3-Clause
 [ThunderSVM](https://github.com/Xtra-Computing/thundersvm) | ✓ | | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/thundersvm-0.3.4) | Apache-2.0
-[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-3.1.0) | Apache-2.0
+[XGBoost](https://github.com/dmlc/xgboost) | ✓ | ✓ | ✓ | ✓ | ✓ | [View](https://github.com/ankane/ml-builds/releases/tag/xgboost-3.2.0) | Apache-2.0
 
 Notes
 
