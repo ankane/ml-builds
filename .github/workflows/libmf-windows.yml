@@ -13,13 +13,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          git clone https://github.com/ankane/libmf-fork.git libmf
           cd libmf
+          git checkout 3d5570a1fc28e7a0def51a048b256bb936c8b73e
           sed -i -e 's/ \/D "USEOMP" \/openmp//g' Makefile.win
-          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
           nmake /E /F Makefile.win all
         shell: cmd
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: mf.dll
           path: libmf/windows/mf.dll

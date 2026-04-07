@@ -10,17 +10,18 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15-intel
     steps:
       - run: |
-          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          git clone https://github.com/ankane/libmf-fork.git libmf
           cd libmf
+          git checkout 3d5570a1fc28e7a0def51a048b256bb936c8b73e
           sed -i '' 's/-march=native/-march=nehalem/g' Makefile
           make all lib DFLAG="" OMPFLAG=""
-          du -ah .
+          mv libmf.2.dylib libmf.dylib
         env:
-          MACOSX_DEPLOYMENT_TARGET: 10.13
-      - uses: actions/upload-artifact@v4
+          MACOSX_DEPLOYMENT_TARGET: 11.0
+      - uses: actions/upload-artifact@v7
         with:
           name: libmf.dylib
-          path: libmf/libmf.2.dylib
+          path: libmf/libmf.dylib

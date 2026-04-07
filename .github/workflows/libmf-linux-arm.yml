@@ -10,18 +10,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    runs-on: ubuntu-24.04-arm
+    container: ubuntu:20.04
     steps:
       - run: |
           apt update
-          apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu git make
-          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          apt install -y build-essential git
+          git clone https://github.com/ankane/libmf-fork.git libmf
           cd libmf
+          git checkout 3d5570a1fc28e7a0def51a048b256bb936c8b73e
           sed -i 's/-march=native/-march=armv8-a/g' Makefile
-          make all lib CXX=aarch64-linux-gnu-g++ DFLAG="" OMPFLAG=""
+          make all lib DFLAG="" OMPFLAG=""
           mv libmf.so.2 libmf.arm64.so
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: libmf.arm64.so
           path: libmf/libmf.arm64.so

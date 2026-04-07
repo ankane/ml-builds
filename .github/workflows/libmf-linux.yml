@@ -11,17 +11,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ubuntu:16.04
+    container: ubuntu:20.04
     steps:
       - run: |
           apt update
           apt install -y build-essential git
-          git clone --recursive --branch mf_read_problem https://github.com/ankane/libmf-1.git libmf
+          git clone https://github.com/ankane/libmf-fork.git libmf
           cd libmf
+          git checkout 3d5570a1fc28e7a0def51a048b256bb936c8b73e
           sed -i 's/-march=native/-march=x86-64/g' Makefile
           make all lib DFLAG="" OMPFLAG=""
           mv libmf.so.2 libmf.so
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: libmf.so
           path: libmf/libmf.so
