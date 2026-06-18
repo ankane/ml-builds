@@ -19,7 +19,7 @@ jobs:
           apt install -y build-essential git wget
           wget -q https://github.com/Kitware/CMake/releases/download/v4.2.3/cmake-4.2.3-linux-aarch64.tar.gz
           tar xzf cmake-4.2.3-linux-aarch64.tar.gz
-          git clone --recursive --branch v3.2.0 https://github.com/dmlc/xgboost
+          git clone --recursive --branch v3.3.0 https://github.com/dmlc/xgboost
           cd xgboost
           mkdir build
           cd build
@@ -33,5 +33,5 @@ jobs:
           cp dmlc-core/LICENSE dist/LICENSE-dmlc-core.txt
       - uses: actions/upload-artifact@v6
         with:
-          name: xgboost-3.2.0-aarch64-linux
+          name: xgboost-3.3.0-aarch64-linux
           path: xgboost/dist
