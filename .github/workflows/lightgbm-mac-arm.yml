@@ -10,11 +10,11 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-26
     steps:
       - run: |
           brew install libomp
-          git clone --recursive --branch v4.6.0 https://github.com/microsoft/LightGBM
+          git clone --recursive --branch v4.7.0 https://github.com/microsoft/LightGBM
           cd LightGBM
           mkdir build
           cd build
@@ -25,7 +25,7 @@ jobs:
           otool -L ../lib_lightgbm.arm64.dylib
         env:
           MACOSX_DEPLOYMENT_TARGET: 11.0
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: lib_lightgbm.arm64.dylib
           path: LightGBM/lib_lightgbm.arm64.dylib
