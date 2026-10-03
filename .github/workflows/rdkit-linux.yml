@@ -19,18 +19,18 @@ jobs:
           apt update
           apt install -y cmake curl build-essential git zlib1g-dev
       - run: |
-          curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.89.0/boost-1.89.0-b2-nodocs.tar.gz
+          curl -L -o boost.tar.gz https://github.com/boostorg/boost/releases/download/boost-1.92.0/boost-1.92.0-b2-nodocs.tar.gz
           tar xzf boost.tar.gz
-          cd boost-1.89.0
+          cd boost-1.92.0
           ./bootstrap.sh
       - run: |
-          cd boost-1.89.0
+          cd boost-1.92.0
           ./b2 --with-headers --with-program_options
       - run: |
           git clone --recursive --branch Release_2026_09_1 https://github.com/rdkit/rdkit.git
           cd rdkit
           cmake -S . -B build \
-            -DBoost_DIR=../boost-1.89.0/stage/lib/cmake/Boost-1.89.0 \
+            -DBoost_DIR=../boost-1.92.0/stage/lib/cmake/Boost-1.92.0 \
             -DRDK_BUILD_CFFI_LIB=ON \
             -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF \
             -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
@@ -39,6 +39,7 @@ jobs:
             -DRDK_BUILD_FREETYPE_SUPPORT=OFF \
             -DRDK_BUILD_INCHI_SUPPORT=OFF \
             -DRDK_BUILD_MAEPARSER_SUPPORT=OFF \
+            -DRDK_BUILD_PUBCHEMSHAPE_SUPPORT=OFF \
             -DRDK_BUILD_PYTHON_WRAPPERS=OFF \
             -DRDK_BUILD_QT_SUPPORT=OFF \
             -DRDK_BUILD_SLN_SUPPORT=OFF \
@@ -47,8 +48,7 @@ jobs:
             -DRDK_TEST_MULTITHREADED=OFF \
             -DRDK_USE_BOOST_IOSTREAMS=OFF \
             -DRDK_USE_BOOST_SERIALIZATION=OFF \
-            -DRDK_USE_BOOST_STACKTRACE=OFF \
-            -DRDK_USE_URF=OFF
+            -DRDK_USE_BOOST_STACKTRACE=OFF
           cmake --build build --parallel 4
 
           mkdir dist
@@ -56,14 +56,13 @@ jobs:
           cp build/lib/librdkitcffi.so.1.2026.09.1 dist/librdkitcffi.so
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
-          cp External/rapidjson/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
+          cp External/RingFamilies/RingDecomposerLib/LICENSE dist/RingDecomposerLib-license.txt
           # Boost does not require license file for machine-executable object code
           # zlib does not require license file for binaries
           # Eigen not used if -DRDK_BUILD_DESCRIPTORS3D=OFF
           # InChI not used if -DRDK_BUILD_INCHI_SUPPORT=OFF
           # FreeType not used if -DRDK_BUILD_FREETYPE_SUPPORT=OFF
           # CoordGen (coordgen and maeparser) not used if both -DRDK_BUILD_COORDGEN_SUPPORT=OFF and -DRDK_BUILD_MAEPARSER_SUPPORT=OFF
-          # RingDecomposerLib not used if -DRDK_USE_URF=OFF
           # ChemDraw not used if -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF
       - uses: actions/upload-artifact@v7
         with:
