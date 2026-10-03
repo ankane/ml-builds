@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     container: ubuntu:22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: |
           export DEBIAN_FRONTEND=noninteractive
           apt update
@@ -27,7 +27,7 @@ jobs:
           cd boost-1.89.0
           ./b2 --with-headers --with-program_options
       - run: |
-          git clone --recursive --branch Release_2025_09_1 https://github.com/rdkit/rdkit.git
+          git clone --recursive --branch Release_2026_09_1 https://github.com/rdkit/rdkit.git
           cd rdkit
           cmake -S . -B build \
             -DBoost_DIR=../boost-1.89.0/stage/lib/cmake/Boost-1.89.0 \
@@ -53,7 +53,7 @@ jobs:
 
           mkdir dist
           ls -l build/lib
-          cp build/lib/librdkitcffi.so.1.2025.09.1 dist/librdkitcffi.so
+          cp build/lib/librdkitcffi.so.1.2026.09.1 dist/librdkitcffi.so
           cp license.txt dist/rdkit-license.txt
           cp Code/GraphMol/ChemReactions/license.txt dist/ChemReactions-license.txt
           cp External/rapidjson/rapidjson-1.1.0/license.txt dist/rapidjson-license.txt
@@ -65,7 +65,7 @@ jobs:
           # CoordGen (coordgen and maeparser) not used if both -DRDK_BUILD_COORDGEN_SUPPORT=OFF and -DRDK_BUILD_MAEPARSER_SUPPORT=OFF
           # RingDecomposerLib not used if -DRDK_USE_URF=OFF
           # ChemDraw not used if -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
-          name: rdkit-2025.09.1-aarch64-linux
+          name: rdkit-2026.09.1-aarch64-linux
           path: rdkit/dist
