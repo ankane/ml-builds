@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - run: |
-          curl -L -o zlib.zip https://github.com/madler/zlib/releases/download/v1.3.2/zlib131.zip
+          curl -L -o zlib.zip https://github.com/madler/zlib/releases/download/v1.3.2/zlib132.zip
           7z x zlib.zip
           cd zlib-1.3.2
           cmake -S . -B build -DCMAKE_INSTALL_PREFIX=../zlib
